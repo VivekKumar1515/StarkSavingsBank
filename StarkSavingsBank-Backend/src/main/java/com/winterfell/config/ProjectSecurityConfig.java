@@ -2,16 +2,22 @@ package com.winterfell.config;
 
 import com.winterfell.exceptionhandling.StarkSavingsBankAccessDeniedHandler;
 import com.winterfell.exceptionhandling.StarkSavingsBankAuthenticationEntryPoint;
+import com.winterfell.filter.CsrfCookieFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.password.CompromisedPasswordChecker;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFilter;
 import org.springframework.security.web.authentication.password.HaveIBeenPwnedRestApiPasswordChecker;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
@@ -27,6 +33,8 @@ public class ProjectSecurityConfig {
 
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+
+        //CORS Related Configurations
         http.cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configurationSource(new CorsConfigurationSource() {
                     @Override
                     public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
@@ -40,26 +48,36 @@ public class ProjectSecurityConfig {
                         return corsConfiguration;
                     }
                 }))
-                .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer.invalidSessionUrl("/invalidSession"))
-                .requiresChannel(channel -> channel.anyRequest().requiresInsecure())
+
+                //Session Management Configurations
+                .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer
+                        .invalidSessionUrl("/invalidSession")
+                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
+
+                //Security Context Configuration
+                .securityContext(httpSecuritySecurityContextConfigurer -> httpSecuritySecurityContextConfigurer.requireExplicitSave(false))
+
+                //HTTP/HTTPS Configuration
+                .requiresChannel(channel -> channel.anyRequest().requiresInsecure()) //Only HTTP
+
+                //Path Authorization Configuration
                 .authorizeHttpRequests((requests) -> requests
                 .requestMatchers("/myAccount", "/myBalance", "/myLoans", "/myCards", "/register", "/user").authenticated()
                 .requestMatchers("/notices", "/contact", "/error", "/invalidSession").permitAll());
+
+        //CSRF Configuration
+        http.csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer
+                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler())
+                .ignoringRequestMatchers("/contact", "register"));
+        http.addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class);
+
         http.formLogin(withDefaults());
         http.httpBasic(httpSecurityHttpBasicConfigurer -> httpSecurityHttpBasicConfigurer.authenticationEntryPoint(new StarkSavingsBankAuthenticationEntryPoint()));
         http.exceptionHandling(httpSecurityExceptionHandlingConfigurer -> httpSecurityExceptionHandlingConfigurer.accessDeniedHandler(new StarkSavingsBankAccessDeniedHandler()));
-        http.csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.ignoringRequestMatchers("/register", "/contact"));
         return http.build();
     }
 
-//    @Bean
-//    public UserDetailsService userDetailsService(DataSource dataSource) {
-////        UserDetails user = User.withUsername("user").password("{noop}12345").authorities("read").build();
-////        UserDetails admin = User.withUsername("admin").password("{bcrypt}$2a$12$AS1tl9U.NChpL4.JmvYiJ.wrlqZOW5SY6oDyuDCFUONSLcz49hH5e").authorities("admin").build();
-////        return new InMemoryUserDetailsManager(user, admin);
-//
-//        return new JdbcUserDetailsManager(dataSource);
-//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

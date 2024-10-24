@@ -19,11 +19,11 @@ public class ContactController {
     private final ContactRepository contactRepository;
 
     @RequestMapping(path = "/contact", method = RequestMethod.POST)
-    private ResponseEntity<String> saveMessage(@RequestBody @Valid Contact contact) {
+    private ResponseEntity<Contact> saveMessage(@RequestBody @Valid Contact contact) {
         contact.setCreateDate(new Date(System.currentTimeMillis()));
 
-        contactRepository.save(contact);
+        Contact savedContact = contactRepository.save(contact);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body("Message has been sent ❤");
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedContact);
     }
 }
