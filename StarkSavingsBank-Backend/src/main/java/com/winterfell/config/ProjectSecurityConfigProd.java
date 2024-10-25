@@ -35,7 +35,7 @@ public class ProjectSecurityConfigProd {
                     @Override
                     public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                         CorsConfiguration corsConfiguration = new CorsConfiguration();
-                        corsConfiguration.setAllowedOrigins(List.of("http://localhost:4200"));
+                        corsConfiguration.setAllowedOrigins(List.of("https://localhost:4200"));
                         corsConfiguration.setAllowedMethods(List.of("*"));
                         corsConfiguration.setAllowCredentials(true);
                         corsConfiguration.setAllowedHeaders(List.of("*"));
@@ -59,8 +59,12 @@ public class ProjectSecurityConfigProd {
 
                 //Path Authorization Configuration
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/myAccount", "/myBalance", "/myLoans", "/myCards", "/register", "/user").authenticated()
-                        .requestMatchers("/notices", "/contact", "/error", "/invalidSession").permitAll());
+                        .requestMatchers("/myAccount").hasAuthority("VIEWACCOUNT")
+                        .requestMatchers("/myBalance").hasAuthority("VIEWBALANCE")
+                        .requestMatchers("/myLoans").hasAuthority("VIEWLOANS")
+                        .requestMatchers("/myCards").hasAuthority("VIEWCARDS")
+                        .requestMatchers("/user").authenticated()
+                        .requestMatchers("/notices", "/contact", "/error", "/invalidSession", "/register").permitAll());
 
         //CSRF Configuration
         http.csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer

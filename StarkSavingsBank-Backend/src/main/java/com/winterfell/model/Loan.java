@@ -1,5 +1,6 @@
 package com.winterfell.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.winterfell.enums.LoanType;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -35,5 +36,6 @@ public class Loan {
     private long outstandingAmount;
 
     @Column(name = "create_dt")
-    private Date createDate;
+    @JsonProperty(value = "startDt")
+    private java.sql.Date createDate;
 }

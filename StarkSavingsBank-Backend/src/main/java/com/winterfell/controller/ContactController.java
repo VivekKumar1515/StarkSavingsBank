@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Date;
+import java.sql.Date;
+import java.time.Instant;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,7 +21,7 @@ public class ContactController {
 
     @RequestMapping(path = "/contact", method = RequestMethod.POST)
     private ResponseEntity<Contact> saveMessage(@RequestBody @Valid Contact contact) {
-        contact.setCreateDate(new Date(System.currentTimeMillis()));
+        contact.setCreateDate((Date) Date.from(Instant.now()));
 
         Contact savedContact = contactRepository.save(contact);
 

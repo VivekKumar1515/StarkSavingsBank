@@ -1,5 +1,7 @@
 package com.winterfell.model;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.winterfell.enums.Role;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -8,6 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "customer")
@@ -16,6 +19,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
+    @JsonProperty(value = "id")
     private long customerId;
 
     @Column(name = "name")
@@ -38,4 +42,8 @@ public class Customer {
 
     @Column(name = "create_dt")
     private Date createDate;
+
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+    @JsonIgnore
+    private Set<Authorities> authorities;
 }

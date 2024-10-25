@@ -1,11 +1,12 @@
 package com.winterfell.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.winterfell.enums.TransactionType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Getter @Setter
@@ -21,6 +22,7 @@ public class AccountTransactions {
     private long customerId;
 
     @Column(name = "transaction_dt")
+    @JsonProperty(value = "transactionDt")
     private Date transactionDate;
 
     @Column(name = "transaction_summary")
@@ -31,6 +33,7 @@ public class AccountTransactions {
     private TransactionType transactionType;
 
     @Column(name = "transaction_amt")
+    @JsonProperty(value = "transactionAmt")
     private long transactionAmount;
 
     @Column(name = "closing_balance")

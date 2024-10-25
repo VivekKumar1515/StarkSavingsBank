@@ -62,8 +62,12 @@ public class ProjectSecurityConfig {
 
                 //Path Authorization Configuration
                 .authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/myAccount", "/myBalance", "/myLoans", "/myCards", "/register", "/user").authenticated()
-                .requestMatchers("/notices", "/contact", "/error", "/invalidSession").permitAll());
+                        .requestMatchers("/myAccount").hasAuthority("VIEWACCOUNT")
+                        .requestMatchers("/myBalance").hasAuthority("VIEWBALANCE")
+                        .requestMatchers("/myLoans").hasAuthority("VIEWLOANS")
+                        .requestMatchers("/myCards").hasAuthority("VIEWCARDS")
+                .requestMatchers("/user").authenticated()
+                .requestMatchers("/notices", "/contact", "/error", "/invalidSession", "/register").permitAll());
 
         //CSRF Configuration
         http.csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer
