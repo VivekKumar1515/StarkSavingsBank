@@ -2,7 +2,7 @@ package com.winterfell.config;
 
 import com.winterfell.exceptionhandling.StarkSavingsBankAccessDeniedHandler;
 import com.winterfell.exceptionhandling.StarkSavingsBankAuthenticationEntryPoint;
-import com.winterfell.filter.CsrfCookieFilter;
+import com.winterfell.filter.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFilter;
 import org.springframework.security.web.authentication.password.HaveIBeenPwnedRestApiPasswordChecker;
+import org.springframework.security.web.authentication.preauth.RequestAttributeAuthenticationFilter;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
@@ -44,6 +45,7 @@ public class ProjectSecurityConfig {
                         corsConfiguration.setAllowCredentials(true);
                         corsConfiguration.setAllowedHeaders(List.of("*"));
                         corsConfiguration.setMaxAge(Duration.ofMinutes(10));
+                        corsConfiguration.setExposedHeaders(List.of("Authorization"));
 
                         return corsConfiguration;
                     }
@@ -52,7 +54,7 @@ public class ProjectSecurityConfig {
                 //Session Management Configurations
                 .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer
                         .invalidSessionUrl("/invalidSession")
-                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
                 //Security Context Configuration
                 .securityContext(httpSecuritySecurityContextConfigurer -> httpSecuritySecurityContextConfigurer.requireExplicitSave(false))
@@ -74,7 +76,13 @@ public class ProjectSecurityConfig {
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler())
                 .ignoringRequestMatchers("/contact", "register"));
+
+        //Adding filter
         http.addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class);
+        http.addFilterBefore(new RequestValidationFilter(), BasicAuthenticationFilter.class);
+        http.addFilterAfter(new LoggingFilter(), BasicAuthenticationFilter.class);
+        http.addFilterAfter(new JWTGenerateFilter(), BasicAuthenticationFilter.class);
+        http.addFilterBefore(new JWTValidationFilter(), BasicAuthenticationFilter.class);
 
         http.formLogin(withDefaults());
         http.httpBasic(httpSecurityHttpBasicConfigurer -> httpSecurityHttpBasicConfigurer.authenticationEntryPoint(new StarkSavingsBankAuthenticationEntryPoint()));
