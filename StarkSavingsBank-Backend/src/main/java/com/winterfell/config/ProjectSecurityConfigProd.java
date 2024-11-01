@@ -1,12 +1,16 @@
 package com.winterfell.config;
 
+import com.winterfell.Service.UserDetailsService;
+import com.winterfell.constants.ApplicationConstants;
 import com.winterfell.exceptionhandling.StarkSavingsBankAccessDeniedHandler;
 import com.winterfell.exceptionhandling.StarkSavingsBankAuthenticationEntryPoint;
-import com.winterfell.filter.CsrfCookieFilter;
+import com.winterfell.filter.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.password.CompromisedPasswordChecker;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -40,6 +44,7 @@ public class ProjectSecurityConfigProd {
                         corsConfiguration.setAllowCredentials(true);
                         corsConfiguration.setAllowedHeaders(List.of("*"));
                         corsConfiguration.setMaxAge(Duration.ofMinutes(10));
+                        corsConfiguration.setExposedHeaders(List.of(ApplicationConstants.JWT_HEADER));
 
                         return corsConfiguration;
                     }
@@ -47,15 +52,14 @@ public class ProjectSecurityConfigProd {
 
                 //Session Management Configurations
                 .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer
-                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
-                        .maximumSessions(2)
-                        .maxSessionsPreventsLogin(true))
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
 
                 //Security Context Configuration
                 .securityContext(httpSecuritySecurityContextConfigurer -> httpSecuritySecurityContextConfigurer.requireExplicitSave(false))
 
                 //HTTP/HTTPS Configuration
-                .requiresChannel(channel -> channel.anyRequest().requiresInsecure()) //Only HTTP
+                .requiresChannel(channel -> channel.anyRequest().requiresSecure()) //Only HTTPS
 
                 //Path Authorization Configuration
                 .authorizeHttpRequests((requests) -> requests
@@ -64,14 +68,21 @@ public class ProjectSecurityConfigProd {
                         .requestMatchers("/myLoans").hasAuthority("VIEWLOANS")
                         .requestMatchers("/myCards").hasAuthority("VIEWCARDS")
                         .requestMatchers("/user").authenticated()
-                        .requestMatchers("/notices", "/contact", "/error", "/invalidSession", "/register").permitAll());
+                        .requestMatchers("/notices", "/contact", "/error", "/invalidSession", "/register", "/api/login").permitAll());
 
         //CSRF Configuration
         http.csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler())
-                .ignoringRequestMatchers("/contact", "register"));
+                .ignoringRequestMatchers("/contact", "/register", "/api/login"));
+
+
+        //Adding filter
         http.addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class);
+        http.addFilterBefore(new RequestValidationFilter(), BasicAuthenticationFilter.class);
+        http.addFilterAfter(new LoggingFilter(), BasicAuthenticationFilter.class);
+        http.addFilterAfter(new JWTGenerateFilter(), BasicAuthenticationFilter.class);
+        http.addFilterBefore(new JWTValidationFilter(), BasicAuthenticationFilter.class);
 
         http.formLogin(withDefaults());
         http.httpBasic(httpSecurityHttpBasicConfigurer -> httpSecurityHttpBasicConfigurer.authenticationEntryPoint(new StarkSavingsBankAuthenticationEntryPoint()));
@@ -87,5 +98,15 @@ public class ProjectSecurityConfigProd {
     @Bean
     public CompromisedPasswordChecker compromisedPasswordChecker() {
         return new HaveIBeenPwnedRestApiPasswordChecker();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(PasswordEncoder passwordEncoder, UserDetailsService userDetailsService) {
+        StarkSavingsBankUserandPasswordAuthenticationProvider authenticationProvider = new StarkSavingsBankUserandPasswordAuthenticationProvider(userDetailsService, passwordEncoder);
+        ProviderManager providerManager = new ProviderManager(authenticationProvider);
+
+        providerManager.setEraseCredentialsAfterAuthentication(true);
+
+        return providerManager;
     }
 }

@@ -53,7 +53,8 @@ public class JWTValidationFilter extends OncePerRequestFilter {
                     }
                 }
             } catch (Exception exception) {
-                throw new BadCredentialsException("Invalid Jwt Token");
+                System.out.println("Invalid Token Encountered with exception : " + exception.getMessage());
+                throw exception;
             }
         }
 

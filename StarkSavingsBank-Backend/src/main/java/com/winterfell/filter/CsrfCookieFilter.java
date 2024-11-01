@@ -8,6 +8,7 @@ import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 public class CsrfCookieFilter extends OncePerRequestFilter {
     /**
@@ -24,6 +25,10 @@ public class CsrfCookieFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         CsrfToken csrfToken = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
+        Enumeration enumeration = request.getAttributeNames();
+        enumeration.asIterator().forEachRemaining(System.out::println);
+
+
         //Render the token value to a cookie causing the deferred token to be loaded
         csrfToken.getToken();
 

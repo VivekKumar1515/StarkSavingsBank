@@ -1,5 +1,7 @@
 package com.winterfell.config;
 
+import com.winterfell.Service.UserDetailsService;
+import com.winterfell.constants.ApplicationConstants;
 import com.winterfell.exceptionhandling.StarkSavingsBankAccessDeniedHandler;
 import com.winterfell.exceptionhandling.StarkSavingsBankAuthenticationEntryPoint;
 import com.winterfell.filter.*;
@@ -7,6 +9,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.password.CompromisedPasswordChecker;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -45,7 +49,7 @@ public class ProjectSecurityConfig {
                         corsConfiguration.setAllowCredentials(true);
                         corsConfiguration.setAllowedHeaders(List.of("*"));
                         corsConfiguration.setMaxAge(Duration.ofMinutes(10));
-                        corsConfiguration.setExposedHeaders(List.of("Authorization"));
+                        corsConfiguration.setExposedHeaders(List.of(ApplicationConstants.JWT_HEADER));
 
                         return corsConfiguration;
                     }
@@ -53,7 +57,6 @@ public class ProjectSecurityConfig {
 
                 //Session Management Configurations
                 .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer
-                        .invalidSessionUrl("/invalidSession")
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
                 //Security Context Configuration
@@ -69,13 +72,13 @@ public class ProjectSecurityConfig {
                         .requestMatchers("/myLoans").hasAuthority("VIEWLOANS")
                         .requestMatchers("/myCards").hasAuthority("VIEWCARDS")
                 .requestMatchers("/user").authenticated()
-                .requestMatchers("/notices", "/contact", "/error", "/invalidSession", "/register").permitAll());
+                .requestMatchers("/notices", "/contact", "/error", "/register", "/api/login").permitAll());
 
         //CSRF Configuration
         http.csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler())
-                .ignoringRequestMatchers("/contact", "register"));
+                .ignoringRequestMatchers("/contact", "/register", "/api/login"));
 
         //Adding filter
         http.addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class);
@@ -99,5 +102,14 @@ public class ProjectSecurityConfig {
     @Bean
     public CompromisedPasswordChecker compromisedPasswordChecker() {
         return new HaveIBeenPwnedRestApiPasswordChecker();
+    }
+
+    @Bean
+    public AuthenticationManager authManager(PasswordEncoder passwordEncoder, UserDetailsService userDetailsService) {
+        StarkSavingsBankUserandPasswordAuthenticationProvider authenticationProvider = new StarkSavingsBankUserandPasswordAuthenticationProvider(userDetailsService, passwordEncoder);
+        ProviderManager providerManager = new ProviderManager(authenticationProvider);
+        providerManager.setEraseCredentialsAfterAuthentication(true);
+
+        return providerManager;
     }
 }
