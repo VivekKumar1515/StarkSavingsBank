@@ -9,6 +9,7 @@ export default function Logout() {
   const [isLoggingOut, setIsLoggingOut] = useState(false)
   const [quirkySaying, setQuirkySaying] = useState('')
   const router = useRouter()
+  const {isAuthenticated, setIsAuthenticated} = useAuth();
 
   const quirkySayings = [
     "The North remembers... your session!",
@@ -28,10 +29,10 @@ export default function Logout() {
     await new Promise(resolve => setTimeout(resolve, 3000))
 
     sessionStorage.removeItem("Authorization");
-    sessionStorage.removeItem("userdetails")
-    sessionStorage.removeItem("XSRF-TOKEN")
+    sessionStorage.removeItem("userdetails");
+    sessionStorage.removeItem("XSRF-TOKEN");
+    setIsAuthenticated(false);    
     
-
     router.push('/home')
 
   }

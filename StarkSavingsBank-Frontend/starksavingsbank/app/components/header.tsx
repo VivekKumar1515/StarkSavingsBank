@@ -14,8 +14,8 @@ const navItems = [
 ]
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const isAuthenticated = useAuth();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const {isAuthenticated} = useAuth();
 
   return (
     <header className="bg-gradient-to-r from-gray-800 to-blue-900 text-gray-100 shadow-lg relative">

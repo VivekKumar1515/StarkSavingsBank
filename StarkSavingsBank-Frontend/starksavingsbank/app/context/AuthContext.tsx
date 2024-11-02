@@ -1,10 +1,14 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode} from 'react';
 
+type AuthContextType = {
+    isAuthenticated: boolean;
+    setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+  };
 
 // Create a context with an initial value of `null`
-const AuthContext = createContext(false);
+const AuthContext = createContext<AuthContextType | null>(null);
 
 // Create a provider component
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -30,14 +34,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   }, []);
 
   return (
-    <AuthContext.Provider value={isAuthenticated}>
+    <AuthContext.Provider value={{isAuthenticated, setIsAuthenticated}}>
       {children}
     </AuthContext.Provider>
   );
 };
 
 // Custom hook to use the Auth context
-export const useAuth = () => {
+export const useAuth = (): AuthContextType | null => {
   const context = useContext(AuthContext);
 
   return context;
