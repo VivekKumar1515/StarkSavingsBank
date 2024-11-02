@@ -1,11 +1,14 @@
+"use client"
+
 // services/dashboardService.ts
 import axios from 'axios';
 import { AppConstants } from '../constants/app.constants'; // Adjust the import path based on your folder structure
 import { Contact } from '../model/contact.model'; // Adjust the import path based on your folder structure
+import { useAuth } from '../context/AuthContext';
 
-const baseUrl = process.env.NEXT_PUBLIC_ROOT_URL; // Assuming the root URL is defined in .env.local as NEXT_PUBLIC_ROOT_URL
-const jwtToken = sessionStorage.getItem("Authorization");
-const xsrf = sessionStorage.getItem("XSRF-TOKEN")
+const baseUrl = AppConstants.ROOT_URL; // Assuming the root URL is defined in .env.local as NEXT_PUBLIC_ROOT_URL
+
+
 
 export const DashboardService = {
   getAccountDetails: async (id: number) => {

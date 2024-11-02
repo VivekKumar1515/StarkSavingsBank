@@ -1,5 +1,6 @@
 package com.winterfell.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
@@ -15,6 +16,7 @@ public class Contact {
     @Id
     @Column(name = "contact_id")
     @GeneratedValue(strategy = GenerationType.UUID)
+
     private String contactId;
 
     @Column(name = "contact_name")
@@ -24,6 +26,8 @@ public class Contact {
     @Column(name = "contact_email")
     private String contactEmail;
 
+    private String house;
+
     @Column(name = "subject")
     @Size(min = 5, max = 100, message = "Size must be between 5 to 100 characters")
     private String subject;
@@ -31,6 +35,8 @@ public class Contact {
     @Size(min = 5, max = 200, message = "Size must be between 5 to 200 characters")
     private String message;
 
+
     @Column(name = "create_dt")
+    @JsonIgnore
     private Date createDate;
 }

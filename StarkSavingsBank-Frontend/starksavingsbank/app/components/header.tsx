@@ -7,10 +7,10 @@ import { Menu, X } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 
 const navItems = [
-  { name: 'Home', href: '/home' },
-  { name: 'Dashboard', href: '/dashboard' },
-  { name: 'Notices', href: '/notices' },
-  { name: 'Contact Us', href: '/contact' },
+  { name: 'Home', href: '/home', authRequired: false },
+  { name: 'Dashboard', href: '/dashboard', authRequired: true },
+  { name: 'Notices', href: '/notices', authRequired: false },
+  { name: 'Contact Us', href: '/contact', authRequired: false },
 ]
 
 export default function Header() {
@@ -41,14 +41,16 @@ export default function Header() {
             <nav className="hidden md:block ml-10">
               <ul className="flex space-x-4">
                 {navItems.map((item) => (
-                  <li key={item.name}>
-                    <Link
-                      href={item.href}
-                      className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
-                    >
-                      {item.name}
-                    </Link>
-                  </li>
+                  (item.authRequired === isAuthenticated) && (
+                    <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+                  )
                 ))}
               </ul>
             </nav>
