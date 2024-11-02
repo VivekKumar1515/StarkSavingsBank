@@ -25,4 +25,16 @@ export class User{
         this.authStatus = authStatus || '';
   }
 
+  constructorCustom(data : Partial<User>){
+      this.id = data.id || 0;
+      this.name = data.name || '';
+      this.mobileNumber = data.mobileNumber || '';
+      this.email = data.email || '';
+      this.password = data.password || '';
+      this.role = data.role || '';
+      this.statusCd = data.statusCd || '';
+      this.statusMsg = data.statusMsg || '';
+      this.authStatus = data.authStatus || '';
+}
+
 }

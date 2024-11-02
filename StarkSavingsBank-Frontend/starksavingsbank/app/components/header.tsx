@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
+import { useAuth } from '../context/AuthContext'
 
 const navItems = [
   { name: 'Home', href: '/home' },
@@ -12,8 +13,9 @@ const navItems = [
   { name: 'Contact Us', href: '/contact' },
 ]
 
-export default function Header({ isAuthenticated = false }) {
+export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const isAuthenticated = useAuth();
 
   return (
     <header className="bg-gradient-to-r from-gray-800 to-blue-900 text-gray-100 shadow-lg relative">

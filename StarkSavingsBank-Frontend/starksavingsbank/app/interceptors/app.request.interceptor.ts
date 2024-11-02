@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { User } from '../model/user.model';
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const user = sessionStorage.getItem("userdetails")
   const authToken = sessionStorage.get('Authorization');
   const xsrfToken = sessionStorage.get('XSRF-TOKEN');

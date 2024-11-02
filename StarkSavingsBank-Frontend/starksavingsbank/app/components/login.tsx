@@ -1,8 +1,13 @@
 'use client'
 
-import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Link from 'next/link'
+import Image from 'next/image'
+import { User } from '../model/user.model'
+import validateLoginDetails from '../services/loginService'
+import Cookies from 'js-cookie'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 type FormData = {
   email: string
@@ -11,7 +16,9 @@ type FormData = {
 
 export default function Login() {
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>()
-  const [loginError, setLoginError] = useState<string | null>(null)
+  const [loginError, setLoginError] = useState<string | null>(null);
+  const router = useRouter();
+
 
   const onSubmit = async (data: FormData) => {
     setLoginError(null)
@@ -20,6 +27,36 @@ export default function Login() {
       await new Promise(resolve => setTimeout(resolve, 1000))
       console.log('Login attempt:', data)
       // Add your login logic here
+      
+
+      const loginResponse = validateLoginDetails(data);
+      loginResponse.then(response => {
+        const user = new User(response.data.id, response.data.name, response.data.mobileNumber, response.data.email, response.data.password, response.data.role, response.data.statusCd, response.data.statusMsg, response.data.authStatus);
+
+
+        user.authStatus = "AUTH";
+        sessionStorage.setItem("userdetails", JSON.stringify(user))
+        console.log("Successful Login inside LoginResponse")
+
+        const xsrf = Cookies.get("XSRF-TOKEN");
+        sessionStorage.setItem("XSRF-TOKEN", xsrf!);
+
+        const authHeader = response.headers;
+        if(authHeader) {
+          console.log(authHeader["authorization"]);
+          sessionStorage.setItem("Authorization", authHeader["authorization"])
+        }
+
+        router.push("http://localhost:3000/dashboard")
+
+      }).catch(error => {
+        setLoginError("Invalid email or password");
+        console.log(error);
+        
+      })
+      
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setLoginError('Failed to login. Please try again.')
     }
@@ -30,9 +67,18 @@ export default function Login() {
       <div className="max-w-md w-full space-y-8 bg-gray-900 p-10 rounded-xl shadow-2xl relative overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-10" 
-          style={{ backgroundImage: "url('/placeholder.svg?height=400&width=400')" }}
+          style={{ backgroundImage: "url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZAZsfpUGQIlYM8OoAS1tTRTuS2nhsMV_3nLIidEPaUSMVfuYFmlrKcw35qjQZ5BPV7eo5jC1R35FyOzegmZOtxUnQRowkERRNux8DgjSNBIcFc4KzLtuaDzanSsleoo_G-lbL3GLvpts-/s1600/Stark+Castle.jpg')" }}
         ></div>
         <div className="relative">
+        <div className="relative w-20 h-20 transform transition-transform duration-300 group-hover:scale-110 mx-auto">
+                <Image
+                  src="https://a0.anyrgb.com/pngimg/1464/1846/stark-logo-catelyn-stark-bran-stark-prince-of-winterfell-eddard-stark-silver-shield-winter-is-coming-house-stark-sigil-stark-thumbnail.png"
+                  alt="StarkSavingsBank"
+                  layout='fill'
+                  className="rounded-full object-cover "
+                />
+                <div className="absolute inset-0 bg-blue-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+              </div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
             Sign in to your account
           </h2>
