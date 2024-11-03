@@ -166,3 +166,26 @@ CREATE TABLE authorities (
                              name varchar(50) NOT NULL,
                              CONSTRAINT authorities_ibfk_1 FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
 );
+
+
+
+INSERT INTO notice_details (notice_summary, notice_details, issued_date, house_affiliation, notice_beg_dt, notice_end_dt, create_dt)
+VALUES
+    ('Winter Savings Rates Increased', 'Prepare for winter with our new high-yield savings accounts. The North remembers... to save!', '299 AC, 3rd Moon', 'Stark', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Golden Dragons Investment Opportunity', 'Exclusive high-risk, high-reward investment options for our most ambitious clients. A Lannister always pays their dividends!', '299 AC, 5th Moon', 'Lannister', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('DragonFlame Insurance Now Available', 'Protect your assets against unforeseen dragon-related incidents. Because when you play with Flame, you might need insurance.', '299 AC, 7th Moon', 'Targaryen', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Stormlands Stability Fund', 'Weather any financial storm with our new stability fund. Ours is the fury... against market volatility!', '299 AC, 9th Moon', 'Baratheon', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Iron Bank Policy Update', 'Important changes to our lending policies. The Iron Bank will have its due, but now with more flexible terms!', '299 AC, 11th Moon', 'Other', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Fur-tastic Home Loan Deals!', 'Wrap yourself in savings this winter! Get cozy with our reduced home loan rates. Remember, the North pays less interest!', '299 AC, 13th Moon', 'Stark', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Knightly Credit Card Rewards', 'Join our credit card program and earn rewards worthy of a knight! Every swipe brings you closer to glory!', '299 AC, 15th Moon', 'Baratheon', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Winterfell Financial Workshops', 'Join us for free workshops on budgeting and saving. Learn how to stretch your gold further this winter!', '299 AC, 17th Moon', 'Stark', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Valyrian Steel Home Insurance!', 'Protect your home with insurance as strong as Valyrian steel. Because a good home is worth fighting for!', '299 AC, 19th Moon', 'Targaryen', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Ironclad Investment Strategies', 'Turn your gold into a fortune with our new investment strategies. A good plan is like a fortress, it stands strong!', '299 AC, 21st Moon', 'Lannister', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Stark Loyalty Program Launch', 'Join our Stark Loyalty Program and earn rewards for every gold coin spent! Loyalty is a virtue in Winterfell.', '299 AC, 23rd Moon', 'Stark', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Mysterious Gold Coin Exchange', 'Join us for a special event to learn about the mysterious gold coin exchange rates. Knowledge is power, and power is wealth!', '299 AC, 25th Moon', 'Other', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Banking Under the Wall', 'Explore our special accounts designed for those beyond the Wall. Because even the Night Watch needs a good savings plan!', '299 AC, 27th Moon', 'Stark', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Financing Your Quest for Glory', 'Take out a loan to finance your quest for glory! Just like a hero, your dreams are worth chasing!', '299 AC, 29th Moon', 'Baratheon', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Protect Your Home with Our Direwolf Insurance', 'Insure your home against direwolf damages! Because even the fiercest need protection.', '299 AC, 31st Moon', 'Stark', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Rider of the Storm Loans', 'Take advantage of our rider of the storm loans! Fast and reliable funding for your next big idea!', '299 AC, 33rd Moon', 'Baratheon', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Wealth Beyond the Wall', 'Learn about our new accounts for those daring enough to venture beyond the Wall. Opportunities await!', '299 AC, 35th Moon', 'Stark', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('The Gold Standard Savings Account', 'Discover our new Gold Standard savings account, where your money is as good as gold! Because we all need a little Lannister touch.', '299 AC, 37th Moon', 'Lannister', '2024-11-01', '2025-01-01', '2024-11-01');

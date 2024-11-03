@@ -6,5 +6,5 @@ export const  AppConstants = {
     LOANS_API_URL : "/myLoans",
     CARDS_API_URL : "/myCards",
     NOTICES_API_URL : "/notices",
-    ROOT_URL: "http://localhost:9000"
+    ROOT_URL: "http://localhost:8080"
 }

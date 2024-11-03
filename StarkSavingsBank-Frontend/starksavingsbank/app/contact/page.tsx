@@ -1,8 +1,8 @@
 import React from 'react'
-import Contact from '../components/contact'
+import QuirkyContact from '../components/contact'
 
 function page() {
-  return <Contact />
+  return <QuirkyContact />
 }
 
 export default page
