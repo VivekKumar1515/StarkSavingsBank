@@ -40,18 +40,31 @@ export default function Header() {
             </Link>
             <nav className="hidden md:block ml-10">
               <ul className="flex space-x-4">
-                {navItems.map((item) => (
-                  (item.authRequired === isAuthenticated) && (
-                    <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
+                {navItems.map((item) => {
+                  if(!isAuthenticated) {
+                    return !item.authRequired && (
+                        <li key={item.name}>
+                      <Link
+                        href={item.href}
+                        className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
+                      >
+                        {item.name}
+                      </Link>
+                    </li>
+                    )
+                  } else {
+                    return (
+                      <li key={item.name}>
+                    <Link
+                      href={item.href}
+                      className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
                   )
-                ))}
+                  }
+                  })}
               </ul>
             </nav>
           </div>

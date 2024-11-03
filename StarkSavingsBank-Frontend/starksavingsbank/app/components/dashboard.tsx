@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Shield, Coins, Scroll, Sword, Moon, CloudSnow, Snowflake, CloudLightning } from 'lucide-react'
+import { useAuth } from '../context/AuthContext'
+import { useRouter } from 'next/navigation'
 
 type User = {
   name: string
@@ -15,7 +17,10 @@ export default function Dashboard() {
   const [WeatherIcon, setWeatherIcon] = useState<React.ElementType>(CloudSnow) // Use a capitalized name for components
   const adminRole = "You've ascended to the Iron Bank's highest seat as the Master of Coin Commander."
   const userRole = "You've infiltrated StarkSavingsBank as a Faceless Banker"
-
+  const { isAuthenticated, loading } = useAuth(); // Get loading from the AuthContext
+  const router = useRouter();
+  const [isRedirecting, setIsRedirecting] = useState(false);
+  
   const getWeather = () => {
     const currentHour = new Date().getHours();
     if (currentHour >= 5 && currentHour < 12) {
@@ -33,13 +38,28 @@ export default function Dashboard() {
     }
   }
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const user = JSON.parse(sessionStorage.getItem("userdetails")!)
-      setUser({ name: user.name, role: user.role === "ADMIN" ? "admin" : "user" })
-    }
+  function redirect() {
+    setIsRedirecting(true);
+    setTimeout(() => {
+      router.push("/login");
+    }, 5000)
+  }
 
-    fetchUser()
+  function fetchUser() {
+      if (isAuthenticated) {
+        const userDetails = JSON.parse(sessionStorage.getItem("userdetails")!);
+        if (userDetails) {
+          setUser({ name: userDetails.name, role: userDetails.role === "ADMIN" ? "admin" : "user" });
+        } else {
+          setUser(null);
+        }
+      } else {
+        redirect()
+      }
+  }
+
+  useEffect(() => {
+    fetchUser();
     setWeather(getWeather())
 
     const interval = setInterval(() => {
@@ -47,7 +67,16 @@ export default function Dashboard() {
     }, 3600000)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [isAuthenticated]) // Depend on isAuthenticated
+
+  // Handle loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-r from-gray-800 to-blue-900 flex items-center justify-center">
+        <div className="text-white text-2xl animate-pulse">Hold tight! The ravens are flying to fetch your account details. Please wait while we summon the maesters!</div>
+      </div>
+    )
+  }
 
   const dashboardItems = [
     { title: 'Iron Vault', description: 'View your treasure hoard', icon: Shield, link: '/myaccount' },
@@ -56,10 +85,11 @@ export default function Dashboard() {
     { title: 'Valyrian Plastic', description: 'Manage your cards', icon: Sword, link: '/mycards' },
   ]
 
+  // If the user is not authenticated
   if (!user) {
     return (
       <div className="min-h-screen bg-gradient-to-r from-gray-800 to-blue-900 flex items-center justify-center">
-        <div className="text-white text-2xl animate-pulse">The ravens are en route...</div>
+        <div className="text-white text-2xl animate-pulse text-center p-5 ">Alas, brave traveler! You cannot cross the Wall without a Night&apos;s Watch pass. Seek the wisdom of the Iron Bank to gain entry.</div>
       </div>
     )
   }

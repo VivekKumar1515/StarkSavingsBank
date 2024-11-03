@@ -9,6 +9,7 @@ import Cookies from 'js-cookie'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Sword, Shield } from 'lucide-react'
+import { useAuth } from '../context/AuthContext'
 
 type FormData = {
   email: string
@@ -20,7 +21,8 @@ export default function Login() {
   const [loginError, setLoginError] = useState<string | null>(null)
   const [quirkySaying, setQuirkySaying] = useState('')
   const [showDirewolf, setShowDirewolf] = useState(false)
-  const router = useRouter()
+  const router = useRouter();
+  const {setIsAuthenticated} = useAuth();
 
   const quirkySayings = [
     "A Stark always pays their debts... to the Iron Bank!",
@@ -60,6 +62,8 @@ export default function Login() {
           console.log(authHeader["authorization"])
           sessionStorage.setItem("Authorization", authHeader["authorization"])
         }
+
+        setIsAuthenticated(true);
 
         router.push("http://localhost:3000/dashboard")
 
