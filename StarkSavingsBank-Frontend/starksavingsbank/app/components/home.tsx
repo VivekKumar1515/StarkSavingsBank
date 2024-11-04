@@ -6,11 +6,18 @@ import { Shield, Sword, Castle, Coins, Scroll, Book, Sun, Moon, Snowflake, Wind 
 import { motion, AnimatePresence } from 'framer-motion'
 
 const houses = [
-  { name: 'Stark', sigil: '🐺', color: 'from-gray-700 to-blue-900' },
-  { name: 'Lannister', sigil: '🦁', color: 'from-red-900 to-yellow-600' },
-  { name: 'Targaryen', sigil: '🐉', color: 'from-red-800 to-black' },
-  { name: 'Baratheon', sigil: '🦌', color: 'from-yellow-900 to-black' },
-]
+  { name: "Lannister", color: "from-red-900 to-yellow-600", sigil: "🦁" },
+  { name: "Stark", color: "from-gray-700 to-blue-900", sigil: "🐺" },
+  { name: "Targaryen", color: "from-red-800 to-black", sigil: "🐉" },
+  { name: "Baratheon", color: "from-yellow-900 to-black", sigil: "🦌" },
+  { name: "Greyjoy", color: "from-gray-800 to-yellow-600", sigil: "🐙" },
+  { name: "Martell", color: "from-orange-700 to-red-900", sigil: "☀️" },
+  { name: "Tyrell", color: "from-green-700 to-yellow-400", sigil: "🌹" },
+  { name: "Arryn", color: "from-blue-700 to-white", sigil: "🦅" },
+  { name: "Tully", color: "from-blue-800 to-red-600", sigil: "🐟" },
+  { name: "Bolton", color: "from-red-700 to-black", sigil: "🚩" },
+  { name: "Frey", color: "from-gray-500 to-blue-800", sigil: "🏰" },
+];
 
 const services = [
   { icon: Shield, name: 'Stark Shield Savings', description: 'Protect your gold like a Stark protects the North', house: 'Stark' },
@@ -48,7 +55,7 @@ export default function Home() {
         const currentIndex = houses.indexOf(prev)
         return houses[(currentIndex + 1) % houses.length]
       })
-    }, 30000) // Change house every 10 seconds
+    }, 30000) // Change house every 30 seconds
 
     return () => {
       clearInterval(seasonInterval)
@@ -79,7 +86,7 @@ export default function Home() {
           className="text-center mb-16"
         >
           <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-6xl mb-4">
-            <span className="block">StarkSavingsBank</span>
+            <span className="block">Stark Savings Bank</span>
             <span className="block text-3xl mt-2">Where Your Coin Grows Stronger Than Valyrian Steel</span>
           </h1>
           <p className="mt-4 max-w-2xl text-xl text-gray-300 mx-auto">
@@ -167,20 +174,20 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setShowModal(false)}
             className="fixed z-50 inset-0 overflow-y-auto"
             aria-labelledby="modal-title"
             role="dialog"
             aria-modal="true"
           >
             <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-              <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity -z-10" aria-hidden="true" onClick={() => setShowModal(false)}></div>
               <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
               <motion.div
                 initial={{ scale: 0.9, y: 20 }}
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.9, y: 20 }}
                 className={`inline-block align-bottom rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full bg-gradient-to-br ${houses.find(h => h.name === modalContent.house)?.color}`}
+                onClick={(e) => e.stopPropagation()}
               >
                 <div className="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                   <div className="sm:flex sm:items-start">
@@ -197,13 +204,19 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="bg-gray-800 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                <motion.button
+                  className={`transition duration-300 ease-in-out`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   <button
                     type="button"
-                    className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+                    className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm "
                     onClick={() => setShowModal(false)}
                   >
                     Close
                   </button>
+                  </motion.button>
                 </div>
               </motion.div>
             </div>

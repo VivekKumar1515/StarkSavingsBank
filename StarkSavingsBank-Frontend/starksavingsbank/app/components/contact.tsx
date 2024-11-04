@@ -27,6 +27,8 @@ const houses = [
   'Martell',
   'Tully',
   'Arryn',
+  'Bolton',
+  'Frey'
 ]
 
 const houseColors = {
@@ -39,6 +41,8 @@ const houseColors = {
   Martell: 'from-orange-900 to-red-700',
   Tully: 'from-blue-900 to-red-700',
   Arryn: 'from-blue-800 to-gray-200',
+  Bolton: 'from-red-700 to-black',
+  Frey: 'from-gray-500 to-blue-800'
 }
 
 export default function QuirkyContact() {

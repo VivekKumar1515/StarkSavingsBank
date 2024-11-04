@@ -1,5 +1,6 @@
 package com.winterfell.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.winterfell.enums.TransactionType;
 import jakarta.persistence.*;
@@ -15,10 +16,13 @@ public class AccountTransactions {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "transaction_id")
+    @JsonIgnore
     private String transactionId;
 
+    @JsonIgnore
     private long accountNumber;
 
+    @JsonIgnore
     private long customerId;
 
     @Column(name = "transaction_dt")
@@ -33,12 +37,13 @@ public class AccountTransactions {
     private TransactionType transactionType;
 
     @Column(name = "transaction_amt")
-    @JsonProperty(value = "transactionAmt")
+    @JsonProperty(value = "transactionAmount")
     private long transactionAmount;
 
     @Column(name = "closing_balance")
     private long closingBalance;
 
     @Column(name = "create_dt")
+    @JsonProperty
     private Date createDate;
 }

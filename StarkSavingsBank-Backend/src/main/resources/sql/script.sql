@@ -3,21 +3,196 @@ CREATE TABLE customer (
                           name varchar(100) NOT NULL,
                           email varchar(100) NOT NULL,
                           mobile_number varchar(20) NOT NULL,
-                         house_affiliation varchar(50) NOT NULL,
+                          house_affiliation varchar(50) NOT NULL,
                           pwd varchar(500) NOT NULL,
                           role varchar(100) NOT NULL,
                           create_dt date DEFAULT NULL
 );
 
+
+
+-- Password: needle
+-- Encrypted: [bcrypt]$2b$12$A1b2c3d4E5f6G7h8I9j0K1
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Arya Stark', 'arya.stark@winterfell.gov', '+7 555-NEEDLE', '[bcrypt]$2b$12$A1b2c3d4E5f6G7h8I9j0K1', 'CUSTOMER', current_date, 'Stark');
+
+-- Password: lioness
+-- Encrypted: [bcrypt]$2b$12$B1c2d3e4F5g6H7i8J9k0L2
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Cersei Lannister', 'cersei.lannister@kingslanding.gov', '+7 555-LIONESS', '[bcrypt]$2b$12$B1c2d3e4F5g6H7i8J9k0L2', 'ADMIN', current_date, 'Lannister');
+
+-- Password: wit
+-- Encrypted: [bcrypt]$2b$12$C1d2e3f4G5h6I7j8K9l0M3
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Tyrion Lannister', 'tyrion.lannister@casterlyrock.gov', '+7 555-WIT', '[bcrypt]$2b$12$C1d2e3f4G5h6I7j8K9l0M3', 'CUSTOMER', current_date, 'Lannister');
+
+-- Password: dragonqueen
+-- Encrypted: [bcrypt]$2b$12$D1e2f3g4H5i6J7k8L9m0N4
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Daenerys Targaryen', 'daenerys.targaryen@dragonstone.gov', '+7 555-DRAGON', '[bcrypt]$2b$12$D1e2f3g4H5i6J7k8L9m0N4', 'ADMIN', current_date, 'Targaryen');
+
+-- Password: stagking
+-- Encrypted: [bcrypt]$2b$12$E1f2g3h4I5j6K7l8M9n0O5
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Robert Baratheon', 'robert.baratheon@kingslanding.gov', '+7 555-ANTLER', '[bcrypt]$2b$12$E1f2g3h4I5j6K7l8M9n0O5', 'CUSTOMER', current_date, 'Baratheon');
+
+-- Password: kraken
+-- Encrypted: [bcrypt]$2b$12$F1g2h3i4J5k6L7m8N9o0P6
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Theon Greyjoy', 'theon.greyjoy@pyke.gov', '+7 555-KRAKEN', '[bcrypt]$2b$12$F1g2h3i4J5k6L7m8N9o0P6', 'CUSTOMER', current_date, 'Greyjoy');
+
+-- Password: viper
+-- Encrypted: [bcrypt]$2b$12$G1h2i3j4K5l6M7n8O9p0Q7
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Oberyn Martell', 'oberyn.martell@dorne.gov', '+7 555-VIPER', '[bcrypt]$2b$12$G1h2i3j4K5l6M7n8O9p0Q7', 'ADMIN', current_date, 'Martell');
+
+-- Password: rose
+-- Encrypted: [bcrypt]$2b$12$H1i2j3k4L5m6N7o8P9q0R8
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Margaery Tyrell', 'margaery.tyrell@highgarden.gov', '+7 555-ROSE', '[bcrypt]$2b$12$H1i2j3k4L5m6N7o8P9q0R8', 'CUSTOMER', current_date, 'Tyrell');
+
+-- Password: faceless
+-- Encrypted: [bcrypt]$2b$12$I1j2k3l4M5n6O7p8Q9r0S9
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Jaqen H’ghar', 'jaqen.hghar@braavos.gov', '+7 555-FACELESS', '[bcrypt]$2b$12$I1j2k3l4M5n6O7p8Q9r0S9', 'CUSTOMER', current_date, 'None');
+
+-- Password: oathkeeper
+-- Encrypted: [bcrypt]$2b$12$J1k2l3m4N5o6P7q8R9s0T0
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Brienne of Tarth', 'brienne.tarth@tarth.gov', '+7 555-OATHKEEPER', '[bcrypt]$2b$12$J1k2l3m4N5o6P7q8R9s0T0', 'ADMIN', current_date, 'Tarth');
+
+-- Password: bear
+-- Encrypted: [bcrypt]$2b$12$K1l2m3n4O5p6Q7r8S9t0U1
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Jorah Mormont', 'jorah.mormont@bearisland.gov', '+7 555-BEAR', '[bcrypt]$2b$12$K1l2m3n4O5p6Q7r8S9t0U1', 'CUSTOMER', current_date, 'Mormont');
+
+-- Password: lady
+-- Encrypted: [bcrypt]$2b$12$L1m2n3o4P5q6R7s8T9u0V2
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Sansa Stark', 'sansa.stark@winterfell.gov', '+7 555-LADY', '[bcrypt]$2b$12$L1m2n3o4P5q6R7s8T9u0V2', 'CUSTOMER', current_date, 'Stark');
+
+-- Password: raven
+-- Encrypted: [bcrypt]$2b$12$M1n2o3p4Q5r6S7t8U9v0W3
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Bran Stark', 'bran.stark@winterfell.gov', '+7 555-RAVEN', '[bcrypt]$2b$12$M1n2o3p4Q5r6S7t8U9v0W3', 'CUSTOMER', current_date, 'Stark');
+
+-- Password: lionheart
+-- Encrypted: [bcrypt]$2b$12$N1o2p3q4R5s6T7u8V9w0X4
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Jaime Lannister', 'jaime.lannister@kingsguard.gov', '+7 555-LIONHEART', '[bcrypt]$2b$12$N1o2p3q4R5s6T7u8V9w0X4', 'CUSTOMER', current_date, 'Lannister');
+
+-- Password: blacksmith
+-- Encrypted: [bcrypt]$2b$12$O1p2q3r4S5t6U7v8W9x0Y5
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Gendry', 'gendry@stormend.gov', '+7 555-BLACKSMITH', '[bcrypt]$2b$12$O1p2q3r4S5t6U7v8W9x0Y5', 'CUSTOMER', current_date, 'Baratheon');
+
+-- Password: bookworm
+-- Encrypted: [bcrypt]$2b$12$P1q2r3s4T5u6V7w8X9y0Z6
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Samwell Tarly', 'samwell.tarly@oldtown.gov', '+7 555-BOOKS', '[bcrypt]$2b$12$P1q2r3s4T5u6V7w8X9y0Z6', 'CUSTOMER', current_date, 'Tarly');
+
+-- Password: onionknight
+-- Encrypted: [bcrypt]$2b$12$Q1r2s3t4U5v6W7x8Y9z0A7
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Davos Seaworth', 'davos.seaworth@fleet.gov', '+7 555-ONION', '[bcrypt]$2b$12$Q1r2s3t4U5v6W7x8Y9z0A7', 'ADMIN', current_date, 'Seaworth');
+
+-- Password: maester
+-- Encrypted: [bcrypt]$2b$12$R1s2t3u4V5w6X7y8Z9a0B8
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Maester Aemon', 'maester.aemon@castleblack.gov', '+7 555-MAESTER', '[bcrypt]$2b$12$R1s2t3u4V5w6X7y8Z9a0B8', 'CUSTOMER', current_date, 'Targaryen');
+
+-- Password: wildlings
+-- Encrypted: [bcrypt]$2b$12$S1t2u3v4W5x6Y7z8A9b0C9
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Tormund Giantsbane', 'tormund.giantsbane@wildlands.gov', '+7 555-WILDLING', '[bcrypt]$2b$12$S1t2u3v4W5x6Y7z8A9b0C9', 'CUSTOMER', current_date, 'Free Folk');
+
+-- Password: littlefinger
+-- Encrypted: [bcrypt]$2b$12$T1u2v3w4X5y6Z7a8B9c0D0
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Petyr Baelish', 'petyr.baelish@vale.gov', '+7 555-LFINGER', '[bcrypt]$2b$12$T1u2v3w4X5y6Z7a8B9c0D0', 'ADMIN', current_date, 'Baelish');
+
+-- Password: crow
+-- Encrypted: [bcrypt]$2b$12$U1v2w3x4Y5z6A7b8C9d0E1
+INSERT INTO customer(NAME, email, mobile_number, pwd, role, create_dt, house_affiliation)
+VALUES('Jon Snow', 'jon.snow@castleblack.gov', '+7 555-CROW', '[bcrypt]$2b$12$U1v2w3x4Y5z6A7b8C9d0E1', 'CUSTOMER', current_date, 'Stark/Targaryen');
+
+
 CREATE TABLE accounts (
                           customer_id int NOT NULL,
-                          account_number int NOT NULL,
+                          account_number BIGINT NOT NULL,
                           account_type varchar(100) NOT NULL,
                           branch_address varchar(200) NOT NULL ,
                           create_dt date DEFAULT NULL,
                           PRIMARY KEY(account_number),
                           CONSTRAINT customer_ibfk_1 FOREIGN KEY (customer_id) REFERENCES customer(customer_id) ON DELETE CASCADE
 );
+
+
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (1, 1865764534, 'Savings', 'Winterfell, The North', CURRENT_DATE);
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (2, 2843572890, 'Checking', 'Red Keep, Kings Landing', CURRENT_DATE);
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (3, 3195764534, 'Savings', 'Casterly Rock, Westerlands', CURRENT_DATE);
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (4, 4765645390, 'Investment', 'Dragonstone, Crownlands', CURRENT_DATE);
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (5, 5902734812, 'Savings', 'Red Keep, Kings Landing', CURRENT_DATE);
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (6, 6873940283, 'Checking', 'Pyke, Iron Islands', CURRENT_DATE);
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (7, 7948203657, 'Savings', 'Sunspear, Dorne', CURRENT_DATE);
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (8, 8436572901, 'Savings', 'Highgarden, The Reach', CURRENT_DATE);
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (9, 9457382064, 'Investment', 'Braavos, Essos', CURRENT_DATE);
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (10, 1029384756, 'Checking', 'Tarth, Stormlands', CURRENT_DATE);
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (11, 1123456789, 'Savings', 'Bear Island, The North', CURRENT_DATE);
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (12, 1203948576, 'Savings', 'Winterfell, The North', CURRENT_DATE);
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (13, 1324567980, 'Investment', 'Winterfell, The North', CURRENT_DATE);
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (14, 1456789023, 'Checking', 'Kings Guard, Kings Landing', CURRENT_DATE);
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (15, 1567890345, 'Savings', 'Storms End, Stormlands', CURRENT_DATE);
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (16, 1678903456, 'Checking', 'Oldtown, The Reach', CURRENT_DATE);
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (17, 1789034567, 'Investment', 'Fleet, Narrow Sea', CURRENT_DATE);
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (18, 1890345678, 'Savings', 'Castle Black, The Wall', CURRENT_DATE);
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (19, 1903456789, 'Checking', 'Wildlands, Beyond the Wall', CURRENT_DATE);
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (20, 2012345678, 'Savings', 'Vale, The Eyrie', CURRENT_DATE);
+
+INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
+VALUES (21, 2123456789, 'Savings', 'Castle Black, The Wall', CURRENT_DATE);
+
+
 
 
 CREATE TABLE account_transactions (
@@ -35,6 +210,113 @@ CREATE TABLE account_transactions (
                                       CONSTRAINT acct_user_ibfk_1 FOREIGN KEY (customer_id) REFERENCES customer (customer_id) ON DELETE CASCADE
 );
 
+INSERT INTO account_transactions (transaction_id, account_number, customer_id, transaction_dt, transaction_summary, transaction_type, transaction_amt, closing_balance, create_dt)
+VALUES
+-- Transactions for Customer 1
+('T1C1', 1865764534, 1, CURRENT_DATE, 'Deposited 100 gold dragons to fund the Night Watch', 'Deposit', 100, 1000, CURRENT_DATE),
+('T2C1', 1865764534, 1, CURRENT_DATE, 'Withdrawn 50 gold dragons for a feast in Winterfell', 'Withdrawal', 50, 950, CURRENT_DATE),
+('T3C1', 1865764534, 1, CURRENT_DATE, 'Transfer 30 gold dragons to Bran Stark', 'Transfer', 30, 920, CURRENT_DATE),
+('T4C1', 1865764534, 1, CURRENT_DATE, 'Deposited 150 gold dragons from selling direwolf pelts', 'Deposit', 150, 1070, CURRENT_DATE),
+('T5C1', 1865764534, 1, CURRENT_DATE, 'Withdrawn 100 gold dragons for castle repairs', 'Withdrawal', 100, 970, CURRENT_DATE),
+('T6C1', 1865764534, 1, CURRENT_DATE, 'Transferred 70 gold dragons to Sansa Stark for the Stark family', 'Transfer', 70, 900, CURRENT_DATE),
+('T7C1', 1865764534, 1, CURRENT_DATE, 'Received 200 gold dragons from Robb Stark', 'Deposit', 200, 1100, CURRENT_DATE),
+('T8C1', 1865764534, 1, CURRENT_DATE, 'Withdrawn 150 gold dragons for weapons', 'Withdrawal', 150, 950, CURRENT_DATE),
+('T9C1', 1865764534, 1, CURRENT_DATE, 'Transfer 50 gold dragons to Jon Snow', 'Transfer', 50, 900, CURRENT_DATE),
+('T10C1', 1865764534, 1, CURRENT_DATE, 'Deposited 120 gold dragons from selling livestock', 'Deposit', 120, 1020, CURRENT_DATE),
+('T11C1', 1865764534, 1, CURRENT_DATE, 'Withdrawn 60 gold dragons for a trip to the Wall', 'Withdrawal', 60, 960, CURRENT_DATE),
+('T12C1', 1865764534, 1, CURRENT_DATE, 'Received 80 gold dragons for delivering messages', 'Deposit', 80, 1040, CURRENT_DATE),
+('T13C1', 1865764534, 1, CURRENT_DATE, 'Withdrawn 200 gold dragons for a Stark wedding', 'Withdrawal', 200, 840, CURRENT_DATE),
+('T14C1', 1865764534, 1, CURRENT_DATE, 'Deposited 300 gold dragons from winning at dice', 'Deposit', 300, 1140, CURRENT_DATE),
+('T15C1', 1865764534, 1, CURRENT_DATE, 'Withdrawn 120 gold dragons for supplies', 'Withdrawal', 120, 1020, CURRENT_DATE),
+('T16C1', 1865764534, 1, CURRENT_DATE, 'Transferred 90 gold dragons to Arya Stark for her journey', 'Transfer', 90, 930, CURRENT_DATE),
+('T17C1', 1865764534, 1, CURRENT_DATE, 'Deposited 250 gold dragons from selling iron', 'Deposit', 250, 1180, CURRENT_DATE),
+('T18C1', 1865764534, 1, CURRENT_DATE, 'Withdrawn 110 gold dragons for training the guards', 'Withdrawal', 110, 1070, CURRENT_DATE),
+('T19C1', 1865764534, 1, CURRENT_DATE, 'Received 150 gold dragons for hosting a tournament', 'Deposit', 150, 1220, CURRENT_DATE),
+('T20C1', 1865764534, 1, CURRENT_DATE, 'Withdrawn 75 gold dragons for a message to the South', 'Withdrawal', 75, 1145, CURRENT_DATE),
+('T21C1', 1865764534, 1, CURRENT_DATE, 'Transferred 100 gold dragons to support the Night Watch', 'Transfer', 100, 1045, CURRENT_DATE),
+('T22C1', 1865764534, 1, CURRENT_DATE, 'Deposited 200 gold dragons from the harvest', 'Deposit', 200, 1245, CURRENT_DATE),
+('T23C1', 1865764534, 1, CURRENT_DATE, 'Withdrawn 80 gold dragons for a Stark feast', 'Withdrawal', 80, 1165, CURRENT_DATE),
+('T24C1', 1865764534, 1, CURRENT_DATE, 'Transferred 60 gold dragons to Gendry', 'Transfer', 60, 1105, CURRENT_DATE),
+('T25C1', 1865764534, 1, CURRENT_DATE, 'Deposited 150 gold dragons from selling wood', 'Deposit', 150, 1255, CURRENT_DATE),
+
+-- Transactions for Customer 2
+('T1C2', 2843572890, 2, CURRENT_DATE, 'Deposited 200 gold dragons from a tourney', 'Deposit', 200, 2000, CURRENT_DATE),
+('T2C2', 2843572890, 2, CURRENT_DATE, 'Withdrawn 150 gold dragons for a feast at the Red Keep', 'Withdrawal', 150, 1850, CURRENT_DATE),
+('T3C2', 2843572890, 2, CURRENT_DATE, 'Transfer 70 gold dragons to a Lannister merchant', 'Transfer', 70, 1780, CURRENT_DATE),
+('T4C2', 2843572890, 2, CURRENT_DATE, 'Deposited 90 gold dragons from selling dragon eggs', 'Deposit', 90, 1870, CURRENT_DATE),
+('T5C2', 2843572890, 2, CURRENT_DATE, 'Withdrawn 300 gold dragons for a new castle wing', 'Withdrawal', 300, 1570, CURRENT_DATE),
+('T6C2', 2843572890, 2, CURRENT_DATE, 'Received 120 gold dragons for aiding the crown', 'Deposit', 120, 1690, CURRENT_DATE),
+('T7C2', 2843572890, 2, CURRENT_DATE, 'Deposited 250 gold dragons for selling fine wines', 'Deposit', 250, 1940, CURRENT_DATE),
+('T8C2', 2843572890, 2, CURRENT_DATE, 'Withdrawn 50 gold dragons for servant wages', 'Withdrawal', 50, 1890, CURRENT_DATE),
+('T9C2', 2843572890, 2, CURRENT_DATE, 'Transferred 100 gold dragons to Tywin Lannister', 'Transfer', 100, 1790, CURRENT_DATE),
+('T10C2', 2843572890, 2, CURRENT_DATE, 'Deposited 80 gold dragons from selling armor', 'Deposit', 80, 1870, CURRENT_DATE),
+('T11C2', 2843572890, 2, CURRENT_DATE, 'Withdrawn 150 gold dragons for a new horse', 'Withdrawal', 150, 1720, CURRENT_DATE),
+('T12C2', 2843572890, 2, CURRENT_DATE, 'Received 300 gold dragons for a bounty', 'Deposit', 300, 2020, CURRENT_DATE),
+('T13C2', 2843572890, 2, CURRENT_DATE, 'Withdrawn 200 gold dragons for war preparations', 'Withdrawal', 200, 1820, CURRENT_DATE),
+('T14C2', 2843572890, 2, CURRENT_DATE, 'Transferred 60 gold dragons to Jaime Lannister', 'Transfer', 60, 1760, CURRENT_DATE),
+('T15C2', 2843572890, 2, CURRENT_DATE, 'Deposited 170 gold dragons from winning at cards', 'Deposit', 170, 1930, CURRENT_DATE),
+('T16C2', 2843572890, 2, CURRENT_DATE, 'Withdrawn 90 gold dragons for a feast in the Red Keep', 'Withdrawal', 90, 1840, CURRENT_DATE),
+('T17C2', 2843572890, 2, CURRENT_DATE, 'Received 50 gold dragons from a bounty hunter', 'Deposit', 50, 1890, CURRENT_DATE),
+('T18C2', 2843572890, 2, CURRENT_DATE, 'Withdrawn 250 gold dragons for a new ship', 'Withdrawal', 250, 1640, CURRENT_DATE),
+('T19C2', 2843572890, 2, CURRENT_DATE, 'Transferred 40 gold dragons to Cersei Lannister', 'Transfer', 40, 1600, CURRENT_DATE),
+('T20C2', 2843572890, 2, CURRENT_DATE, 'Deposited 300 gold dragons from selling slaves', 'Deposit', 300, 1900, CURRENT_DATE),
+('T21C2', 2843572890, 2, CURRENT_DATE, 'Withdrawn 120 gold dragons for a new sword', 'Withdrawal', 120, 1780, CURRENT_DATE),
+('T22C2', 2843572890, 2, CURRENT_DATE, 'Transferred 80 gold dragons to Sandor Clegane', 'Transfer', 80, 1700, CURRENT_DATE),
+('T23C2', 2843572890, 2, CURRENT_DATE, 'Deposited 150 gold dragons from the harvest', 'Deposit', 150, 1850, CURRENT_DATE),
+('T24C2', 2843572890, 2, CURRENT_DATE, 'Withdrawn 90 gold dragons for wine', 'Withdrawal', 90, 1760, CURRENT_DATE),
+('T25C2', 2843572890, 2, CURRENT_DATE, 'Transferred 100 gold dragons to Sansa Stark', 'Transfer', 100, 1660, CURRENT_DATE),
+
+-- Transactions for Customer 3
+('T1C3', 3195764534, 3, CURRENT_DATE, 'Deposited 250 gold dragons from hunting', 'Deposit', 250, 2500, CURRENT_DATE),
+('T2C3', 3195764534, 3, CURRENT_DATE, 'Withdrawn 100 gold dragons for a new bow', 'Withdrawal', 100, 2400, CURRENT_DATE),
+('T3C3', 3195764534, 3, CURRENT_DATE, 'Transferred 50 gold dragons to a trader in Volantis', 'Transfer', 50, 2350, CURRENT_DATE),
+('T4C3', 3195764534, 3, CURRENT_DATE, 'Received 300 gold dragons for a rare artifact', 'Deposit', 300, 2650, CURRENT_DATE),
+('T5C3', 3195764534, 3, CURRENT_DATE, 'Withdrawn 200 gold dragons for a banquet', 'Withdrawal', 200, 2450, CURRENT_DATE),
+('T6C3', 3195764534, 3, CURRENT_DATE, 'Deposited 150 gold dragons from a trade deal', 'Deposit', 150, 2600, CURRENT_DATE),
+('T7C3', 3195764534, 3, CURRENT_DATE, 'Withdrawn 60 gold dragons for tavern expenses', 'Withdrawal', 60, 2540, CURRENT_DATE),
+('T8C3', 3195764534, 3, CURRENT_DATE, 'Transferred 70 gold dragons to a friend in Dorne', 'Transfer', 70, 2470, CURRENT_DATE),
+('T9C3', 3195764534, 3, CURRENT_DATE, 'Deposited 200 gold dragons from selling rare spices', 'Deposit', 200, 2670, CURRENT_DATE),
+('T10C3', 3195764534, 3, CURRENT_DATE, 'Withdrawn 300 gold dragons for a new horse', 'Withdrawal', 300, 2370, CURRENT_DATE),
+('T11C3', 3195764534, 3, CURRENT_DATE, 'Transferred 90 gold dragons to help a friend', 'Transfer', 90, 2280, CURRENT_DATE),
+('T12C3', 3195764534, 3, CURRENT_DATE, 'Received 100 gold dragons for a quest completion', 'Deposit', 100, 2380, CURRENT_DATE),
+('T13C3', 3195764534, 3, CURRENT_DATE, 'Withdrawn 40 gold dragons for a new cloak', 'Withdrawal', 40, 2340, CURRENT_DATE),
+('T14C3', 3195764534, 3, CURRENT_DATE, 'Deposited 60 gold dragons from hunting', 'Deposit', 60, 2400, CURRENT_DATE),
+('T15C3', 3195764534, 3, CURRENT_DATE, 'Withdrawn 80 gold dragons for supplies', 'Withdrawal', 80, 2320, CURRENT_DATE),
+('T16C3', 3195764534, 3, CURRENT_DATE, 'Transferred 30 gold dragons to a merchant', 'Transfer', 30, 2290, CURRENT_DATE),
+('T17C3', 3195764534, 3, CURRENT_DATE, 'Deposited 200 gold dragons from a shipment', 'Deposit', 200, 2490, CURRENT_DATE),
+('T18C3', 3195764534, 3, CURRENT_DATE, 'Withdrawn 150 gold dragons for a tavern visit', 'Withdrawal', 150, 2340, CURRENT_DATE),
+('T19C3', 3195764534, 3, CURRENT_DATE, 'Received 250 gold dragons for aiding in battles', 'Deposit', 250, 2590, CURRENT_DATE),
+('T20C3', 3195764534, 3, CURRENT_DATE, 'Withdrawn 70 gold dragons for a new dagger', 'Withdrawal', 70, 2520, CURRENT_DATE),
+('T21C3', 3195764534, 3, CURRENT_DATE, 'Transferred 50 gold dragons to a friend in need', 'Transfer', 50, 2470, CURRENT_DATE),
+('T22C3', 3195764534, 3, CURRENT_DATE, 'Deposited 300 gold dragons from a treasure find', 'Deposit', 300, 2770, CURRENT_DATE),
+('T23C3', 3195764534, 3, CURRENT_DATE, 'Withdrawn 200 gold dragons for new armor', 'Withdrawal', 200, 2570, CURRENT_DATE),
+('T24C3', 3195764534, 3, CURRENT_DATE, 'Transferred 100 gold dragons to help with a cause', 'Transfer', 100, 2470, CURRENT_DATE),
+('T25C3', 3195764534, 3, CURRENT_DATE, 'Deposited 90 gold dragons from the sale of goods', 'Deposit', 90, 2560, CURRENT_DATE),
+
+-- Transactions for Customer 4
+('T1C4', 4765645390, 4, CURRENT_DATE, 'Deposited 400 gold dragons from a tournament', 'Deposit', 400, 4000, CURRENT_DATE),
+('T2C4', 4765645390, 4, CURRENT_DATE, 'Withdrawn 150 gold dragons for a royal feast', 'Withdrawal', 150, 3850, CURRENT_DATE),
+('T3C4', 4765645390, 4, CURRENT_DATE, 'Transferred 50 gold dragons to Jon Snow', 'Transfer', 50, 3800, CURRENT_DATE),
+('T4C4', 4765645390, 4, CURRENT_DATE, 'Deposited 300 gold dragons from selling furs', 'Deposit', 300, 4100, CURRENT_DATE),
+('T5C4', 4765645390, 4, CURRENT_DATE, 'Withdrawn 100 gold dragons for repairs', 'Withdrawal', 100, 4000, CURRENT_DATE),
+('T6C4', 4765645390, 4, CURRENT_DATE, 'Received 500 gold dragons for a ship deal', 'Deposit', 500, 4500, CURRENT_DATE),
+('T7C4', 4765645390, 4, CURRENT_DATE, 'Withdrawn 250 gold dragons for a battle fund', 'Withdrawal', 250, 4250, CURRENT_DATE),
+('T8C4', 4765645390, 4, CURRENT_DATE, 'Transferred 70 gold dragons to a merchant', 'Transfer', 70, 4180, CURRENT_DATE),
+('T9C4', 4765645390, 4, CURRENT_DATE, 'Deposited 200 gold dragons from treasure hunting', 'Deposit', 200, 4380, CURRENT_DATE),
+('T10C4', 4765645390, 4, CURRENT_DATE, 'Withdrawn 300 gold dragons for a new ship', 'Withdrawal', 300, 4080, CURRENT_DATE),
+('T11C4', 4765645390, 4, CURRENT_DATE, 'Transferred 50 gold dragons to Arya Stark', 'Transfer', 50, 4030, CURRENT_DATE),
+('T12C4', 4765645390, 4, CURRENT_DATE, 'Received 150 gold dragons for trading', 'Deposit', 150, 4180, CURRENT_DATE),
+('T13C4', 4765645390, 4, CURRENT_DATE, 'Withdrawn 200 gold dragons for a new armor', 'Withdrawal', 200, 3980, CURRENT_DATE),
+('T14C4', 4765645390, 4, CURRENT_DATE, 'Deposited 300 gold dragons from a bounty', 'Deposit', 300, 4280, CURRENT_DATE),
+('T15C4', 4765645390, 4, CURRENT_DATE, 'Withdrawn 100 gold dragons for a trip to the Vale', 'Withdrawal', 100, 4180, CURRENT_DATE),
+('T16C4', 4765645390, 4, CURRENT_DATE, 'Transferred 150 gold dragons to Bran Stark', 'Transfer', 150, 4030, CURRENT_DATE),
+('T17C4', 4765645390, 4, CURRENT_DATE, 'Deposited 200 gold dragons from an investment', 'Deposit', 200, 4230, CURRENT_DATE),
+('T18C4', 4765645390, 4, CURRENT_DATE, 'Withdrawn 80 gold dragons for a feast', 'Withdrawal', 80, 4150, CURRENT_DATE),
+('T19C4', 4765645390, 4, CURRENT_DATE, 'Deposited 300 gold dragons from a raid', 'Deposit', 300, 4450, CURRENT_DATE),
+('T20C4', 4765645390, 4, CURRENT_DATE, 'Withdrawn 120 gold dragons for repairs', 'Withdrawal', 120, 4330, CURRENT_DATE),
+('T21C4', 4765645390, 4, CURRENT_DATE, 'Transferred 90 gold dragons to a friend', 'Transfer', 90, 4240, CURRENT_DATE),
+('T22C4', 4765645390, 4, CURRENT_DATE, 'Deposited 250 gold dragons from a loan', 'Deposit', 250, 4490, CURRENT_DATE)
+
 CREATE TABLE loan (
                       loan_number int NOT NULL GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
                       customer_id int NOT NULL,
@@ -46,6 +328,281 @@ CREATE TABLE loan (
                       create_dt date DEFAULT NULL,
                       CONSTRAINT loan_customer_ibfk_1 FOREIGN KEY (customer_id) REFERENCES customer(customer_id) ON DELETE CASCADE
 );
+
+-- Loans for Customer 1
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (1, CURRENT_DATE, 'IRON_BANK_LOAN', 5000, 1500, 3500, CURRENT_DATE),
+                                                                                                                (1, CURRENT_DATE, 'WILDFIRE_PRODUCTION', 3000, 500, 2500, CURRENT_DATE),
+                                                                                                                (1, CURRENT_DATE, 'DRAGON_EGG_ACQUISITION', 4500, 2000, 2500, CURRENT_DATE),
+                                                                                                                (1, CURRENT_DATE, 'WINTERFELL_RECONSTRUCTION', 7000, 1000, 6000, CURRENT_DATE),
+                                                                                                                (1, CURRENT_DATE, 'RAVEN_MESSAGE_SERVICE', 2500, 1000, 1500, CURRENT_DATE),
+                                                                                                                (1, CURRENT_DATE, 'VALYRIAN_STEEL_SMITHING', 4000, 0, 4000, CURRENT_DATE),
+                                                                                                                (1, CURRENT_DATE, 'THE_WALL_DEFENSE_FUND', 6000, 3000, 3000, CURRENT_DATE),
+                                                                                                                (1, CURRENT_DATE, 'WHITE_WALKER_RESEARCH', 3500, 1000, 2500, CURRENT_DATE),
+                                                                                                                (1, CURRENT_DATE, 'HOUSE_BANNERS_PRODUCTION', 2000, 500, 1500, CURRENT_DATE),
+                                                                                                                (1, CURRENT_DATE, 'KNIGHTHOOD_UPGRADE', 5500, 1500, 4000, CURRENT_DATE);
+
+-- Loans for Customer 2
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (2, CURRENT_DATE, 'MAESTER_TRAINING_FUND', 3000, 1200, 1800, CURRENT_DATE),
+                                                                                                                (2, CURRENT_DATE, 'TOURNEY_SPONSORSHIP', 4000, 2500, 1500, CURRENT_DATE),
+                                                                                                                (2, CURRENT_DATE, 'DOTHRAKI_HORSE_TRADE', 5000, 1000, 4000, CURRENT_DATE),
+                                                                                                                (2, CURRENT_DATE, 'ESSOS_TRADING_EXPEDITION', 4500, 2000, 2500, CURRENT_DATE),
+                                                                                                                (2, CURRENT_DATE, 'KINGSLANDING_REDEVELOPMENT', 7000, 3000, 4000, CURRENT_DATE),
+                                                                                                                (2, CURRENT_DATE, 'IRON_BANK_LOAN', 6000, 2000, 4000, CURRENT_DATE),
+                                                                                                                (2, CURRENT_DATE, 'WILDFIRE_PRODUCTION', 3000, 800, 2200, CURRENT_DATE),
+                                                                                                                (2, CURRENT_DATE, 'DRAGON_EGG_ACQUISITION', 5500, 1500, 4000, CURRENT_DATE),
+                                                                                                                (2, CURRENT_DATE, 'WINTERFELL_RECONSTRUCTION', 8000, 5000, 3000, CURRENT_DATE),
+                                                                                                                (2, CURRENT_DATE, 'RAVEN_MESSAGE_SERVICE', 1500, 500, 1000, CURRENT_DATE);
+
+-- Loans for Customer 3
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (3, CURRENT_DATE, 'VALYRIAN_STEEL_SMITHING', 4500, 3000, 1500, CURRENT_DATE),
+                                                                                                                (3, CURRENT_DATE, 'THE_WALL_DEFENSE_FUND', 6000, 1500, 4500, CURRENT_DATE),
+                                                                                                                (3, CURRENT_DATE, 'WHITE_WALKER_RESEARCH', 2500, 1000, 1500, CURRENT_DATE),
+                                                                                                                (3, CURRENT_DATE, 'HOUSE_BANNERS_PRODUCTION', 3500, 700, 2800, CURRENT_DATE),
+                                                                                                                (3, CURRENT_DATE, 'KNIGHTHOOD_UPGRADE', 5000, 500, 4500, CURRENT_DATE),
+                                                                                                                (3, CURRENT_DATE, 'MAESTER_TRAINING_FUND', 3000, 500, 2500, CURRENT_DATE),
+                                                                                                                (3, CURRENT_DATE, 'TOURNEY_SPONSORSHIP', 4000, 0, 4000, CURRENT_DATE),
+                                                                                                                (3, CURRENT_DATE, 'DOTHRAKI_HORSE_TRADE', 5500, 2000, 3500, CURRENT_DATE),
+                                                                                                                (3, CURRENT_DATE, 'ESSOS_TRADING_EXPEDITION', 7000, 2000, 5000, CURRENT_DATE),
+                                                                                                                (3, CURRENT_DATE, 'KINGSLANDING_REDEVELOPMENT', 8000, 3000, 5000, CURRENT_DATE);
+
+-- Loans for Customer 4
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (4, CURRENT_DATE, 'IRON_BANK_LOAN', 5000, 2000, 3000, CURRENT_DATE),
+                                                                                                                (4, CURRENT_DATE, 'WILDFIRE_PRODUCTION', 4000, 1500, 2500, CURRENT_DATE),
+                                                                                                                (4, CURRENT_DATE, 'DRAGON_EGG_ACQUISITION', 3500, 1000, 2500, CURRENT_DATE),
+                                                                                                                (4, CURRENT_DATE, 'WINTERFELL_RECONSTRUCTION', 6000, 5000, 1000, CURRENT_DATE),
+                                                                                                                (4, CURRENT_DATE, 'RAVEN_MESSAGE_SERVICE', 3000, 1200, 1800, CURRENT_DATE),
+                                                                                                                (4, CURRENT_DATE, 'VALYRIAN_STEEL_SMITHING', 4500, 0, 4500, CURRENT_DATE),
+                                                                                                                (4, CURRENT_DATE, 'THE_WALL_DEFENSE_FUND', 7000, 2000, 5000, CURRENT_DATE),
+                                                                                                                (4, CURRENT_DATE, 'WHITE_WALKER_RESEARCH', 5000, 2000, 3000, CURRENT_DATE),
+                                                                                                                (4, CURRENT_DATE, 'HOUSE_BANNERS_PRODUCTION', 2500, 800, 1700, CURRENT_DATE),
+                                                                                                                (4, CURRENT_DATE, 'KNIGHTHOOD_UPGRADE', 5500, 3000, 2500, CURRENT_DATE);
+
+-- Loans for Customer 5
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (5, CURRENT_DATE, 'MAESTER_TRAINING_FUND', 3500, 1500, 2000, CURRENT_DATE),
+                                                                                                                (5, CURRENT_DATE, 'TOURNEY_SPONSORSHIP', 4500, 3000, 1500, CURRENT_DATE),
+                                                                                                                (5, CURRENT_DATE, 'DOTHRAKI_HORSE_TRADE', 4000, 1000, 3000, CURRENT_DATE),
+                                                                                                                (5, CURRENT_DATE, 'ESSOS_TRADING_EXPEDITION', 5500, 2500, 3000, CURRENT_DATE),
+                                                                                                                (5, CURRENT_DATE, 'KINGSLANDING_REDEVELOPMENT', 7000, 3000, 4000, CURRENT_DATE),
+                                                                                                                (5, CURRENT_DATE, 'IRON_BANK_LOAN', 6000, 2000, 4000, CURRENT_DATE),
+                                                                                                                (5, CURRENT_DATE, 'WILDFIRE_PRODUCTION', 3500, 1500, 2000, CURRENT_DATE),
+                                                                                                                (5, CURRENT_DATE, 'DRAGON_EGG_ACQUISITION', 4000, 500, 3500, CURRENT_DATE),
+                                                                                                                (5, CURRENT_DATE, 'WINTERFELL_RECONSTRUCTION', 8000, 5000, 3000, CURRENT_DATE),
+                                                                                                                (5, CURRENT_DATE, 'RAVEN_MESSAGE_SERVICE', 2000, 700, 1300, CURRENT_DATE);
+
+-- Loans for Customer 6
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (6, CURRENT_DATE, 'VALYRIAN_STEEL_SMITHING', 5000, 3000, 2000, CURRENT_DATE),
+                                                                                                                (6, CURRENT_DATE, 'THE_WALL_DEFENSE_FUND', 6000, 1000, 5000, CURRENT_DATE),
+                                                                                                                (6, CURRENT_DATE, 'WHITE_WALKER_RESEARCH', 4000, 1500, 2500, CURRENT_DATE),
+                                                                                                                (6, CURRENT_DATE, 'HOUSE_BANNERS_PRODUCTION', 3500, 500, 3000, CURRENT_DATE),
+                                                                                                                (6, CURRENT_DATE, 'KNIGHTHOOD_UPGRADE', 6000, 2500, 3500, CURRENT_DATE),
+                                                                                                                (6, CURRENT_DATE, 'MAESTER_TRAINING_FUND', 3000, 500, 2500, CURRENT_DATE),
+                                                                                                                (6, CURRENT_DATE, 'TOURNEY_SPONSORSHIP', 7000, 4000, 3000, CURRENT_DATE),
+                                                                                                                (6, CURRENT_DATE, 'DOTHRAKI_HORSE_TRADE', 4500, 2000, 2500, CURRENT_DATE),
+                                                                                                                (6, CURRENT_DATE, 'ESSOS_TRADING_EXPEDITION', 8000, 3000, 5000, CURRENT_DATE),
+                                                                                                                (6, CURRENT_DATE, 'KINGSLANDING_REDEVELOPMENT', 6000, 1500, 4500, CURRENT_DATE);
+
+-- Loans for Customer 7
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (7, CURRENT_DATE, 'IRON_BANK_LOAN', 7000, 3500, 3500, CURRENT_DATE),
+                                                                                                                (7, CURRENT_DATE, 'WILDFIRE_PRODUCTION', 4500, 2000, 2500, CURRENT_DATE),
+                                                                                                                (7, CURRENT_DATE, 'DRAGON_EGG_ACQUISITION', 3000, 800, 2200, CURRENT_DATE),
+                                                                                                                (7, CURRENT_DATE, 'WINTERFELL_RECONSTRUCTION', 6000, 3000, 3000, CURRENT_DATE),
+                                                                                                                (7, CURRENT_DATE, 'RAVEN_MESSAGE_SERVICE', 2500, 1000, 1500, CURRENT_DATE),
+                                                                                                                (7, CURRENT_DATE, 'VALYRIAN_STEEL_SMITHING', 5500, 0, 5500, CURRENT_DATE),
+                                                                                                                (7, CURRENT_DATE, 'THE_WALL_DEFENSE_FUND', 5000, 1500, 3500, CURRENT_DATE),
+                                                                                                                (7, CURRENT_DATE, 'WHITE_WALKER_RESEARCH', 4000, 1000, 3000, CURRENT_DATE),
+                                                                                                                (7, CURRENT_DATE, 'HOUSE_BANNERS_PRODUCTION', 2000, 600, 1400, CURRENT_DATE),
+                                                                                                                (7, CURRENT_DATE, 'KNIGHTHOOD_UPGRADE', 6000, 2500, 3500, CURRENT_DATE);
+
+-- Loans for Customer 8
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (8, CURRENT_DATE, 'MAESTER_TRAINING_FUND', 3500, 1500, 2000, CURRENT_DATE),
+                                                                                                                (8, CURRENT_DATE, 'TOURNEY_SPONSORSHIP', 5000, 2500, 2500, CURRENT_DATE),
+                                                                                                                (8, CURRENT_DATE, 'DOTHRAKI_HORSE_TRADE', 6000, 2000, 4000, CURRENT_DATE),
+                                                                                                                (8, CURRENT_DATE, 'ESSOS_TRADING_EXPEDITION', 4500, 1000, 3500, CURRENT_DATE),
+                                                                                                                (8, CURRENT_DATE, 'KINGSLANDING_REDEVELOPMENT', 7000, 3000, 4000, CURRENT_DATE),
+                                                                                                                (8, CURRENT_DATE, 'IRON_BANK_LOAN', 5500, 1000, 4500, CURRENT_DATE),
+                                                                                                                (8, CURRENT_DATE, 'WILDFIRE_PRODUCTION', 4000, 1500, 2500, CURRENT_DATE),
+                                                                                                                (8, CURRENT_DATE, 'DRAGON_EGG_ACQUISITION', 3000, 700, 2300, CURRENT_DATE),
+                                                                                                                (8, CURRENT_DATE, 'WINTERFELL_RECONSTRUCTION', 8000, 6000, 2000, CURRENT_DATE),
+                                                                                                                (8, CURRENT_DATE, 'RAVEN_MESSAGE_SERVICE', 2000, 500, 1500, CURRENT_DATE);
+
+-- Loans for Customer 9
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (9, CURRENT_DATE, 'VALYRIAN_STEEL_SMITHING', 5000, 3000, 2000, CURRENT_DATE),
+                                                                                                                (9, CURRENT_DATE, 'THE_WALL_DEFENSE_FUND', 6000, 1000, 5000, CURRENT_DATE),
+                                                                                                                (9, CURRENT_DATE, 'WHITE_WALKER_RESEARCH', 3500, 1000, 2500, CURRENT_DATE),
+                                                                                                                (9, CURRENT_DATE, 'HOUSE_BANNERS_PRODUCTION', 3000, 800, 2200, CURRENT_DATE),
+                                                                                                                (9, CURRENT_DATE, 'KNIGHTHOOD_UPGRADE', 7000, 2500, 4500, CURRENT_DATE),
+                                                                                                                (9, CURRENT_DATE, 'MAESTER_TRAINING_FUND', 4000, 2000, 2000, CURRENT_DATE),
+                                                                                                                (9, CURRENT_DATE, 'TOURNEY_SPONSORSHIP', 5500, 1000, 4500, CURRENT_DATE),
+                                                                                                                (9, CURRENT_DATE, 'DOTHRAKI_HORSE_TRADE', 6000, 2000, 4000, CURRENT_DATE),
+                                                                                                                (9, CURRENT_DATE, 'ESSOS_TRADING_EXPEDITION', 8000, 3500, 4500, CURRENT_DATE),
+                                                                                                                (9, CURRENT_DATE, 'KINGSLANDING_REDEVELOPMENT', 9000, 4000, 5000, CURRENT_DATE);
+
+-- Loans for Customer 10
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (10, CURRENT_DATE, 'IRON_BANK_LOAN', 8000, 4000, 4000, CURRENT_DATE),
+                                                                                                                (10, CURRENT_DATE, 'WILDFIRE_PRODUCTION', 6000, 3000, 3000, CURRENT_DATE),
+                                                                                                                (10, CURRENT_DATE, 'DRAGON_EGG_ACQUISITION', 5000, 1000, 4000, CURRENT_DATE),
+                                                                                                                (10, CURRENT_DATE, 'WINTERFELL_RECONSTRUCTION', 7000, 2500, 4500, CURRENT_DATE),
+                                                                                                                (10, CURRENT_DATE, 'RAVEN_MESSAGE_SERVICE', 2500, 500, 2000, CURRENT_DATE),
+                                                                                                                (10, CURRENT_DATE, 'VALYRIAN_STEEL_SMITHING', 6000, 0, 6000, CURRENT_DATE),
+                                                                                                                (10, CURRENT_DATE, 'THE_WALL_DEFENSE_FUND', 5000, 1500, 3500, CURRENT_DATE),
+                                                                                                                (10, CURRENT_DATE, 'WHITE_WALKER_RESEARCH', 4500, 2000, 2500, CURRENT_DATE),
+                                                                                                                (10, CURRENT_DATE, 'HOUSE_BANNERS_PRODUCTION', 3500, 700, 2800, CURRENT_DATE),
+                                                                                                                (10, CURRENT_DATE, 'KNIGHTHOOD_UPGRADE', 6500, 3000, 3500, CURRENT_DATE);
+
+-- Loans for Customer 11
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (11, CURRENT_DATE, 'MAESTER_TRAINING_FUND', 3000, 1500, 1500, CURRENT_DATE),
+                                                                                                                (11, CURRENT_DATE, 'TOURNEY_SPONSORSHIP', 5000, 2000, 3000, CURRENT_DATE),
+                                                                                                                (11, CURRENT_DATE, 'DOTHRAKI_HORSE_TRADE', 4000, 1000, 3000, CURRENT_DATE),
+                                                                                                                (11, CURRENT_DATE, 'ESSOS_TRADING_EXPEDITION', 5500, 2500, 3000, CURRENT_DATE),
+                                                                                                                (11, CURRENT_DATE, 'KINGSLANDING_REDEVELOPMENT', 7000, 3000, 4000, CURRENT_DATE),
+                                                                                                                (11, CURRENT_DATE, 'IRON_BANK_LOAN', 6000, 1500, 4500, CURRENT_DATE),
+                                                                                                                (11, CURRENT_DATE, 'WILDFIRE_PRODUCTION', 4000, 1200, 2800, CURRENT_DATE),
+                                                                                                                (11, CURRENT_DATE, 'DRAGON_EGG_ACQUISITION', 3000, 800, 2200, CURRENT_DATE),
+                                                                                                                (11, CURRENT_DATE, 'WINTERFELL_RECONSTRUCTION', 8000, 5000, 3000, CURRENT_DATE),
+                                                                                                                (11, CURRENT_DATE, 'RAVEN_MESSAGE_SERVICE', 2000, 1000, 1000, CURRENT_DATE);
+
+-- Loans for Customer 12
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (12, CURRENT_DATE, 'VALYRIAN_STEEL_SMITHING', 5000, 3000, 2000, CURRENT_DATE),
+                                                                                                                (12, CURRENT_DATE, 'THE_WALL_DEFENSE_FUND', 6000, 1000, 5000, CURRENT_DATE),
+                                                                                                                (12, CURRENT_DATE, 'WHITE_WALKER_RESEARCH', 3500, 1000, 2500, CURRENT_DATE),
+                                                                                                                (12, CURRENT_DATE, 'HOUSE_BANNERS_PRODUCTION', 3000, 800, 2200, CURRENT_DATE),
+                                                                                                                (12, CURRENT_DATE, 'KNIGHTHOOD_UPGRADE', 7000, 2500, 4500, CURRENT_DATE),
+                                                                                                                (12, CURRENT_DATE, 'MAESTER_TRAINING_FUND', 4000, 2000, 2000, CURRENT_DATE),
+                                                                                                                (12, CURRENT_DATE, 'TOURNEY_SPONSORSHIP', 5500, 1000, 4500, CURRENT_DATE),
+                                                                                                                (12, CURRENT_DATE, 'DOTHRAKI_HORSE_TRADE', 6000, 2000, 4000, CURRENT_DATE),
+                                                                                                                (12, CURRENT_DATE, 'ESSOS_TRADING_EXPEDITION', 8000, 3500, 4500, CURRENT_DATE),
+                                                                                                                (12, CURRENT_DATE, 'KINGSLANDING_REDEVELOPMENT', 9000, 4000, 5000, CURRENT_DATE);
+
+-- Loans for Customer 13
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (13, CURRENT_DATE, 'IRON_BANK_LOAN', 8000, 4000, 4000, CURRENT_DATE),
+                                                                                                                (13, CURRENT_DATE, 'WILDFIRE_PRODUCTION', 6000, 3000, 3000, CURRENT_DATE),
+                                                                                                                (13, CURRENT_DATE, 'DRAGON_EGG_ACQUISITION', 5000, 1000, 4000, CURRENT_DATE),
+                                                                                                                (13, CURRENT_DATE, 'WINTERFELL_RECONSTRUCTION', 7000, 2500, 4500, CURRENT_DATE),
+                                                                                                                (13, CURRENT_DATE, 'RAVEN_MESSAGE_SERVICE', 2500, 500, 2000, CURRENT_DATE),
+                                                                                                                (13, CURRENT_DATE, 'VALYRIAN_STEEL_SMITHING', 6000, 0, 6000, CURRENT_DATE),
+                                                                                                                (13, CURRENT_DATE, 'THE_WALL_DEFENSE_FUND', 5000, 1500, 3500, CURRENT_DATE),
+                                                                                                                (13, CURRENT_DATE, 'WHITE_WALKER_RESEARCH', 4500, 2000, 2500, CURRENT_DATE),
+                                                                                                                (13, CURRENT_DATE, 'HOUSE_BANNERS_PRODUCTION', 3500, 700, 2800, CURRENT_DATE),
+                                                                                                                (13, CURRENT_DATE, 'KNIGHTHOOD_UPGRADE', 6500, 3000, 3500, CURRENT_DATE);
+
+-- Loans for Customer 14
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (14, CURRENT_DATE, 'MAESTER_TRAINING_FUND', 3000, 1500, 1500, CURRENT_DATE),
+                                                                                                                (14, CURRENT_DATE, 'TOURNEY_SPONSORSHIP', 5000, 2000, 3000, CURRENT_DATE),
+                                                                                                                (14, CURRENT_DATE, 'DOTHRAKI_HORSE_TRADE', 4000, 1000, 3000, CURRENT_DATE),
+                                                                                                                (14, CURRENT_DATE, 'ESSOS_TRADING_EXPEDITION', 5500, 2500, 3000, CURRENT_DATE),
+                                                                                                                (14, CURRENT_DATE, 'KINGSLANDING_REDEVELOPMENT', 7000, 3000, 4000, CURRENT_DATE),
+                                                                                                                (14, CURRENT_DATE, 'IRON_BANK_LOAN', 6000, 1500, 4500, CURRENT_DATE),
+                                                                                                                (14, CURRENT_DATE, 'WILDFIRE_PRODUCTION', 4000, 1200, 2800, CURRENT_DATE),
+                                                                                                                (14, CURRENT_DATE, 'DRAGON_EGG_ACQUISITION', 3000, 800, 2200, CURRENT_DATE),
+                                                                                                                (14, CURRENT_DATE, 'WINTERFELL_RECONSTRUCTION', 8000, 5000, 3000, CURRENT_DATE),
+                                                                                                                (14, CURRENT_DATE, 'RAVEN_MESSAGE_SERVICE', 2000, 1000, 1000, CURRENT_DATE);
+
+-- Loans for Customer 15
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (15, CURRENT_DATE, 'VALYRIAN_STEEL_SMITHING', 5000, 3000, 2000, CURRENT_DATE),
+                                                                                                                (15, CURRENT_DATE, 'THE_WALL_DEFENSE_FUND', 6000, 1000, 5000, CURRENT_DATE),
+                                                                                                                (15, CURRENT_DATE, 'WHITE_WALKER_RESEARCH', 3500, 1000, 2500, CURRENT_DATE),
+                                                                                                                (15, CURRENT_DATE, 'HOUSE_BANNERS_PRODUCTION', 3000, 800, 2200, CURRENT_DATE),
+                                                                                                                (15, CURRENT_DATE, 'KNIGHTHOOD_UPGRADE', 7000, 2500, 4500, CURRENT_DATE),
+                                                                                                                (15, CURRENT_DATE, 'MAESTER_TRAINING_FUND', 4000, 2000, 2000, CURRENT_DATE),
+                                                                                                                (15, CURRENT_DATE, 'TOURNEY_SPONSORSHIP', 5500, 1000, 4500, CURRENT_DATE),
+                                                                                                                (15, CURRENT_DATE, 'DOTHRAKI_HORSE_TRADE', 6000, 2000, 4000, CURRENT_DATE),
+                                                                                                                (15, CURRENT_DATE, 'ESSOS_TRADING_EXPEDITION', 8000, 3500, 4500, CURRENT_DATE),
+                                                                                                                (15, CURRENT_DATE, 'KINGSLANDING_REDEVELOPMENT', 9000, 4000, 5000, CURRENT_DATE);
+
+-- Loans for Customer 16
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (16, CURRENT_DATE, 'IRON_BANK_LOAN', 8000, 4000, 4000, CURRENT_DATE),
+                                                                                                                (16, CURRENT_DATE, 'WILDFIRE_PRODUCTION', 6000, 3000, 3000, CURRENT_DATE),
+                                                                                                                (16, CURRENT_DATE, 'DRAGON_EGG_ACQUISITION', 5000, 1000, 4000, CURRENT_DATE),
+                                                                                                                (16, CURRENT_DATE, 'WINTERFELL_RECONSTRUCTION', 7000, 2500, 4500, CURRENT_DATE),
+                                                                                                                (16, CURRENT_DATE, 'RAVEN_MESSAGE_SERVICE', 2500, 500, 2000, CURRENT_DATE),
+                                                                                                                (16, CURRENT_DATE, 'VALYRIAN_STEEL_SMITHING', 6000, 0, 6000, CURRENT_DATE),
+                                                                                                                (16, CURRENT_DATE, 'THE_WALL_DEFENSE_FUND', 5000, 1500, 3500, CURRENT_DATE),
+                                                                                                                (16, CURRENT_DATE, 'WHITE_WALKER_RESEARCH', 4500, 2000, 2500, CURRENT_DATE),
+                                                                                                                (16, CURRENT_DATE, 'HOUSE_BANNERS_PRODUCTION', 3500, 700, 2800, CURRENT_DATE),
+                                                                                                                (16, CURRENT_DATE, 'KNIGHTHOOD_UPGRADE', 6500, 3000, 3500, CURRENT_DATE);
+
+-- Loans for Customer 17
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (17, CURRENT_DATE, 'MAESTER_TRAINING_FUND', 3000, 1500, 1500, CURRENT_DATE),
+                                                                                                                (17, CURRENT_DATE, 'TOURNEY_SPONSORSHIP', 5000, 2000, 3000, CURRENT_DATE),
+                                                                                                                (17, CURRENT_DATE, 'DOTHRAKI_HORSE_TRADE', 4000, 1000, 3000, CURRENT_DATE),
+                                                                                                                (17, CURRENT_DATE, 'ESSOS_TRADING_EXPEDITION', 5500, 2500, 3000, CURRENT_DATE),
+                                                                                                                (17, CURRENT_DATE, 'KINGSLANDING_REDEVELOPMENT', 7000, 3000, 4000, CURRENT_DATE),
+                                                                                                                (17, CURRENT_DATE, 'IRON_BANK_LOAN', 6000, 1500, 4500, CURRENT_DATE),
+                                                                                                                (17, CURRENT_DATE, 'WILDFIRE_PRODUCTION', 4000, 1200, 2800, CURRENT_DATE),
+                                                                                                                (17, CURRENT_DATE, 'DRAGON_EGG_ACQUISITION', 3000, 800, 2200, CURRENT_DATE),
+                                                                                                                (17, CURRENT_DATE, 'WINTERFELL_RECONSTRUCTION', 8000, 5000, 3000, CURRENT_DATE),
+                                                                                                                (17, CURRENT_DATE, 'RAVEN_MESSAGE_SERVICE', 2000, 1000, 1000, CURRENT_DATE);
+
+-- Loans for Customer 18
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (18, CURRENT_DATE, 'VALYRIAN_STEEL_SMITHING', 5000, 3000, 2000, CURRENT_DATE),
+                                                                                                                (18, CURRENT_DATE, 'THE_WALL_DEFENSE_FUND', 6000, 1000, 5000, CURRENT_DATE),
+                                                                                                                (18, CURRENT_DATE, 'WHITE_WALKER_RESEARCH', 3500, 1000, 2500, CURRENT_DATE),
+                                                                                                                (18, CURRENT_DATE, 'HOUSE_BANNERS_PRODUCTION', 3000, 800, 2200, CURRENT_DATE),
+                                                                                                                (18, CURRENT_DATE, 'KNIGHTHOOD_UPGRADE', 7000, 2500, 4500, CURRENT_DATE),
+                                                                                                                (18, CURRENT_DATE, 'MAESTER_TRAINING_FUND', 4000, 2000, 2000, CURRENT_DATE),
+                                                                                                                (18, CURRENT_DATE, 'TOURNEY_SPONSORSHIP', 5500, 1000, 4500, CURRENT_DATE),
+                                                                                                                (18, CURRENT_DATE, 'DOTHRAKI_HORSE_TRADE', 6000, 2000, 4000, CURRENT_DATE),
+                                                                                                                (18, CURRENT_DATE, 'ESSOS_TRADING_EXPEDITION', 8000, 3500, 4500, CURRENT_DATE),
+                                                                                                                (18, CURRENT_DATE, 'KINGSLANDING_REDEVELOPMENT', 9000, 4000, 5000, CURRENT_DATE);
+
+-- Loans for Customer 19
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (19, CURRENT_DATE, 'IRON_BANK_LOAN', 8000, 4000, 4000, CURRENT_DATE),
+                                                                                                                (19, CURRENT_DATE, 'WILDFIRE_PRODUCTION', 6000, 3000, 3000, CURRENT_DATE),
+                                                                                                                (19, CURRENT_DATE, 'DRAGON_EGG_ACQUISITION', 5000, 1000, 4000, CURRENT_DATE),
+                                                                                                                (19, CURRENT_DATE, 'WINTERFELL_RECONSTRUCTION', 7000, 2500, 4500, CURRENT_DATE),
+                                                                                                                (19, CURRENT_DATE, 'RAVEN_MESSAGE_SERVICE', 2500, 500, 2000, CURRENT_DATE),
+                                                                                                                (19, CURRENT_DATE, 'VALYRIAN_STEEL_SMITHING', 6000, 0, 6000, CURRENT_DATE),
+                                                                                                                (19, CURRENT_DATE, 'THE_WALL_DEFENSE_FUND', 5000, 1500, 3500, CURRENT_DATE),
+                                                                                                                (19, CURRENT_DATE, 'WHITE_WALKER_RESEARCH', 4500, 2000, 2500, CURRENT_DATE),
+                                                                                                                (19, CURRENT_DATE, 'HOUSE_BANNERS_PRODUCTION', 3500, 700, 2800, CURRENT_DATE),
+                                                                                                                (19, CURRENT_DATE, 'KNIGHTHOOD_UPGRADE', 6500, 3000, 3500, CURRENT_DATE);
+
+-- Loans for Customer 20
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (20, CURRENT_DATE, 'MAESTER_TRAINING_FUND', 3000, 1500, 1500, CURRENT_DATE),
+                                                                                                                (20, CURRENT_DATE, 'TOURNEY_SPONSORSHIP', 5000, 2000, 3000, CURRENT_DATE),
+                                                                                                                (20, CURRENT_DATE, 'DOTHRAKI_HORSE_TRADE', 4000, 1000, 3000, CURRENT_DATE),
+                                                                                                                (20, CURRENT_DATE, 'ESSOS_TRADING_EXPEDITION', 5500, 2500, 3000, CURRENT_DATE),
+                                                                                                                (20, CURRENT_DATE, 'KINGSLANDING_REDEVELOPMENT', 7000, 3000, 4000, CURRENT_DATE),
+                                                                                                                (20, CURRENT_DATE, 'IRON_BANK_LOAN', 6000, 1500, 4500, CURRENT_DATE),
+                                                                                                                (20, CURRENT_DATE, 'WILDFIRE_PRODUCTION', 4000, 1200, 2800, CURRENT_DATE),
+                                                                                                                (20, CURRENT_DATE, 'DRAGON_EGG_ACQUISITION', 3000, 800, 2200, CURRENT_DATE),
+                                                                                                                (20, CURRENT_DATE, 'WINTERFELL_RECONSTRUCTION', 8000, 5000, 3000, CURRENT_DATE),
+                                                                                                                (20, CURRENT_DATE, 'RAVEN_MESSAGE_SERVICE', 2000, 1000, 1000, CURRENT_DATE);
+
+
+-- Loans for Customer 21
+INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES
+                                                                                                                (21, CURRENT_DATE, 'IRON_BANK_LOAN', 7000, 3000, 4000, CURRENT_DATE),
+                                                                                                                (21, CURRENT_DATE, 'WILDFIRE_PRODUCTION', 8000, 3500, 4500, CURRENT_DATE),
+                                                                                                                (21, CURRENT_DATE, 'DRAGON_EGG_ACQUISITION', 6000, 2500, 3500, CURRENT_DATE),
+                                                                                                                (21, CURRENT_DATE, 'WINTERFELL_RECONSTRUCTION', 9000, 4000, 5000, CURRENT_DATE),
+                                                                                                                (21, CURRENT_DATE, 'RAVEN_MESSAGE_SERVICE', 3000, 1500, 1500, CURRENT_DATE),
+                                                                                                                (21, CURRENT_DATE, 'VALYRIAN_STEEL_SMITHING', 5000, 1000, 4000, CURRENT_DATE),
+                                                                                                                (21, CURRENT_DATE, 'THE_WALL_DEFENSE_FUND', 4000, 800, 3200, CURRENT_DATE),
+                                                                                                                (21, CURRENT_DATE, 'WHITE_WALKER_RESEARCH', 7000, 3500, 3500, CURRENT_DATE),
+                                                                                                                (21, CURRENT_DATE, 'HOUSE_BANNERS_PRODUCTION', 4500, 1200, 3300, CURRENT_DATE),
+                                                                                                                (21, CURRENT_DATE, 'KNIGHTHOOD_UPGRADE', 5500, 2500, 3000, CURRENT_DATE);
+
 
 
 CREATE TABLE card (
@@ -62,59 +619,7 @@ CREATE TABLE card (
 );
 
 
-CREATE TABLE notice_details (
-                                notice_id int NOT NULL GENERATED BY DEFAULT AS IDENTITY,
-                                notice_summary varchar(200) NOT NULL,
-                                notice_details varchar(500) NOT NULL,
-                                notice_beg_dt date NOT NULL,
-                                notice_end_dt date NOT NULL,
-                                create_dt date DEFAULT NULL,
-                                update_dt date DEFAULT NULL,
-                                PRIMARY KEY (notice_id)
-);
 
-
-INSERT INTO customer (name, email, mobile_number, pwd, role, create_dt)
-VALUES ('Happy', 'happy@example.com', '5334122365', '$2a$12$88.f6upbBvy0okEa7OfHFuorV29qeK.sVbB9VQ6J6dWM1bW6Qef8m', 'admin', CURRENT_DATE);
-
-INSERT INTO accounts (customer_id, account_number, account_type, branch_address, create_dt)
-VALUES (1, 1865764534, 'Savings', '123 Main Street, New York', CURRENT_DATE);
-
-INSERT INTO account_transactions (transaction_id, account_number, customer_id, transaction_dt, transaction_summary, transaction_type, transaction_amt,
-                                  closing_balance, create_dt)
-VALUES (gen_random_uuid(), 1865764534, 1, CURRENT_DATE - INTERVAL '7 days', 'Coffee Shop', 'Debited', 30, 34500, CURRENT_DATE - INTERVAL '7 days');
-
-INSERT INTO account_transactions (transaction_id, account_number, customer_id, transaction_dt, transaction_summary, transaction_type, transaction_amt,
-                                  closing_balance, create_dt)
-VALUES (gen_random_uuid(), 1865764534, 1, CURRENT_DATE - INTERVAL '6 days', 'Uber', 'Debited', 100, 34400, CURRENT_DATE - INTERVAL '6 days');
-
-INSERT INTO account_transactions (transaction_id, account_number, customer_id, transaction_dt, transaction_summary, transaction_type, transaction_amt,
-                                  closing_balance, create_dt)
-VALUES (gen_random_uuid(), 1865764534, 1, CURRENT_DATE - INTERVAL '5 days', 'Credit', 'Credited', 500, 34900, CURRENT_DATE - INTERVAL '5 days');
-
-INSERT INTO account_transactions (transaction_id, account_number, customer_id, transaction_dt, transaction_summary, transaction_type, transaction_amt,
-                                  closing_balance, create_dt)
-VALUES (gen_random_uuid(), 1865764534, 1, CURRENT_DATE - INTERVAL '4 days', 'Ebay', 'Debited', 600, 34300, CURRENT_DATE - INTERVAL '4 days');
-
-INSERT INTO account_transactions (transaction_id, account_number, customer_id, transaction_dt, transaction_summary, transaction_type, transaction_amt,
-                                  closing_balance, create_dt)
-VALUES (gen_random_uuid(), 1865764534, 1, CURRENT_DATE - INTERVAL '2 days', 'OnlineTransfer', 'Credited', 700, 35000, CURRENT_DATE - INTERVAL '2 days');
-
-INSERT INTO account_transactions (transaction_id, account_number, customer_id, transaction_dt, transaction_summary, transaction_type, transaction_amt,
-                                  closing_balance, create_dt)
-VALUES (gen_random_uuid(), 1865764534, 1, CURRENT_DATE - INTERVAL '1 days', 'Amazon.com', 'Debited', 100, 34900, CURRENT_DATE - INTERVAL '1 days');
-
-INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt)
-VALUES (1, '2020-10-13', 'Home', 200000, 50000, 150000, '2020-10-13');
-
-INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt)
-VALUES (1, '2020-06-06', 'Vehicle', 40000, 10000, 30000, '2020-06-06');
-
-INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt)
-VALUES (1, '2018-02-14', 'Home', 50000, 10000, 40000, '2018-02-14');
-
-INSERT INTO loan (customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt)
-VALUES (1, '2018-02-14', 'Personal', 10000, 3500, 6500, '2018-02-14');
 
 INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt)
 VALUES ('4565XXXX4656', 1, 'Credit', 10000, 500, 9500, CURRENT_DATE);
@@ -125,50 +630,18 @@ VALUES ('3455XXXX8673', 1, 'Credit', 7500, 600, 6900, CURRENT_DATE);
 INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt)
 VALUES ('2359XXXX9346', 1, 'Credit', 20000, 4000, 16000, CURRENT_DATE);
 
-INSERT INTO notice_details (notice_summary, notice_details, notice_beg_dt, notice_end_dt, create_dt, update_dt)
-VALUES ('Home Loan Interest rates reduced', 'Home loan interest rates are reduced as per the government guidelines. The updated rates will be effective immediately',
-        CURRENT_DATE - INTERVAL '30 days', CURRENT_DATE + INTERVAL '30 days', CURRENT_DATE, NULL);
-
-INSERT INTO notice_details (notice_summary, notice_details, notice_beg_dt, notice_end_dt, create_dt, update_dt)
-VALUES ('Net Banking Offers', 'Customers who will opt for Internet banking while opening a saving account will get a $50 amazon voucher',
-        CURRENT_DATE - INTERVAL '30 days', CURRENT_DATE + INTERVAL '30 days', CURRENT_DATE, NULL);
-
-INSERT INTO notice_details (notice_summary, notice_details, notice_beg_dt, notice_end_dt, create_dt, update_dt)
-VALUES ('Mobile App Downtime', 'The mobile application of the StarkSavingsBank will be down from 2AM-5AM on 12/05/2020 due to maintenance activities',
-        CURRENT_DATE - INTERVAL '30 days', CURRENT_DATE + INTERVAL '30 days', CURRENT_DATE, NULL);
-
-INSERT INTO notice_details (notice_summary, notice_details, notice_beg_dt, notice_end_dt, create_dt, update_dt)
-VALUES ('E Auction notice', 'There will be an e-auction on 12/08/2020 on the Bank website for all the stubborn arrears. Interested parties can participate in the e-auction',
-        CURRENT_DATE - INTERVAL '30 days', CURRENT_DATE + INTERVAL '30 days', CURRENT_DATE, NULL);
-
-INSERT INTO notice_details (notice_summary, notice_details, notice_beg_dt, notice_end_dt, create_dt, update_dt)
-VALUES ('Launch of Millennia card', 'Millennia Credit card are launched for the premium customers of StarkSavingsBank. With these card, you will get 5% cashback for each purchase',
-        CURRENT_DATE - INTERVAL '30 days', CURRENT_DATE + INTERVAL '30 days', CURRENT_DATE, NULL);
-
-INSERT INTO notice_details (notice_summary, notice_details, notice_beg_dt, notice_end_dt, create_dt, update_dt)
-VALUES ('COVID-19 Insurance', 'StarkSavingsBank launched an insurance policy which will cover COVID-19 expenses. Please reach out to the branch for more details',
-        CURRENT_DATE - INTERVAL '30 days', CURRENT_DATE + INTERVAL '30 days', CURRENT_DATE, NULL);
 
 
-CREATE TABLE contact (
-                         contact_id varchar(100) NOT NULL,
-                         contact_name varchar(50) NOT NULL,
-                         contact_email varchar(100) NOT NULL,
-                         house varchar(50) NOT NULL,
-                         subject varchar(500) NOT NULL,
-                         message varchar(2000) NOT NULL,
-                         create_dt date DEFAULT NULL,
-                         PRIMARY KEY (contact_id)
+CREATE TABLE notice_details (
+                                notice_id int NOT NULL GENERATED BY DEFAULT AS IDENTITY,
+                                notice_summary varchar(200) NOT NULL,
+                                notice_details varchar(500) NOT NULL,
+                                notice_beg_dt date NOT NULL,
+                                notice_end_dt date NOT NULL,
+                                create_dt date DEFAULT NULL,
+                                update_dt date DEFAULT NULL,
+                                PRIMARY KEY (notice_id)
 );
-
-
-CREATE TABLE authorities (
-                             id int GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
-                             customer_id int NOT NULL,
-                             name varchar(50) NOT NULL,
-                             CONSTRAINT authorities_ibfk_1 FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
-);
-
 
 
 INSERT INTO notice_details (notice_summary, notice_details, issued_date, house_affiliation, notice_beg_dt, notice_end_dt, create_dt)
@@ -212,5 +685,142 @@ VALUES
     ('Wealth Beyond the Wall', 'Our financial services are designed for those living beyond the Wall. Because everyone deserves to thrive!', '299 AC, 30th Moon', 'Other', '2024-11-01', '2025-01-01', '2024-11-01'),
     ('Mastering the Art of Currency', 'Join our workshops to master the art of currency management. Be the master of your own gold!', '299 AC, 32nd Moon', 'Targaryen', '2024-11-01', '2025-01-01', '2024-11-01'),
     ('A Lasting Legacy', 'Create a financial legacy that lasts for generations! Start your estate planning today.', '299 AC, 34th Moon', 'Baratheon', '2024-11-01', '2025-01-01', '2024-11-01');
+
+
+
+
+CREATE TABLE authorities (
+                             id int GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+                             customer_id int NOT NULL,
+                             name varchar(50) NOT NULL,
+                             CONSTRAINT authorities_ibfk_1 FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
+);
+
+
+-- Authorities for customer_id 1
+INSERT INTO authorities(customer_id, name) VALUES(1, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(1, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(1, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(1, 'VIEWBALANCE');
+
+-- Authorities for customer_id 2
+INSERT INTO authorities(customer_id, name) VALUES(2, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(2, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(2, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(2, 'VIEWBALANCE');
+
+-- Authorities for customer_id 3
+INSERT INTO authorities(customer_id, name) VALUES(3, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(3, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(3, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(3, 'VIEWBALANCE');
+
+-- Authorities for customer_id 4
+INSERT INTO authorities(customer_id, name) VALUES(4, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(4, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(4, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(4, 'VIEWBALANCE');
+
+-- Authorities for customer_id 5
+INSERT INTO authorities(customer_id, name) VALUES(5, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(5, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(5, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(5, 'VIEWBALANCE');
+
+-- Authorities for customer_id 6
+INSERT INTO authorities(customer_id, name) VALUES(6, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(6, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(6, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(6, 'VIEWBALANCE');
+
+-- Authorities for customer_id 7
+INSERT INTO authorities(customer_id, name) VALUES(7, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(7, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(7, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(7, 'VIEWBALANCE');
+
+-- Authorities for customer_id 8
+INSERT INTO authorities(customer_id, name) VALUES(8, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(8, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(8, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(8, 'VIEWBALANCE');
+
+-- Authorities for customer_id 9
+INSERT INTO authorities(customer_id, name) VALUES(9, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(9, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(9, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(9, 'VIEWBALANCE');
+
+-- Authorities for customer_id 10
+INSERT INTO authorities(customer_id, name) VALUES(10, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(10, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(10, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(10, 'VIEWBALANCE');
+
+-- Authorities for customer_id 11
+INSERT INTO authorities(customer_id, name) VALUES(11, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(11, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(11, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(11, 'VIEWBALANCE');
+
+-- Authorities for customer_id 12
+INSERT INTO authorities(customer_id, name) VALUES(12, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(12, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(12, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(12, 'VIEWBALANCE');
+
+-- Authorities for customer_id 13
+INSERT INTO authorities(customer_id, name) VALUES(13, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(13, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(13, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(13, 'VIEWBALANCE');
+
+-- Authorities for customer_id 14
+INSERT INTO authorities(customer_id, name) VALUES(14, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(14, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(14, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(14, 'VIEWBALANCE');
+
+-- Authorities for customer_id 15
+INSERT INTO authorities(customer_id, name) VALUES(15, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(15, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(15, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(15, 'VIEWBALANCE');
+
+-- Authorities for customer_id 16
+INSERT INTO authorities(customer_id, name) VALUES(16, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(16, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(16, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(16, 'VIEWBALANCE');
+
+-- Authorities for customer_id 17
+INSERT INTO authorities(customer_id, name) VALUES(17, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(17, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(17, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(17, 'VIEWBALANCE');
+
+-- Authorities for customer_id 18
+INSERT INTO authorities(customer_id, name) VALUES(18, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(18, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(18, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(18, 'VIEWBALANCE');
+
+-- Authorities for customer_id 19
+INSERT INTO authorities(customer_id, name) VALUES(19, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(19, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(19, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(19, 'VIEWBALANCE');
+
+-- Authorities for customer_id 20
+INSERT INTO authorities(customer_id, name) VALUES(20, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(20, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(20, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(20, 'VIEWBALANCE');
+
+-- Authorities for customer_id 21
+INSERT INTO authorities(customer_id, name) VALUES(21, 'VIEWACCOUNT');
+INSERT INTO authorities(customer_id, name) VALUES(21, 'VIEWCARDS');
+INSERT INTO authorities(customer_id, name) VALUES(21, 'VIEWLOANS');
+INSERT INTO authorities(customer_id, name) VALUES(21, 'VIEWBALANCE');
 
 

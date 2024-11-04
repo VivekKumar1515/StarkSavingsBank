@@ -1,12 +1,13 @@
 package com.winterfell.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.winterfell.enums.LoanType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Setter @Getter
@@ -15,11 +16,14 @@ public class Loan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "loan_number")
+    @JsonIgnore
     private long loanNumber;
 
+    @JsonIgnore
     private long customerId;
 
     @Column(name = "start_dt")
+    @JsonProperty(value = "startDt")
     private Date startDate;
 
     @Column(name = "loan_type")
@@ -37,5 +41,6 @@ public class Loan {
 
     @Column(name = "create_dt")
     @JsonProperty(value = "startDt")
+    @JsonIgnore
     private java.sql.Date createDate;
 }

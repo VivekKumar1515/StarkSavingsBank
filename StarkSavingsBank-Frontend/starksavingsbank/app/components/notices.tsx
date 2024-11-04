@@ -33,7 +33,6 @@ export default function QuirkyNotices() {
 
   useEffect(() => {
     const fetchNotices = async () => {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
 
       // Simulating API call
       axios

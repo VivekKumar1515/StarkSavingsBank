@@ -41,17 +41,23 @@ export default function Dashboard() {
   const router = useRouter();
 
   const houses = [
-    { name: "Stark", color: "from-gray-700 to-blue-900", sigil: "🐺" },
     { name: "Lannister", color: "from-red-900 to-yellow-600", sigil: "🦁" },
+    { name: "Stark", color: "from-gray-700 to-blue-900", sigil: "🐺" },
     { name: "Targaryen", color: "from-red-800 to-black", sigil: "🐉" },
     { name: "Baratheon", color: "from-yellow-900 to-black", sigil: "🦌" },
+    { name: "Greyjoy", color: "from-gray-800 to-yellow-600", sigil: "🐙" },
+    { name: "Martell", color: "from-orange-700 to-red-900", sigil: "☀️" },
+    { name: "Tyrell", color: "from-green-700 to-yellow-400", sigil: "🌹" },
+    { name: "Arryn", color: "from-blue-700 to-white", sigil: "🦅" },
+    { name: "Tully", color: "from-blue-800 to-red-600", sigil: "🐟" },
+    { name: "Bolton", color: "from-red-700 to-black", sigil: "🚩" },
+    { name: "Frey", color: "from-gray-500 to-blue-800", sigil: "🏰" },
   ];
 
   const fetchAccountDetails = async () => {
-    if(!authInfo?.loading) {
-        if(authInfo?.isAuthenticated) {
-            
-            axios
+    if (!authInfo?.loading) {
+      if (authInfo?.isAuthenticated) {
+        axios
           .get(
             `${AppConstants.ROOT_URL + AppConstants.ACCOUNT_API_URL}?id=${
               authInfo?.userDetails.id
@@ -72,8 +78,9 @@ export default function Dashboard() {
               name: userDetails?.name,
               email: userDetails?.email,
               mobileNumber: userDetails?.mobileNumber,
-              houseAffiliation: userDetails?.houseAffiliation
+              houseAffiliation: userDetails?.houseAffiliation,
             });
+            setCurrentHouse(authInfo.userDetails.houseAffiliation)
             setLoading(false);
           })
           .catch((error) => {
@@ -83,50 +90,52 @@ export default function Dashboard() {
 
             setLoading(false);
           });
-        } else {
-            redirect();
-        }
-
-    }      
-};
+      } else {
+        setLoading(false);
+        redirect();
+      }
+    }
+  };
+  
 
   useEffect(() => {
-    
+    console.log(loading);
 
     fetchAccountDetails();
 
-    const houseInterval = setInterval(() => {
-      setCurrentHouse((prevHouse) => {
-        const currentIndex = houses.findIndex((h) => h.name === prevHouse);
-        return houses[(currentIndex + 1) % houses.length].name;
-      });
-    }, 10000); // Change house every 10 seconds
-
-    return () => clearInterval(houseInterval);
   }, [authInfo?.loading]);
 
   function redirect() {
     setIsRedirecting(true);
     setTimeout(() => {
       router.push("/login");
-    }, 5000)
+    }, 10000);
   }
 
-   // Handle loading state
-   if (loading) {
+  // Handle loading state
+  if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-r from-gray-800 to-blue-900 flex items-center justify-center">
-        <div className="text-white text-2xl animate-pulse">Hold tight! The ravens are flying to fetch your account details. Please wait while we summon the maesters!</div>
+        <div className="text-white text-2xl animate-pulse">
+          Hold tight! The ravens are flying to fetch your account details.
+          Please wait while we summon the maesters!
+        </div>
       </div>
-    )
+    );
   }
 
+  // If the user is not authenticated
   if (!authInfo?.isAuthenticated) {
     return (
       <div className="min-h-screen bg-gradient-to-r from-gray-800 to-blue-900 flex items-center justify-center">
-        <div className="text-white text-2xl animate-pulse text-center p-5 ">Alas, brave traveler! You cannot cross the Wall without a Night&apos;s Watch pass. Seek the wisdom of the Iron Bank to gain entry.</div>
+        <div className="text-white text-2xl animate-pulse text-center p-5 ">
+          Alas, brave traveler! You cannot cross the Wall without a Night&apos;s
+          Watch pass. Seek the wisdom of the Iron Bank to gain entry. The winds
+          are shifting, and in a heartbeat, you shall be whisked away to the
+          Iron Bank&apos;s doorstep. Hold fast!
+        </div>
       </div>
-    )
+    );
   }
 
   const currentHouseData =
@@ -181,32 +190,35 @@ export default function Dashboard() {
                 </motion.div>
 
                 <motion.div
-  className="relative bg-gray-800 p-6 rounded-lg shadow-lg"
-  initial={{ opacity: 0, scale: 0.9 }}
-  animate={{ opacity: 1, scale: 1 }}
-  transition={{ duration: 0.5, delay: 0.2 }}
->
-  {/* Image overlay for background */}
-  <div
-    className="absolute inset-0 rounded-lg"
-    style={{
-      backgroundImage: `url('/assets/House_${accountDetails?.houseAffiliation}.jpeg')`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      opacity: 0.15 // Adjusts only the image's opacity
-    }}
-  />
+                  className="relative bg-gray-800 p-6 rounded-lg shadow-lg"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  {/* Image overlay for background */}
+                  <div
+                    className="absolute inset-0 rounded-lg"
+                    style={{
+                      backgroundImage: `url('/assets/House_${accountDetails?.houseAffiliation}.jpeg')`,
+                      backgroundSize: "100% 100%",
+                      backgroundPosition: "center",
+                      opacity: 0.15, // Adjusts only the image's opacity
+                    }}
+                  />
 
-  {/* Content goes above the background */}
-  <div className="relative">
-    <h2 className="text-xl font-semibold text-white mb-4 flex items-center">
-      <Shield className="mr-2" /> Account Sigil
-    </h2>
-    <p className="text-gray-300 text-lg">{accountDetails?.accountNumber}</p>
-    <p className="text-gray-300 text-lg">{accountDetails?.houseAffiliation}</p>
-  </div>
-</motion.div>
-
+                  {/* Content goes above the background */}
+                  <div className="relative">
+                    <h2 className="text-xl font-semibold text-white mb-4 flex items-center">
+                      <Shield className="mr-2" /> Account Sigil
+                    </h2>
+                    <p className="text-gray-300 text-lg">
+                      {accountDetails?.accountNumber}
+                    </p>
+                    <p className="text-gray-300 text-lg">
+                      {accountDetails?.houseAffiliation}
+                    </p>
+                  </div>
+                </motion.div>
 
                 <motion.div
                   className="bg-gray-800 bg-opacity-80 p-6 rounded-lg shadow-lg"

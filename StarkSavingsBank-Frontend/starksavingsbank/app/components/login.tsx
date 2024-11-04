@@ -18,11 +18,18 @@ type FormData = {
 }
 
 const houses = [
-  { name: 'Stark', color: 'from-gray-800 to-blue-900', sigil: '🐺' },
-  { name: 'Lannister', color: 'from-red-900 to-yellow-700', sigil: '🦁' },
-  { name: 'Targaryen', color: 'from-red-800 to-gray-900', sigil: '🐉' },
-  { name: 'Baratheon', color: 'from-yellow-800 to-gray-900', sigil: '🦌' },
-]
+  { name: "Lannister", color: "from-red-900 to-yellow-600", sigil: "🦁" },
+  { name: "Stark", color: "from-gray-700 to-blue-900", sigil: "🐺" },
+  { name: "Targaryen", color: "from-red-800 to-black", sigil: "🐉" },
+  { name: "Baratheon", color: "from-yellow-900 to-black", sigil: "🦌" },
+  { name: "Greyjoy", color: "from-gray-800 to-yellow-600", sigil: "🐙" },
+  { name: "Martell", color: "from-orange-700 to-red-900", sigil: "☀️" },
+  { name: "Tyrell", color: "from-green-700 to-yellow-400", sigil: "🌹" },
+  { name: "Arryn", color: "from-blue-700 to-white", sigil: "🦅" },
+  { name: "Tully", color: "from-blue-800 to-red-600", sigil: "🐟" },
+  { name: "Bolton", color: "from-red-700 to-black", sigil: "🚩" },
+  { name: "Frey", color: "from-gray-500 to-blue-800", sigil: "🏰" },
+];
 
 export default function Login() {
   const { register, handleSubmit, formState: { errors, isSubmitting }, watch } = useForm<FormData>()
@@ -60,6 +67,7 @@ export default function Login() {
 
     return () => clearInterval(houseInterval)
   }, [])
+
 
   const onSubmit = async (data: FormData) => {
     setLoginError(null)
@@ -108,7 +116,7 @@ export default function Login() {
         <div className="relative z-10">
           <div className="relative w-24 h-24 mx-auto mb-4 group">
             <Image
-              src="https://a0.anyrgb.com/pngimg/1464/1846/stark-logo-catelyn-stark-bran-stark-prince-of-winterfell-eddard-stark-silver-shield-winter-is-coming-house-stark-sigil-stark-thumbnail.png"
+              src="/assets/winterfell_sigil.png"
               alt="StarkSavingsBank"
               layout='fill'
               className="rounded-full object-cover transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-500/50"

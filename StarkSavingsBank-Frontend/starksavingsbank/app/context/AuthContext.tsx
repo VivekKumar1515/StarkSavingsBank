@@ -33,7 +33,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       } else {
         setIsAuthenticated(false);
       }
-      console.log("Hey from authcontext");
       
       const jwt = sessionStorage.getItem('Authorization')!;
       if (jwt) {

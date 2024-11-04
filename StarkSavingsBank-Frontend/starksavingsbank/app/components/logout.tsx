@@ -33,7 +33,7 @@ export default function Logout() {
     sessionStorage.removeItem("XSRF-TOKEN");
     setIsAuthenticated(false);    
     checkAuth()
-    
+
     router.push('/home')
 
   }
@@ -43,7 +43,7 @@ export default function Logout() {
       <div className="max-w-md w-full space-y-8 bg-gray-900 p-10 rounded-xl shadow-2xl relative overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-10" 
-          style={{ backgroundImage: "url('/placeholder.svg?height=400&width=400')" }}
+          style={{ backgroundImage: "url('/assets/Godswood_winterfell.jpeg')" }}
         ></div>
         <div className="relative">
           <h2 className="mt-6 text-center text-3xl font-extrabold text-white">

@@ -21,7 +21,7 @@ public class BalanceController {
     private List<AccountTransactions> getBalanceDetails (@RequestParam(name = "id") long id) {
         List<AccountTransactions> transactions = transactionRepository.findByCustomerIdOrderByTransactionDate(id);
 
-        return transactions != null? transactions : Collections.emptyList();
+        return transactions != null? transactions.reversed() : Collections.emptyList();
     }
 
 }
