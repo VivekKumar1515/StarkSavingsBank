@@ -9,7 +9,7 @@ export default function Logout() {
   const [isLoggingOut, setIsLoggingOut] = useState(false)
   const [quirkySaying, setQuirkySaying] = useState('')
   const router = useRouter()
-  const {isAuthenticated, setIsAuthenticated} = useAuth();
+  const {isAuthenticated, setIsAuthenticated, checkAuth} = useAuth();
 
   const quirkySayings = [
     "The North remembers... your session!",
@@ -32,6 +32,7 @@ export default function Logout() {
     sessionStorage.removeItem("userdetails");
     sessionStorage.removeItem("XSRF-TOKEN");
     setIsAuthenticated(false);    
+    checkAuth()
     
     router.push('/home')
 
@@ -63,7 +64,7 @@ export default function Logout() {
               onClick={handleLogout}
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 ease-in-out transform hover:scale-105"
             >
-              Logout (Ride South)
+              Logout (Ride South) 
             </button>
           </div>
         ) : (

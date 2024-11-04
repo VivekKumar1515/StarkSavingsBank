@@ -32,13 +32,13 @@ export default function Login() {
   const [currentHouse, setCurrentHouse] = useState('Stark')
   const [showPassword, setShowPassword] = useState(false)
   const router = useRouter();
-  const {setIsAuthenticated} = useAuth();
+  const {setIsAuthenticated, checkAuth} = useAuth();
 
   const quirkySayings = [
     "A Stark always pays their debts... to the Iron Bank!",
     "Valar Morghulis... but first, Valar Loginulis!",
     "The night is dark and full of... forgotten passwords?",
-    "You know nothing, Jon Sn-- oh wait, you're not Jon.",
+    "You know nothing, Jon Snow oh wait, you're not Jon.",
     "Hold the door... while we verify your credentials!",
     "Winter is coming... but your account access is here!",
     "By the old gods and the new, grant me... login access!",
@@ -66,27 +66,25 @@ export default function Login() {
     setShowDirewolf(true)
     try {
       await new Promise(resolve => setTimeout(resolve, 1000))
-      console.log('Login attempt:', data)
 
       const loginResponse = validateLoginDetails(data)
       loginResponse.then(response => {
-        const user = new User(response.data.id, response.data.name, response.data.mobileNumber, response.data.email, response.data.password, response.data.role, response.data.statusCd, response.data.statusMsg, response.data.authStatus)
+        const user = new User(response.data.id, response.data.name, response.data.mobileNumber, response.data.email, response.data.password, response.data.role, response.data.statusCd, response.data.statusMsg, response.data.authStatus, response.data.houseAffiliation)
 
         user.authStatus = "AUTH"
         sessionStorage.setItem("userdetails", JSON.stringify(user))
-        console.log("Successful Login inside LoginResponse")
 
         const xsrf = Cookies.get("XSRF-TOKEN")
         sessionStorage.setItem("XSRF-TOKEN", xsrf!)
 
         const authHeader = response.headers
         if(authHeader) {
-          console.log(authHeader["authorization"])
           sessionStorage.setItem("Authorization", authHeader["authorization"])
         }
 
         setIsAuthenticated(true);
-
+        checkAuth();
+        
         router.push("http://localhost:3000/dashboard")
 
       }).catch(error => {

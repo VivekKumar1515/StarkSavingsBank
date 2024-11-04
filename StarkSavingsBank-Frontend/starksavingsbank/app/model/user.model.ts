@@ -10,10 +10,11 @@ export class User{
   public statusCd: string;
   public statusMsg : string;
   public authStatus : string;
+  public houseAffiliation : string;
 
 
   constructor(id?: number,name?: string, mobileNumber?: string, email?: string,  password?: string,role?: string,
-      statusCd?:string,statusMsg?:string, authStatus?:string){
+      statusCd?:string,statusMsg?:string, authStatus?:string, houseAffiliation?: string){
         this.id = id || 0;
         this.name = name || '';
         this.mobileNumber = mobileNumber || '';
@@ -23,5 +24,6 @@ export class User{
         this.statusCd = statusCd || '';
         this.statusMsg = statusMsg || '';
         this.authStatus = authStatus || '';
+        this.houseAffiliation = houseAffiliation || '';
   }
 }

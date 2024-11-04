@@ -29,9 +29,11 @@ public class Customer {
     @Email
     private String email;
 
-    @Pattern(regexp = "^[6-9]\\d{9}$", message = "Invalid Number")
     @Column(name = "mobile_number")
     private String mobileNumber;
+
+    @Column(name = "house_affiliation")
+    private String houseAffiliation;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String pwd;

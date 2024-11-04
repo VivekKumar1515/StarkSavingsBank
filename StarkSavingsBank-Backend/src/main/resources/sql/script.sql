@@ -3,6 +3,7 @@ CREATE TABLE customer (
                           name varchar(100) NOT NULL,
                           email varchar(100) NOT NULL,
                           mobile_number varchar(20) NOT NULL,
+                         house_affiliation varchar(50) NOT NULL,
                           pwd varchar(500) NOT NULL,
                           role varchar(100) NOT NULL,
                           create_dt date DEFAULT NULL
@@ -153,6 +154,7 @@ CREATE TABLE contact (
                          contact_id varchar(100) NOT NULL,
                          contact_name varchar(50) NOT NULL,
                          contact_email varchar(100) NOT NULL,
+                         house varchar(50) NOT NULL,
                          subject varchar(500) NOT NULL,
                          message varchar(2000) NOT NULL,
                          create_dt date DEFAULT NULL,
@@ -189,3 +191,26 @@ VALUES
     ('Rider of the Storm Loans', 'Take advantage of our rider of the storm loans! Fast and reliable funding for your next big idea!', '299 AC, 33rd Moon', 'Baratheon', '2024-11-01', '2025-01-01', '2024-11-01'),
     ('Wealth Beyond the Wall', 'Learn about our new accounts for those daring enough to venture beyond the Wall. Opportunities await!', '299 AC, 35th Moon', 'Stark', '2024-11-01', '2025-01-01', '2024-11-01'),
     ('The Gold Standard Savings Account', 'Discover our new Gold Standard savings account, where your money is as good as gold! Because we all need a little Lannister touch.', '299 AC, 37th Moon', 'Lannister', '2024-11-01', '2025-01-01', '2024-11-01');
+
+INSERT INTO notice_details (notice_summary, notice_details, issued_date, house_affiliation, notice_beg_dt, notice_end_dt, create_dt)
+VALUES
+    ('Battlefield Budgeting', 'Join our budgeting seminar to learn how to win the financial battle! Every coin counts in the game of savings.', '299 AC, 1st Moon', 'Stark', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Iron Throne Investment Fair', 'Step into the arena of investments! Our experts will help you seize the Iron Throne of financial success!', '299 AC, 2nd Moon', 'Lannister', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Targaryen Fire Sale!', 'Unleash your inner dragon! Special discounts on loans that are hotter than dragonfire.', '299 AC, 4th Moon', 'Targaryen', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Oath of the Savings Account', 'Take the oath! Open a savings account and earn interest worthy of the Night’s Watch.', '299 AC, 6th Moon', 'Stark', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Lannister Loans Are Here!', 'Borrow wisely! Lannisters are known for their gold, and our loans are no different.', '299 AC, 8th Moon', 'Lannister', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Directing Your Finances', 'Discover how to direct your finances like a master strategist. Take control of your financial destiny!', '299 AC, 10th Moon', 'Baratheon', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Wildling Wealth Workshops', 'Calling all Wildlings! Join our wealth management workshops to learn how to protect your gold from the elements.', '299 AC, 12th Moon', 'Other', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Maesters of Money', 'Meet our Maesters for financial advice! They have all the knowledge to help you prosper.', '299 AC, 14th Moon', 'Targaryen', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('A Shield Against Debt', 'Arm yourself with knowledge to protect against the dangers of debt! Because in this world, a wise man is prepared.', '299 AC, 16th Moon', 'Baratheon', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Golden Opportunity Account', 'Open an account with golden opportunities that shine brighter than the sun over King’s Landing.', '299 AC, 18th Moon', 'Lannister', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Fortune Telling with Finances', 'Let our financial seers guide you to a prosperous future. Your financial fortune awaits!', '299 AC, 20th Moon', 'Targaryen', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('House of Savings', 'Join the House of Savings! Every coin saved is a step towards a secure future.', '299 AC, 22nd Moon', 'Stark', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('The Art of War in Finance', 'Learn strategies to win the financial war! Knowledge is your greatest weapon.', '299 AC, 24th Moon', 'Baratheon', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Goldsmiths and Currency Experts', 'Our goldsmiths will guide you through currency exchange and investment strategies. Every coin matters!', '299 AC, 26th Moon', 'Lannister', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Financing Your Journey', 'Planning a journey? Let us help you finance your adventures. Every journey begins with a single coin!', '299 AC, 28th Moon', 'Stark', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Wealth Beyond the Wall', 'Our financial services are designed for those living beyond the Wall. Because everyone deserves to thrive!', '299 AC, 30th Moon', 'Other', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('Mastering the Art of Currency', 'Join our workshops to master the art of currency management. Be the master of your own gold!', '299 AC, 32nd Moon', 'Targaryen', '2024-11-01', '2025-01-01', '2024-11-01'),
+    ('A Lasting Legacy', 'Create a financial legacy that lasts for generations! Start your estate planning today.', '299 AC, 34th Moon', 'Baratheon', '2024-11-01', '2025-01-01', '2024-11-01');
+
+
