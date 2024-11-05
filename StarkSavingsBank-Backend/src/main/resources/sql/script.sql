@@ -620,16 +620,25 @@ CREATE TABLE card (
 
 
 
+-- Customer ID 1
+INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt) VALUES ('4565XXXX4656', 1, 'CROWN_JEWELS_CARD', 15000, 700, 14300, '2022-05-14');
+INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt) VALUES ('6789XXXX1234', 1, 'DRAGONS_HOARD', 12000, 3000, 9000, '2020-11-22');
+INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt) VALUES ('5678XXXX4321', 1, 'DIREWOLF_PROTECTOR', 20000, 5000, 15000, '2021-03-08');
+INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt) VALUES ('3455XXXX8673', 1, 'RAVEN_EXPRESS', 8000, 800, 7200, '2023-07-12');
+INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt) VALUES ('2345XXXX9876', 1, 'WINTERS_RESERVE', 9000, 1000, 8000, '2019-09-25');
+INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt) VALUES ('1357XXXX8642', 1, 'WARDENS_VAULT', 10000, 2500, 7500, '2021-12-30');
+INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt) VALUES ('2468XXXX1357', 1, 'HAND_OF_THE_KING', 25000, 10000, 15000, '2018-05-04');
+INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt) VALUES ('1593XXXX7531', 1, 'KNIGHTS_OATH', 12000, 400, 11600, '2022-01-16');
+INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt) VALUES ('9632XXXX1478', 1, 'MAESTERS_WISDOM', 17000, 6000, 11000, '2019-04-20');
+INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt) VALUES ('7532XXXX4685', 1, 'HEARTHFIRE_CARD', 14000, 3500, 10500, '2023-02-14');
 
-INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt)
-VALUES ('4565XXXX4656', 1, 'Credit', 10000, 500, 9500, CURRENT_DATE);
-
-INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt)
-VALUES ('3455XXXX8673', 1, 'Credit', 7500, 600, 6900, CURRENT_DATE);
-
-INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt)
-VALUES ('2359XXXX9346', 1, 'Credit', 20000, 4000, 16000, CURRENT_DATE);
-
+-- Customer ID 2
+INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt) VALUES ('1111XXXX1111', 2, 'FIRE_AND_BLOOD', 18000, 6000, 12000, '2021-06-15');
+INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt) VALUES ('2222XXXX2222', 2, 'NIGHT_KING_CARD', 22000, 7000, 15000, '2020-12-10');
+INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt) VALUES ('3333XXXX3333', 2, 'IRON_THRONE', 30000, 15000, 15000, '2019-08-30');
+INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt) VALUES ('4444XXXX4444', 2, 'TARGARYEN_FLIGHT', 21000, 4500, 16500, '2023-01-20');
+INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt) VALUES ('5555XXXX5555', 2, 'GOLDEN_CROWN', 16000, 2000, 14000, '2022-03-25');
+INSERT INTO card (card_number, customer_id, card_type, total_limit, amount_used, available_amount, create_dt) VALUES ('6666XXXX6666', 2, 'BLACK_DRAGON_CARD', 25000, 8000, 17000, '2021-09-15');
 
 
 CREATE TABLE notice_details (

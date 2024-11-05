@@ -75,7 +75,7 @@ export default function Footer() {
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
                 <Image
-                  src="/assets/winterfell_sigil.png"
+                  src="/assets/stark_sigil.png"
                   alt="StarkSavingsBank"
                   layout='fill'
                   className="rounded-full object-cover"

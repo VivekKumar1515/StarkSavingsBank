@@ -71,7 +71,7 @@ export default function LoanDetails() {
             setCurrentHouse(authInfo.userDetails.houseAffiliation)
             setLoading(false)
         }).catch(error => {
-          console.log("An error occured while fetching account details due to :" + error)
+          console.log("An error occured while fetching account details due to : " + error)
           setLoading(false)
         })
       } else {
