@@ -135,9 +135,9 @@ export default function LoanDetails() {
       <div className="min-h-screen bg-gradient-to-r from-gray-800 to-blue-900 flex items-center justify-center">
         <div className="text-white text-2xl animate-pulse text-center p-5 ">
           Alas, brave traveler! You cannot cross the Wall without a Night&apos;s
-          Watch pass. Seek the wisdom of the Iron Bank to gain entry. The winds
+          Watch pass. Seek the wisdom of the Stark Bank to gain entry. The winds
           are shifting, and in a heartbeat, you shall be whisked away to the
-          Iron Bank&apos;s doorstep. Hold fast!
+          Stark Bank&apos;s doorstep. Hold fast!
         </div>
       </div>
     );
@@ -319,7 +319,7 @@ export default function LoanDetails() {
           transition={{ delay: 0.8 }}
         >
           <p>
-            The Iron Bank will have its due. Winter is coming, and debts must be
+            The Stark Bank will have its due. Winter is coming, and debts must be
             paid.
           </p>
         </motion.div>

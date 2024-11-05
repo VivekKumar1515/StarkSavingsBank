@@ -10,7 +10,7 @@ const footerLinks = [
   { 
     title: 'Royal Treasury', 
     links: [
-      { name: 'Iron Vaults', href: '/accounts' },
+      { name: 'Stark Vaults', href: '/accounts' },
       { name: 'Lannister Loans', href: '/loans' },
       { name: 'Dragon Hoards', href: '/savings' },
       { name: 'Valyrian Investments', href: '/investments' }

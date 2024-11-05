@@ -26,7 +26,7 @@ export default function Dashboard() {
   const [weather, setWeather] = useState<string>("Winter is coming");
   const [WeatherIcon, setWeatherIcon] = useState<React.ElementType>(CloudSnow);
   const adminRole =
-    "You've ascended to the Iron Bank's highest seat as the Master of Coin Commander.";
+    "You've ascended to the Stark Bank's highest seat as the Master of Coin Commander.";
   const userRole = "You've infiltrated StarkSavingsBank as a Faceless Banker";
   const authInfo = useAuth();
   const [loading, setLoading] = useState(true);
@@ -102,7 +102,7 @@ export default function Dashboard() {
 
   const dashboardItems = [
     {
-      title: "Iron Vault",
+      title: "Stark Vault",
       description: "View your treasure hoard",
       icon: Shield,
       link: "/myaccount",
@@ -137,9 +137,9 @@ export default function Dashboard() {
           transition={{ duration: 0.5 }}
         >
           Alas, brave traveler! You cannot cross the Wall without a Night&apos;s
-          Watch pass. Seek the wisdom of the Iron Bank to gain entry. The winds
+          Watch pass. Seek the wisdom of the Stark Bank to gain entry. The winds
           are shifting, and in a heartbeat, you shall be whisked away to the
-          Iron Bank&apos;s doorstep. Hold fast!
+          Stark Bank&apos;s doorstep. Hold fast!
         </motion.div>
       </div>
     );
@@ -204,7 +204,7 @@ export default function Dashboard() {
             transition={{ duration: 0.5, delay: 0.6 }}
           >
             <h3 className="text-3xl font-semibold mb-6 text-center">
-              Wisdom from the Iron Bank
+              Wisdom from the Stark Bank
             </h3>
             <div className="text-center">
               <p className="italic text-gray-300 text-lg">
@@ -225,7 +225,7 @@ export default function Dashboard() {
             transition={{ duration: 0.5, delay: 0.8 }}
           >
             <p className="text-sm text-gray-500">
-              Remember, the Iron Bank will have its due. Manage your accounts
+              Remember, the Stark Bank will have its due. Manage your accounts
               wisely.
             </p>
           </motion.div>

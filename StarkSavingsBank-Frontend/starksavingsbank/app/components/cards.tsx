@@ -158,9 +158,9 @@ export default function CardDetails() {
       <div className="min-h-screen bg-gradient-to-r from-gray-800 to-blue-900 flex items-center justify-center">
         <div className="text-white text-2xl animate-pulse text-center p-5 ">
           Alas, brave traveler! You cannot cross the Wall without a Night&apos;s
-          Watch pass. Seek the wisdom of the Iron Bank to gain entry. The winds
+          Watch pass. Seek the wisdom of the Stark Bank to gain entry. The winds
           are shifting, and in a heartbeat, you shall be whisked away to the
-          Iron Bank&apos;s doorstep. Hold fast!
+          Stark Bank&apos;s doorstep. Hold fast!
         </div>
       </div>
     );
@@ -223,7 +223,7 @@ export default function CardDetails() {
           transition={{ delay: 0.2 }}
         >
           <h2 className="text-3xl font-semibold mb-4 flex items-center">
-            <CreditCard className="mr-2" /> Total Due to the Iron Bank
+            <CreditCard className="mr-2" /> Total Due to the Stark Bank
           </h2>
           <div className="bg-black bg-opacity-50 p-6 rounded-lg shadow-lg border border-gray-700">
             <div className="flex items-center justify-between">

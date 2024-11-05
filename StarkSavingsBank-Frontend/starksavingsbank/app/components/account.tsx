@@ -135,14 +135,14 @@ export default function Dashboard() {
           transition={{ duration: 0.5 }}
         >
           Alas, brave traveler! You cannot cross the Wall without a Night&apos;s
-          Watch pass. Seek the wisdom of the Iron Bank to gain entry. The winds
+          Watch pass. Seek the wisdom of the Stark Bank to gain entry. The winds
           are shifting, and in a heartbeat, you shall be whisked away to the
-          Iron Bank&apos;s doorstep. Hold fast!
+          Stark Bank&apos;s doorstep. Hold fast!
           <Link
             href="/login"
             className="block mt-6 text-blue-300 hover:text-blue-200 transition-colors"
           >
-            Journey to the Iron Bank
+            Journey to the Stark Bank
           </Link>
         </motion.div>
       </div>
