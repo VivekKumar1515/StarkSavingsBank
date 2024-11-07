@@ -48,7 +48,7 @@ export default function Home() {
         const currentIndex = seasons.indexOf(prev)
         return seasons[(currentIndex + 1) % seasons.length]
       })
-    }, 30000) // Change season every 30 seconds
+    }, 3000) // Change season every 30 seconds
 
     const houseInterval = setInterval(() => {
       setCurrentHouse(prev => {
