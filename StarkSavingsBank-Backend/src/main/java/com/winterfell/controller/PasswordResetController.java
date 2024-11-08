@@ -2,12 +2,9 @@ package com.winterfell.controller;
 
 import com.winterfell.Service.EmailService;
 import com.winterfell.constants.ApplicationConstants;
-import com.winterfell.model.Authorities;
-import com.winterfell.model.Customer;
-import com.winterfell.model.PasswordResetRequest;
+import com.winterfell.model.EmailResetRequest;
 import com.winterfell.model.ResetRequestDTO;
 import com.winterfell.repository.CustomerRepository;
-import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.MailSender;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -23,17 +19,10 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
-import java.security.Key;
-import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.Optional;
-import java.util.Set;
 
 @Controller
 @RequiredArgsConstructor
@@ -52,7 +41,7 @@ public class PasswordResetController {
     }
 
     @RequestMapping(path = "/password-forgot")
-    public ResponseEntity<String> sendResetPasswordMail(@RequestBody() PasswordResetRequest resetRequest) {
+    public ResponseEntity<String> sendResetPasswordMail(@RequestBody() EmailResetRequest resetRequest) {
         String emailToVerify = resetRequest.email().trim().toLowerCase().strip();
             if(customerRepository.existsByEmail(emailToVerify)) {
                 String jwt = generateJwt(emailToVerify);

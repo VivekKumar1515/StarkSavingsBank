@@ -18,13 +18,28 @@ public class EmailService {
             message.setSubject("Password Reset Request");
             message.setText("Click the following link to reset your password: " + resetLink);
             mailSender.send(message);
+            return true;
 
         } catch (MailException mailException) {
             System.out.println("Error occurred while sending mail due to : " + mailException.getMessage());
             mailException.printStackTrace();
             return false;
         }
+    }
 
-        return true;
+    public boolean sendRegistrationLink(String email, String registrationLink) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        try {
+            message.setTo(email);
+            message.setSubject("Registration Link");
+            message.setText("Click the following link to get to the registration page: " + registrationLink);
+            mailSender.send(message);
+
+            return true;
+        } catch (MailException mailException) {
+            System.out.println("Error occurred while sending mail due to : " + mailException.getMessage());
+            mailException.printStackTrace();
+            return false;
+        }
     }
 }

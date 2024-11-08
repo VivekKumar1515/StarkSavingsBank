@@ -160,7 +160,7 @@ export default function Login() {
           <p className="mt-2 text-center text-sm text-gray-400">
             Or{" "}
             <Link
-              href="/register"
+              href="/send-registration"
               className="font-medium text-blue-400 hover:text-blue-300 transition duration-300"
             >
               join the Night&apos;s Watch (create an account)

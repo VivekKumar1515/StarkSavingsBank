@@ -2,6 +2,7 @@ package com.winterfell.model;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.winterfell.Annotations.FieldsMatchValidator;
 import com.winterfell.enums.Role;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -15,6 +16,10 @@ import java.util.Set;
 @Entity
 @Table(name = "customer")
 @Getter @Setter
+@FieldsMatchValidator(
+        field = "pwd",
+        matchField = "confirmPwd"
+)
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,9 +43,12 @@ public class Customer {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String pwd;
 
+    @Transient
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String confirmPwd;
+
     @Enumerated(value = EnumType.STRING)
     private Role role;
-
 
     @Column(name = "create_dt")
     private Date createDate;

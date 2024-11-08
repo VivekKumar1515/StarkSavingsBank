@@ -46,12 +46,6 @@ public class CustomerController {
 
     @RequestMapping(path = "/register", method = RequestMethod.POST)
     private ResponseEntity<String> registerUser(@RequestBody @Valid Customer customer) {
-        /*
-        * TODO
-        *  - Check if the entry for the customer already exists in the database
-        *  - If it does not then encode password, set the role as customer, set the creation date
-        */
-
         if(!customerRepository.existsByEmail(customer.getEmail())) {
             customer.setPwd(passwordEncoder.encode(customer.getPwd()));
             customer.setRole(Role.CUSTOMER);
