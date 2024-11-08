@@ -71,6 +71,7 @@ public class ProjectSecurityConfig {
                         .requestMatchers("/myBalance").hasAuthority("VIEWBALANCE")
                         .requestMatchers("/myLoans").hasAuthority("VIEWLOANS")
                         .requestMatchers("/myCards").hasAuthority("VIEWCARDS")
+                        .requestMatchers("/reset-password").hasAuthority("RESET-PASSWORD")
                 .requestMatchers("/user").authenticated()
                 .requestMatchers("/notices", "/contact", "/error", "/register", "/api/login", "/password-forgot").permitAll());
 
@@ -78,7 +79,7 @@ public class ProjectSecurityConfig {
         http.csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler())
-                .ignoringRequestMatchers("/contact", "/register", "/api/login", "/password-forgot"));
+                .ignoringRequestMatchers("/contact", "/register", "/api/login", "/password-forgot", "/reset-password"));
 
         //Adding filter
         http.addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class);

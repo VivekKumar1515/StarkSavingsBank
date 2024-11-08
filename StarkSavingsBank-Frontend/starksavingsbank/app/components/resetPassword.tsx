@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
 import { AppConstants } from '../constants/app.constants'
+import { useAuth } from '../context/AuthContext'
 
 export default function ResetPassword() {
   const [newPassword, setNewPassword] = useState('')
@@ -16,11 +17,12 @@ export default function ResetPassword() {
   const [error, setError] = useState('')
   const [isSuccess, setIsSuccess] = useState(false)
   const router = useRouter()
+  const authInfo = useAuth();
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search)
     const tokenParam = urlParams.get('token')
-    if (tokenParam?.length === 238 && tokenParam) {
+    if (tokenParam?.length === 338 && tokenParam) {
       setToken(tokenParam)
     } else {
       setError('Invalid or No token found. Please request a new password reset.')
@@ -40,10 +42,14 @@ export default function ResetPassword() {
 
     try {
       const response = await axios.post(AppConstants.ROOT_URL + "/reset-password", {
-        token: token,
-        newPassword: newPassword
+        "password" : newPassword,
+        "confirmPassword" : confirmPassword
+      }, {
+        headers: {
+          "Authorization" : token
+        }
       })
-      if (response.status === 200) {
+      if (response.status === 201) {
         setIsSuccess(true)
       }
     } catch (error) {

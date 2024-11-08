@@ -4,6 +4,7 @@ import com.winterfell.Service.UserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -24,7 +25,11 @@ public class StarkSavingsBankUserandPasswordAuthenticationProvider implements Au
         String password = authentication.getCredentials().toString();
         UserDetails userdetails = userDetailsService.loadUserByUsername(username);
 
-        return new UsernamePasswordAuthenticationToken(username, password, userdetails.getAuthorities());
+        if(passwordEncoder.matches(password, userdetails.getPassword())) {
+            return new UsernamePasswordAuthenticationToken(username, password, userdetails.getAuthorities());
+        } else {
+            throw new BadCredentialsException("Wrong credentials");
+        }
     }
 
     @Override
