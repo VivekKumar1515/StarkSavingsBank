@@ -16,10 +16,6 @@ import java.util.Set;
 @Entity
 @Table(name = "customer")
 @Getter @Setter
-@FieldsMatchValidator(
-        field = "pwd",
-        matchField = "confirmPwd"
-)
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,11 +36,11 @@ public class Customer {
     @Column(name = "house_affiliation")
     private String houseAffiliation;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY, value = "password")
     private String pwd;
 
     @Transient
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY, value = "confirmPassword")
     private String confirmPwd;
 
     @Enumerated(value = EnumType.STRING)

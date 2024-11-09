@@ -72,6 +72,7 @@ public class ProjectSecurityConfig {
                         .requestMatchers("/myLoans").hasAuthority("VIEWLOANS")
                         .requestMatchers("/myCards").hasAuthority("VIEWCARDS")
                         .requestMatchers("/reset-password").hasAuthority("RESET-PASSWORD")
+                        .requestMatchers("/register").hasAuthority("REGISTRATION")
                 .requestMatchers("/user").authenticated()
                 .requestMatchers("/notices", "/contact", "/error", "/register", "/api/login", "/password-forgot", "/send-registration").permitAll());
 

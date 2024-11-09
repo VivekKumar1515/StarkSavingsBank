@@ -18,4 +18,5 @@ public class Authorities {
     @ManyToOne(targetEntity = Customer.class)
     @JoinColumn(name = "customer_id")
     private Customer customer;
+
 }

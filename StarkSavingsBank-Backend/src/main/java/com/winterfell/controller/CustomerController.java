@@ -44,26 +44,6 @@ public class CustomerController {
     private final AuthenticationManager authenticationManager;
     private final Environment environment;
 
-    @RequestMapping(path = "/register", method = RequestMethod.POST)
-    private ResponseEntity<String> registerUser(@RequestBody @Valid Customer customer) {
-        if(!customerRepository.existsByEmail(customer.getEmail())) {
-            customer.setPwd(passwordEncoder.encode(customer.getPwd()));
-            customer.setRole(Role.CUSTOMER);
-            customer.setCreateDate(new Date(System.currentTimeMillis()));
-
-            try {
-
-                customerRepository.save(customer);
-                return ResponseEntity.status(HttpStatus.CREATED).body("Registration Successful");
-            } catch (Exception e) {
-                log.error("Registration failed in {}: {}. Exception: {}", getClass().getName(), e.getMessage(), e);
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Registration Failed, try again later");
-            }
-
-        }
-
-        return ResponseEntity.status(HttpStatus.CONFLICT).body("User already registered");
-    }
 
     @RequestMapping(path = "/user", method = RequestMethod.GET)
     private Customer getUserDetails(Authentication authentication) {
