@@ -4,10 +4,8 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Lock, ArrowLeft, Shield } from 'lucide-react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import axios from 'axios'
 import { AppConstants } from '../constants/app.constants'
-import { useAuth } from '../context/AuthContext'
 
 export default function ResetPassword() {
   const [newPassword, setNewPassword] = useState('')
@@ -16,8 +14,6 @@ export default function ResetPassword() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState('')
   const [isSuccess, setIsSuccess] = useState(false)
-  const router = useRouter()
-  const authInfo = useAuth();
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search)
@@ -54,6 +50,7 @@ export default function ResetPassword() {
       }
     } catch (error) {
       setError('Failed to reset password. Please try again.')
+      console.log(error)
     } finally {
       setIsSubmitting(false)
     }

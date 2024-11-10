@@ -9,4 +9,5 @@ public final class ApplicationConstants {
     public static final String JWT_HEADER = "Authorization";
     public static final String PASSWORD_RESET_URL = "http://localhost:3000/reset-password";
     public static final String SEND_REGISTRATION_URL = "http://localhost:3000/register";
+    public static final String SEND_WELCOME_URL = "http://localhost:3000/post-registration";
 }

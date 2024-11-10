@@ -1,17 +1,18 @@
 'use client'
 
-import { SetStateAction, useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Coins, Landmark, Building, MapPin, ChevronDown } from 'lucide-react'
-import { useRouter } from 'next/navigation'
-import { AppConstants } from '../constants/app.constants'
+import { Coins, Landmark, Building, MapPin, AlertTriangle } from 'lucide-react'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { toast } from "@/components/ui/use-toast"
+import { toast } from "@/hooks/use-toast"
+import axios from 'axios'
+import { AppConstants } from '../constants/app.constants'
 
 const accountTypes = [
   { id: 'savings', name: 'Savings', icon: Coins, description: 'For the long winter' },
@@ -33,7 +34,49 @@ export default function PostRegistration() {
   const [deposit, setDeposit] = useState('')
   const [accountType, setAccountType] = useState('')
   const [branch, setBranch] = useState('')
+  const [token, setToken] = useState('')
+  const [isTokenValid, setIsTokenValid] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const router = useRouter()
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    const tokenParam = searchParams.get('token')
+    if (tokenParam && tokenParam.length > 300) {
+      setToken(tokenParam)
+      validateToken(tokenParam)
+    } else {
+      setIsLoading(false)
+      toast({
+        title: "Invalid Token",
+        description: "Your registration token is invalid or missing. Please start the registration process again.",
+        variant: "destructive",
+      })
+    }
+  }, [searchParams])
+
+  const validateToken = async (token: string) => {
+    try {
+      if(token.length > 300) {
+        setIsTokenValid(true)
+      } else {
+        throw new Error("error");
+      }
+      
+      // Simulating a valid token
+      setIsTokenValid(true)
+      setIsLoading(false)
+    } catch (error) {
+      console.log(error)
+      setIsTokenValid(false)
+      setIsLoading(false)
+      toast({
+        title: "Token Validation Failed",
+        description: "We couldn't validate your registration token. Please try again or contact support.",
+        variant: "destructive",
+      })
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -48,23 +91,60 @@ export default function PostRegistration() {
     }
 
     try {
-      // Here you would typically make an API call to save the account details
-      // For demonstration, we'll just simulate a successful account creation
-      await new Promise(resolve => setTimeout(resolve, 1500)) // Simulate API call
       
-      toast({
-        title: "Account Created Successfully",
-        description: "Welcome to the Stark Savings Bank!",
+      axios.post(`${AppConstants.ROOT_URL} + /save-account`, {
+        "initialDeposit" : deposit,
+        "branchAddress" : branch,
+        "accountType" : accountType
+      }, {
+        headers: {
+          "Authorization" : token
+        }
+      }).then(response => {
+        if(response.status === 201) {
+          toast({
+            title: "Account Created Successfully",
+            description: "Welcome to the Stark Savings Bank!",
+          })
+          
+          router.push('/dashboard') // Redirect to dashboard after successful account creation
+        }
       })
       
-      router.push('/dashboard') // Redirect to dashboard after successful account creation
     } catch (error) {
+      console.log(error)
       toast({
         title: "Error Creating Account",
         description: "Please try again later.",
         variant: "destructive",
       })
     }
+  }
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center">
+        <div className="text-white text-2xl">Validating your raven scroll...</div>
+      </div>
+    )
+  }
+
+  if (!isTokenValid) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-gray-800 p-8 rounded-xl shadow-2xl text-center">
+          <AlertTriangle className="mx-auto h-12 w-12 text-yellow-500 mb-4" />
+          <h2 className="text-2xl font-bold text-white mb-2">Invalid Token</h2>
+          <p className="text-gray-300 mb-4">Your registration token is invalid or has expired. Please return to the registration page and try again.</p>
+          <Button 
+            onClick={() => router.push('/register')}
+            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-200"
+          >
+            Return to Registration
+          </Button>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -93,7 +173,7 @@ export default function PostRegistration() {
                 type="number"
                 placeholder="Enter amount"
                 value={deposit}
-                onChange={(e: { target: { value: SetStateAction<string> } }) => setDeposit(e.target.value)}
+                onChange={(e) => setDeposit(e.target.value)}
                 className="bg-gray-700 text-gray-100 border-gray-600 focus:border-blue-500"
               />
             </div>

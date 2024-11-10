@@ -1,5 +1,6 @@
 package com.winterfell.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.winterfell.enums.AccountType;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -11,13 +12,14 @@ import java.sql.Date;
 @Setter @Getter
 @Table(name = "accounts")
 public class Accounts {
+    @JsonIgnore
+    @Id
+    @Column(name = "account_number")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long accountNumber;
 
     private long customerId;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "account_number")
-    private long accountNumber;
 
     @Column(name = "branch_address")
     private String branchAddress;

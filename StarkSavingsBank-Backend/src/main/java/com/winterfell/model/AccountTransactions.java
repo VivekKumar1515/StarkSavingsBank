@@ -14,7 +14,7 @@ import java.sql.Date;
 @Table(name = "account_transactions")
 public class AccountTransactions {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "transaction_id")
     @JsonIgnore
     private String transactionId;

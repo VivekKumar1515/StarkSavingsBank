@@ -2,9 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { User, Mail, Phone, Lock, ArrowLeft, Shield, Sword, Crown } from 'lucide-react'
+import { User, Lock, ArrowLeft, Shield, Sword, Crown } from 'lucide-react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import axios from 'axios'
 import { AppConstants } from '../constants/app.constants'
 
@@ -28,14 +27,13 @@ export default function Register() {
   const [mobileNumber, setMobileNumber] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-  const [house, setHouse] = useState('')
+  const [houseAffiliation, setHouseAffiliation] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState('')
   const [isSuccess, setIsSuccess] = useState(false)
   const [currentStep, setCurrentStep] = useState(0)
   const [isStepValid, setIsStepValid] = useState(true)
   const [token, setToken] = useState('')
-  const router = useRouter()
 
   const [backgroundImage, setBackgroundImage] = useState('/assets/winterfell_castle.jpg')
 
@@ -77,7 +75,7 @@ export default function Register() {
         setIsStepValid(password.length >= 8 && password === confirmPassword)
         break
       case 2:
-        setIsStepValid(house !== '')
+        setIsStepValid(houseAffiliation !== '')
         break
       default:
         setIsStepValid(true)
@@ -86,7 +84,7 @@ export default function Register() {
 
   useEffect(() => {
     validateStep()
-  }, [name, email, mobileNumber, password, confirmPassword, house, currentStep])
+  }, [name, email, mobileNumber, password, confirmPassword, houseAffiliation, currentStep])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -104,7 +102,7 @@ export default function Register() {
         mobileNumber,
         password,
         confirmPassword,
-        house
+        houseAffiliation
       }, {
         headers: {
           "Authorization" : token
@@ -115,6 +113,7 @@ export default function Register() {
       }
     } catch (error) {
       setError('Failed to register. Please try again.')
+      console.log(error)
     } finally {
       setIsSubmitting(false)
     }
@@ -283,9 +282,9 @@ export default function Register() {
                           type="button"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          onClick={() => setHouse(h.name)}
+                          onClick={() => setHouseAffiliation(h.name)}
                           className={`p-2 rounded-md flex flex-col items-center justify-center ${
-                            house === h.name ? `bg-gradient-to-br ${h.color} text-white` : 'bg-gray-800 text-gray-300'
+                            houseAffiliation === h.name ? `bg-gradient-to-br ${h.color} text-white` : 'bg-gray-800 text-gray-300'
                           } transition-all duration-200`}
                         >
                           <span className="text-2xl mb-1">{h.sigil}</span>
