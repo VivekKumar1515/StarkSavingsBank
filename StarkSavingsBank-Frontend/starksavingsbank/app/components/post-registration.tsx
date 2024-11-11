@@ -92,7 +92,7 @@ export default function PostRegistration() {
 
     try {
       
-      axios.post(`${AppConstants.ROOT_URL} + /save-account`, {
+      await axios.post(`http://localhost:8080/save-account`, {
         "initialDeposit" : deposit,
         "branchAddress" : branch,
         "accountType" : accountType

@@ -12,7 +12,6 @@ import java.sql.Date;
 @Setter @Getter
 @Table(name = "accounts")
 public class Accounts {
-    @JsonIgnore
     @Id
     @Column(name = "account_number")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
