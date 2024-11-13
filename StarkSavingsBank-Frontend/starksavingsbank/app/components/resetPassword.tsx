@@ -18,11 +18,7 @@ export default function ResetPassword() {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search)
     const tokenParam = urlParams.get('token')
-    if (tokenParam && tokenParam?.length >= 338) {
-      setToken(tokenParam)
-    } else {
-      setError('Invalid or No token found. Please request a new password reset.')
-    }
+    setToken(tokenParam)
   }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {

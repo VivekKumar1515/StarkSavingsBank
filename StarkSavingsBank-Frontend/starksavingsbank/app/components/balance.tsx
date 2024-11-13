@@ -15,6 +15,7 @@ import { useAuth } from "../context/AuthContext";
 import axios from "axios";
 import { AppConstants } from "../constants/app.constants";
 import { useRouter } from "next/navigation";
+import GlobalExceptionPage from "../global-exception-page/pages";
 
 type Transaction = {
   transactionDt: string;
@@ -73,6 +74,7 @@ export default function BalanceAndTransactions() {
                 error
             );
             setLoading(false);
+            return <GlobalExceptionPage status={500} />
           });
       } else {
         redirect();

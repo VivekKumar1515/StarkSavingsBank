@@ -8,6 +8,7 @@ import Image from 'next/image'
 import { Contact } from '../model/contact.model'
 import { AppConstants } from '../constants/app.constants'
 import axios from 'axios'
+import GlobalExceptionPage from '../global-exception-page/pages'
 
 type ContactFormData = {
   contactName: string
@@ -85,6 +86,7 @@ export default function QuirkyContact() {
       setContactId(`${response.data.house.toUpperCase()}-${response.data.contactId}`)
     } catch (error) {
       console.error('Something went wrong, try again!', error)
+      return <GlobalExceptionPage status={500} />
     }
 
     setIsLoading(false)

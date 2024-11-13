@@ -18,6 +18,7 @@ import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/navigation";
 import { AppConstants } from "../constants/app.constants";
 import axios from "axios";
+import GlobalExceptionPage from "../global-exception-page/pages";
 
 type CardInput = {
   cardNumber: string;
@@ -114,6 +115,7 @@ export default function CardDetails() {
                 error
             );
             setLoading(false);
+            return <GlobalExceptionPage status={500} />
           });
       } else {
         setLoading(false);

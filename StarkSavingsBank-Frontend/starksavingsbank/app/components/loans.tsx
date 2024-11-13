@@ -27,6 +27,7 @@ import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { AppConstants } from "../constants/app.constants";
+import GlobalExceptionPage from "../global-exception-page/pages";
 
 type Loan = {
   startDt: string;
@@ -73,6 +74,7 @@ export default function LoanDetails() {
         }).catch(error => {
           console.log("An error occured while fetching account details due to : " + error)
           setLoading(false)
+          return <GlobalExceptionPage status={500} />
         })
       } else {
         setLoading(false)

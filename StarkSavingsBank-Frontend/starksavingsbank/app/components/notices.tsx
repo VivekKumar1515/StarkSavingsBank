@@ -15,6 +15,7 @@ import {
 import { AppConstants } from "../constants/app.constants";
 import axios from "axios";
 import { Notice } from "../model/notice.model";
+import GlobalExceptionPage from "../global-exception-page/pages";
 
 const houses = {
   Stark: { icon: Snowflake, color: "text-blue-400", bgColor: "bg-blue-900" },
@@ -42,6 +43,7 @@ export default function QuirkyNotices() {
           setNotices(noticeResponse);
         }).catch(error => {
             console.log("Error occured while fetching notices due to : " + error);
+            return <GlobalExceptionPage status={500} />
         })
 
       setIsLoading(false);
