@@ -2,8 +2,26 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["a0.anyrgb.com", "media.istockphoto.com", "static1.srcdn.com", "blogger.googleusercontent.com"]
-  }
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'a0.anyrgb.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.istockphoto.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'static1.srcdn.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'blogger.googleusercontent.com',
+      },
+    ],
+  },
+  reactStrictMode: true,
 };
 
 export default nextConfig;

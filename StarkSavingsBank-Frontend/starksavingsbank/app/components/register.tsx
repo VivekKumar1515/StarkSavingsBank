@@ -346,9 +346,6 @@ export default function Register() {
             <p className="text-lg text-gray-100 mb-4">
               Your oath has been sworn, and your name etched in the annals of the Stark Savings Bank. A raven will be dispatched with further instructions to complete your initiation into the realm.
             </p>
-            <Link href="/login" className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
-              Proceed to the Gates
-            </Link>
           </motion.div>
         )}
 
@@ -358,9 +355,9 @@ export default function Register() {
           transition={{ delay: 0.5 }}
           className="mt-4 relative z-10"
         >
-          <Link href="/login" className="flex items-center justify-center text-sm text-gray-400 hover:text-gray-300 transition-colors">
+          <Link href="/home" className="flex items-center justify-center text-sm text-gray-400 hover:text-gray-300 transition-colors">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to the Great Hall
+            Return to the Realm
           </Link>
         </motion.div>
       </motion.div>

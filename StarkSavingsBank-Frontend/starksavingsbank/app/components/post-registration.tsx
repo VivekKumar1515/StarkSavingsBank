@@ -1,8 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { Coins, Landmark, Building, MapPin, AlertTriangle } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Coins, Landmark, Building, MapPin, AlertTriangle, Crown } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 import { Button } from "@/components/ui/button"
@@ -37,6 +37,7 @@ export default function PostRegistration() {
   const [token, setToken] = useState('')
   const [isTokenValid, setIsTokenValid] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const [isSuccess, setIsSuccess] = useState(false)
   const router = useRouter()
   const searchParams = useSearchParams()
 
@@ -91,8 +92,7 @@ export default function PostRegistration() {
     }
 
     try {
-      
-      await axios.post(`http://localhost:8080/save-account`, {
+      const response = await axios.post(`http://localhost:8080/save-account`, {
         "initialDeposit" : deposit,
         "branchAddress" : branch,
         "accountType" : accountType
@@ -100,17 +100,15 @@ export default function PostRegistration() {
         headers: {
           "Authorization" : token
         }
-      }).then(response => {
-        if(response.status === 201) {
-          toast({
-            title: "Account Created Successfully",
-            description: "Welcome to the Stark Savings Bank!",
-          })
-          
-          router.push('/dashboard') // Redirect to dashboard after successful account creation
-        }
       })
       
+      if(response.status === 201) {
+        setIsSuccess(true)
+        toast({
+          title: "Account Created Successfully",
+          description: "Welcome to the Stark Savings Bank!",
+        })
+      }
     } catch (error) {
       console.log(error)
       toast({
@@ -155,84 +153,119 @@ export default function PostRegistration() {
         transition={{ duration: 0.5 }}
         className="max-w-4xl w-full space-y-8 bg-gray-800 p-10 rounded-xl shadow-2xl relative overflow-hidden border border-gray-700"
       >
-        <div className="relative z-10">
-          <h2 className="text-center text-3xl font-extrabold text-gray-100 mb-2">
-            Welcome to the Stark Savings Bank
-          </h2>
-          <p className="text-center text-sm text-gray-400 mb-8">
-            Let&apos;s set up your account in the realm
-          </p>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-2">
-              <Label htmlFor="deposit" className="text-gray-300">Initial Deposit (in Gold Dragons)</Label>
-              <Input
-                id="deposit"
-                type="number"
-                placeholder="Enter amount"
-                value={deposit}
-                onChange={(e) => setDeposit(e.target.value)}
-                className="bg-gray-700 text-gray-100 border-gray-600 focus:border-blue-500"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label className="text-gray-300">Choose Your Branch</Label>
-              <Select onValueChange={setBranch}>
-                <SelectTrigger className="bg-gray-700 text-gray-100 border-gray-600">
-                  <SelectValue placeholder="Select a branch" />
-                </SelectTrigger>
-                <SelectContent className="bg-gray-800 text-gray-100 border-gray-700">
-                  {branches.map((b) => (
-                    <SelectItem key={b.id} value={b.id} className="focus:bg-gray-700">
-                      <div className="flex items-center">
-                        <MapPin className="mr-2 h-4 w-4" />
-                        <span>{b.name}</span>
-                      </div>
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              {branch && (
-                <p className="text-xs text-gray-400 mt-1">
-                  {branches.find(b => b.id === branch)?.address}
+        <AnimatePresence mode="wait">
+          {!isSuccess ? (
+            <motion.div
+              key="form"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <div className="relative z-10">
+                <h2 className="text-center text-3xl font-extrabold text-gray-100 mb-2">
+                  Welcome to the Stark Savings Bank
+                </h2>
+                <p className="text-center text-sm text-gray-400 mb-8">
+                  Let&apos;s set up your account in the realm
                 </p>
-              )}
-            </div>
-          </div>
+              </div>
 
-          <div className="space-y-2">
-            <Label className="text-gray-300">Account Type</Label>
-            <RadioGroup onValueChange={setAccountType} className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {accountTypes.map((type) => (
-                <div key={type.id}>
-                  <RadioGroupItem
-                    value={type.id}
-                    id={type.id}
-                    className="peer sr-only"
-                  />
-                  <Label
-                    htmlFor={type.id}
-                    className="flex flex-col items-center justify-between rounded-md border-2 border-gray-700 bg-gray-800 p-4 hover:bg-gray-700 hover:border-gray-600 peer-data-[state=checked]:border-blue-500 peer-data-[state=checked]:bg-blue-900/20 [&:has([data-state=checked])]:border-blue-500 [&:has([data-state=checked])]:bg-blue-900/20"
-                  >
-                    <type.icon className="mb-3 h-6 w-6 text-gray-400" />
-                    <div className="font-semibold text-gray-200">{type.name}</div>
-                    <div className="text-xs text-gray-400">{type.description}</div>
-                  </Label>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="deposit" className="text-gray-300">Initial Deposit (in Gold Dragons)</Label>
+                    <Input
+                      id="deposit"
+                      type="number"
+                      placeholder="Enter amount"
+                      value={deposit}
+                      onChange={(e) => setDeposit(e.target.value)}
+                      className="bg-gray-700 text-gray-100 border-gray-600 focus:border-blue-500"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label className="text-gray-300">Choose Your Branch</Label>
+                    <Select onValueChange={setBranch}>
+                      <SelectTrigger className="bg-gray-700 text-gray-100 border-gray-600">
+                        <SelectValue placeholder="Select a branch" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-gray-800 text-gray-100 border-gray-700">
+                        {branches.map((b) => (
+                          <SelectItem key={b.id} value={b.id} className="focus:bg-gray-700">
+                            <div className="flex items-center">
+                              <MapPin className="mr-2 h-4 w-4" />
+                              <span>{b.name}</span>
+                            </div>
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    {branch && (
+                      <p className="text-xs text-gray-400 mt-1">
+                        {branches.find(b => b.id === branch)?.address}
+                      </p>
+                    )}
+                  </div>
                 </div>
-              ))}
-            </RadioGroup>
-          </div>
 
-          <Button 
-            type="submit" 
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-200"
-          >
-            Open Your Account
-          </Button>
-        </form>
+                <div className="space-y-2">
+                  <Label className="text-gray-300">Account Type</Label>
+                  <RadioGroup onValueChange={setAccountType} className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {accountTypes.map((type) => (
+                      <div key={type.id}>
+                        <RadioGroupItem
+                          value={type.id}
+                          id={type.id}
+                          className="peer sr-only"
+                        />
+                        <Label
+                          htmlFor={type.id}
+                          className="flex flex-col items-center justify-between rounded-md border-2 border-gray-700 bg-gray-800 p-4 hover:bg-gray-700 hover:border-gray-600 peer-data-[state=checked]:border-blue-500 peer-data-[state=checked]:bg-blue-900/20 [&:has([data-state=checked])]:border-blue-500 [&:has([data-state=checked])]:bg-blue-900/20"
+                        >
+                          <type.icon className="mb-3 h-6 w-6 text-gray-400" />
+                          <div className="font-semibold text-gray-200">{type.name}</div>
+                          <div className="text-xs text-gray-400">{type.description}</div>
+                        </Label>
+                      </div>
+                    ))}
+                  </RadioGroup>
+                </div>
+
+                <Button 
+                  type="submit" 
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-200"
+                >
+                  Open Your Account
+                </Button>
+              </form>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="success"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="text-center"
+            >
+              <Crown className="mx-auto h-24 w-24 text-yellow-500 mb-6" />
+              <h2 className="text-3xl font-bold text-gray-100 mb-4">Your Account is Ready!</h2>
+              <p className="text-xl text-gray-300 mb-8">
+                Welcome to the Stark Savings Bank, noble citizen of the Seven Kingdoms.
+                Your account has been forged with the strength of Valyrian steel.
+              </p>
+              <p className="text-gray-400 mb-8">
+                May your gold multiply like Daenerys&apos; dragons and your wealth grow as tall as the Wall.
+              </p>
+              <Button 
+                onClick={() => router.push('/dashboard')}
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-200 text-lg"
+              >
+                Enter Your Financial Kingdom
+              </Button>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <div className="absolute top-0 right-0 -mt-6 -mr-6 w-32 h-32 bg-blue-500 rounded-full opacity-20 blur-2xl"></div>
         <div className="absolute bottom-0 left-0 -mb-6 -ml-6 w-32 h-32 bg-purple-500 rounded-full opacity-20 blur-2xl"></div>
