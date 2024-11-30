@@ -41,7 +41,6 @@ export default function Header() {
 
   return (
     <header className={`bg-gradient-to-r from-gray-900 to-blue-900 text-gray-100 shadow-lg relative transition-all duration-1000`}>
-      
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center">
@@ -70,7 +69,7 @@ export default function Header() {
                   if (!isAuthenticated && item.authRequired) return null
                   return (
                     <li key={item.name}>
-                      <Link href={item.href}>
+                      <Link href={item.href} passHref legacyBehavior>
                         <motion.a
                           className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition duration-300 ease-in-out"
                           whileHover={{ scale: 1.05 }}
@@ -96,7 +95,7 @@ export default function Header() {
               <span className="text-sm font-medium">{seasonConfig[currentSeason].text} is coming</span>
             </motion.div>
             {isAuthenticated ? (
-              <Link href="/logout">
+              <Link href="/logout" passHref legacyBehavior>
                 <motion.a
                   className="px-4 py-2 rounded-md text-sm font-medium text-gray-300 bg-gray-700 hover:bg-gray-600 hover:text-white transition duration-300 ease-in-out"
                   whileHover={{ scale: 1.05 }}
@@ -106,7 +105,7 @@ export default function Header() {
                 </motion.a>
               </Link>
             ) : (
-              <Link href="/login">
+              <Link href="/login" passHref legacyBehavior>
                 <motion.a
                   className="px-4 py-2 rounded-md text-sm font-medium text-gray-900 bg-gray-100 hover:bg-white transition duration-300 ease-in-out"
                   whileHover={{ scale: 1.05 }}
@@ -148,7 +147,7 @@ export default function Header() {
               {navItems.map((item) => {
                 if (!isAuthenticated && item.authRequired) return null
                 return (
-                  <Link key={item.name} href={item.href}>
+                  <Link key={item.name} href={item.href} passHref legacyBehavior>
                     <motion.a
                       className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition duration-300 ease-in-out"
                       whileHover={{ scale: 1.05 }}
@@ -160,7 +159,7 @@ export default function Header() {
                 )
               })}
               {isAuthenticated ? (
-                <Link href="/logout">
+                <Link href="/logout" passHref legacyBehavior>
                   <motion.a
                     className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition duration-300 ease-in-out"
                     whileHover={{ scale: 1.05 }}
@@ -170,7 +169,7 @@ export default function Header() {
                   </motion.a>
                 </Link>
               ) : (
-                <Link href="/login">
+                <Link href="/login" passHref legacyBehavior>
                   <motion.a
                     className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition duration-300 ease-in-out"
                     whileHover={{ scale: 1.05 }}
@@ -187,3 +186,4 @@ export default function Header() {
     </header>
   )
 }
+

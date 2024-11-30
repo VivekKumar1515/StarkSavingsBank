@@ -119,7 +119,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 {column.links.map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href}>
+                    <Link href={link.href} passHref legacyBehavior>
                       <motion.a
                         className="text-sm text-gray-300 hover:text-white transition duration-300"
                         whileHover={{ x: 5 }}
@@ -144,7 +144,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} StarkSavingsBank. All rights reserved in the Seven Kingdoms.
           </p>
           <div className="mt-4 sm:mt-0">
-            <Link href="/privacy">
+            <Link href="/privacy" passHref legacyBehavior>
               <motion.a
                 className="text-sm text-gray-400 hover:text-white transition duration-300 mr-4"
                 whileHover={{ scale: 1.05 }}
@@ -153,7 +153,7 @@ export default function Footer() {
                 Privacy Policy
               </motion.a>
             </Link>
-            <Link href="/terms">
+            <Link href="/terms" passHref legacyBehavior>
               <motion.a
                 className="text-sm text-gray-400 hover:text-white transition duration-300"
                 whileHover={{ scale: 1.05 }}
@@ -193,3 +193,4 @@ export default function Footer() {
     </footer>
   )
 }
+
