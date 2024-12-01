@@ -165,103 +165,109 @@ export default function Dashboard() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence>
-            <motion.div
-              className="bg-black bg-opacity-50 p-6 rounded-lg shadow-lg"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <h2 className="text-xl font-semibold text-white mb-4 flex items-center">
-                <User className="mr-2" /> Noble Identity
-              </h2>
-              <p className="text-gray-300 text-lg mb-2">
-                {accountDetails?.name}
-              </p>
-              <p className="text-gray-300 flex items-center">
-                <Mail className="mr-2 h-4 w-4" /> {accountDetails?.email}
-              </p>
-              <p className="text-gray-300 flex items-center mt-2">
-                <Phone className="mr-2 h-4 w-4" />{" "}
-                {accountDetails?.mobileNumber}
-              </p>
-            </motion.div>
-
-            <motion.div
-              className="relative bg-black bg-opacity-50 p-6 rounded-lg shadow-lg overflow-hidden"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <div
-                className="absolute inset-0 opacity-15"
-                style={{
-                  backgroundImage: `url('/assets/House_${accountDetails?.houseAffiliation}.jpeg')`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-              />
-              <div className="relative z-10">
+            {[
+              <motion.div
+                key="noble-identity"
+                className="bg-black bg-opacity-50 p-6 rounded-lg shadow-lg"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+              >
                 <h2 className="text-xl font-semibold text-white mb-4 flex items-center">
-                  <Shield className="mr-2" /> Account Sigil
+                  <User className="mr-2" /> Noble Identity
+                </h2>
+                <p className="text-gray-300 text-lg mb-2">
+                  {accountDetails?.name}
+                </p>
+                <p className="text-gray-300 flex items-center">
+                  <Mail className="mr-2 h-4 w-4" /> {accountDetails?.email}
+                </p>
+                <p className="text-gray-300 flex items-center mt-2">
+                  <Phone className="mr-2 h-4 w-4" />{" "}
+                  {accountDetails?.mobileNumber}
+                </p>
+              </motion.div>,
+
+              <motion.div
+                key="account-sigil"
+                className="relative bg-black bg-opacity-50 p-6 rounded-lg shadow-lg overflow-hidden"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <div
+                  className="absolute inset-0 opacity-15"
+                  style={{
+                    backgroundImage: `url('/assets/House_${accountDetails?.houseAffiliation}.jpeg')`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                />
+                <div className="relative z-10">
+                  <h2 className="text-xl font-semibold text-white mb-4 flex items-center">
+                    <Shield className="mr-2" /> Account Sigil
+                  </h2>
+                  <p className="text-gray-300 text-lg">
+                    {accountDetails?.accountNumber}
+                  </p>
+                  <p className="text-gray-300 text-lg mt-2">
+                    {accountDetails?.houseAffiliation}
+                  </p>
+                </div>
+              </motion.div>,
+
+              <motion.div
+                key="treasury-type"
+                className="bg-black bg-opacity-50 p-6 rounded-lg shadow-lg"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
+                <h2 className="text-xl font-semibold text-white mb-4 flex items-center">
+                  <Coins className="mr-2" /> Treasury Type
                 </h2>
                 <p className="text-gray-300 text-lg">
-                  {accountDetails?.accountNumber}
+                  {accountDetails?.accountType}
                 </p>
-                <p className="text-gray-300 text-lg mt-2">
-                  {accountDetails?.houseAffiliation}
+                <div className="mt-4 flex justify-center">
+                  <motion.div
+                    className="w-20 h-20 bg-yellow-600 rounded-full flex items-center justify-center"
+                    animate={{ rotate: 360 }}
+                    transition={{
+                      duration: 20,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  >
+                    <Coins className="w-12 h-12 text-yellow-300" />
+                  </motion.div>
+                </div>
+              </motion.div>,
+
+              <motion.div
+                key="stronghold-location"
+                className="bg-black bg-opacity-50 p-6 rounded-lg shadow-lg col-span-full lg:col-span-2"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                <h2 className="text-xl font-semibold text-white mb-4 flex items-center">
+                  <Castle className="mr-2" /> Stronghold Location
+                </h2>
+                <p className="text-gray-300 text-lg mb-4">
+                  {accountDetails?.branchAddress}
                 </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="bg-black bg-opacity-50 p-6 rounded-lg shadow-lg"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              <h2 className="text-xl font-semibold text-white mb-4 flex items-center">
-                <Coins className="mr-2" /> Treasury Type
-              </h2>
-              <p className="text-gray-300 text-lg">
-                {accountDetails?.accountType}
-              </p>
-              <div className="mt-4 flex justify-center">
-                <motion.div
-                  className="w-20 h-20 bg-yellow-600 rounded-full flex items-center justify-center"
-                  animate={{ rotate: 360 }}
-                  transition={{
-                    duration: 20,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                >
-                  <Coins className="w-12 h-12 text-yellow-300" />
-                </motion.div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="bg-black bg-opacity-50 p-6 rounded-lg shadow-lg col-span-full lg:col-span-2"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-            >
-              <h2 className="text-xl font-semibold text-white mb-4 flex items-center">
-                <Castle className="mr-2" /> Stronghold Location
-              </h2>
-              <p className="text-gray-300 text-lg mb-4">
-                {accountDetails?.branchAddress}
-              </p>
-              <div className="relative h-48 rounded-lg overflow-hidden">
-                <Image
-                  src="/assets/Winterfell_Map.jpeg"
-                  alt="Map of Winterfell"
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-lg"
-                />
-              </div>
-            </motion.div>
+                <div className="relative h-48 rounded-lg overflow-hidden">
+                  <Image
+                    src="/assets/Winterfell_Map.jpeg"
+                    alt="Map of Winterfell"
+                    width={800}
+                    height={400}
+                    className="rounded-lg object-cover"
+                  />
+                </div>
+              </motion.div>,
+            ]}
           </AnimatePresence>
         </div>
 
@@ -275,18 +281,15 @@ export default function Dashboard() {
             <Scroll className="mr-2" /> Royal Decrees
           </h2>
           <ul className="space-y-2">
-            <li className="text-gray-300">
-              <Sword className="inline-block mr-2" /> Your gold is as safe as a
-              Valyrian steel vault.
-            </li>
-            <li className="text-gray-300">
-              <Shield className="inline-block mr-2" /> We offer protection
-              against White Walkers and financial winter.
-            </li>
-            <li className="text-gray-300">
-              <Crown className="inline-block mr-2" /> Our interest rates are fit
-              for kings and queens.
-            </li>
+            {[
+              { icon: Sword, text: "Your gold is as safe as a Valyrian steel vault." },
+              { icon: Shield, text: "We offer protection against White Walkers and financial winter." },
+              { icon: Crown, text: "Our interest rates are fit for kings and queens." },
+            ].map((decree, index) => (
+              <li key={index} className="text-gray-300">
+                <decree.icon className="inline-block mr-2" /> {decree.text}
+              </li>
+            ))}
           </ul>
         </motion.div>
 
@@ -308,3 +311,4 @@ export default function Dashboard() {
     </div>
   );
 }
+
