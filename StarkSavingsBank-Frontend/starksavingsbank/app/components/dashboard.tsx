@@ -103,7 +103,7 @@ export default function Dashboard() {
   const dashboardItems = [
     {
       title: "Stark Vault",
-      description: "View your treasure hoard",
+      description: "View your treasure",
       icon: Shield,
       link: "/myaccount",
     },
