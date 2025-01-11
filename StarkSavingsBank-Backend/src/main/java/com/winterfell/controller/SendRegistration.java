@@ -9,6 +9,10 @@ import com.winterfell.model.*;
 import com.winterfell.repository.*;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -35,6 +39,7 @@ import java.util.stream.Collectors;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
+@Tag(name = "Registration API", description = "Registration related actions")
 public class SendRegistration {
     private final EmailService emailService;
     private final Environment environment;
@@ -58,6 +63,7 @@ public class SendRegistration {
     }
 
     @RequestMapping(path = "/send-registration", method = RequestMethod.POST)
+    @Operation(method = "POST", description = "Send the registration email", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Registration Object", required = true, content = @Content(mediaType = "application/json", schema = @Schema(implementation = EmailResetRequest.class))))
     public ResponseEntity<String> sendRegistrationLink(@RequestBody EmailResetRequest email) {
         String link = ApplicationConstants.SEND_REGISTRATION_URL + "?token=" + generateRegistrationJwt(email.email(), "REGISTRATION");
         boolean mailStatus = emailService.sendRegistrationLink(email.email(), link);
@@ -69,6 +75,15 @@ public class SendRegistration {
     }
 
     @RequestMapping(path = "/register", method = RequestMethod.POST)
+    @Operation(method = "POST",
+               description = "Save the new user",
+               requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                       description = "Customer information Object",
+                       required = true,
+                       content = @Content(mediaType = "application/json",
+                                          schema = @Schema(implementation = Customer.class)
+                       )
+    ))
     private ResponseEntity<String> registerUser(@RequestBody @Valid Customer customer) {
         if(!customerRepository.existsByEmail(customer.getEmail())) {
             if(customer.getPwd().equals(customer.getConfirmPwd())) {
@@ -110,6 +125,7 @@ public class SendRegistration {
     }
 
     @RequestMapping(path = "/save-account", method = RequestMethod.POST)
+    @Operation(method = "POST", description = "Save account information", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Account Details Request DTO", required = true, content = @Content(mediaType = "application/json", schema = @Schema(implementation = AccountDetailsRequestDTO.class))))
     public ResponseEntity<String> saveAccountDetails(@RequestBody AccountDetailsRequestDTO request, Authentication authentication) {
         String email = authentication.getName();
         Optional<Customer> user = customerRepository.findByEmail(email);

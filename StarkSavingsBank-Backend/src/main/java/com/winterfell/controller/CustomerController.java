@@ -10,6 +10,10 @@ import com.winterfell.repository.CustomerRepository;
 import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +42,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
+@Tag(name = "Customers API", description = "Get, Post Customers")
 public class CustomerController {
     private final PasswordEncoder passwordEncoder;
     private final CustomerRepository customerRepository;
@@ -46,11 +51,13 @@ public class CustomerController {
 
 
     @RequestMapping(path = "/user", method = RequestMethod.GET)
+    @Operation(method = "GET", description = "Check if user already exists in the database", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(required = true, description = "Authentication Object", content = @Content(schema = @Schema(implementation = Authentication.class))))
     private Customer getUserDetails(Authentication authentication) {
         Optional<Customer> customerFromDB = customerRepository.findByEmail(authentication.getName());
         return customerFromDB.orElse(null);
     }
 
+    @Operation(method = "POST", description = "Authenticates the user", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Login Request Data Transfer Object", required = true, content = @Content(mediaType = "application/json", schema = @Schema(implementation = LoginRequestDTO.class))))
     @RequestMapping(path = "/api/login", method = RequestMethod.POST)
     public ResponseEntity<LoginResponseDTO> loginApi(@RequestBody LoginRequestDTO loginRequest) {
         String jwt = "";

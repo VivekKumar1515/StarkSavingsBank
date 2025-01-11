@@ -75,13 +75,13 @@ public class ProjectSecurityConfig {
                         .requestMatchers("/register").hasAuthority("REGISTRATION")
                         .requestMatchers("/save-account").hasAuthority("POST-REGISTRATION")
                 .requestMatchers("/user").authenticated()
-                .requestMatchers("/notices", "/contact", "/error", "/register", "/api/login", "/password-forgot", "/send-registration").permitAll());
+                .requestMatchers("/notices", "/contact", "/error", "/register", "/api/login", "/password-forgot", "/send-registration", "/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**", "/webjars/**").permitAll());
 
         //CSRF Configuration
         http.csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler())
-                .ignoringRequestMatchers("/contact", "/register", "/api/login", "/password-forgot", "/reset-password", "/send-registration", "/save-account"));
+                .ignoringRequestMatchers("/contact", "/register", "/api/login", "/password-forgot", "/reset-password", "/send-registration", "/save-account", "/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**", "/webjars/**"));
 
         //Adding filter
         http.addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class);

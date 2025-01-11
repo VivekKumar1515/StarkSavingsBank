@@ -1,0 +1,756 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Stark Savings Bank API Documentation"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "description": "Generated server url"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Cards API",
+            "description": "Get cards"
+        },
+        {
+            "name": "Registration API",
+            "description": "Registration related actions"
+        },
+        {
+            "name": "Balance API",
+            "description": "Get balance"
+        },
+        {
+            "name": "Loans API",
+            "description": "Get loans"
+        },
+        {
+            "name": "Notices API",
+            "description": "Get Notices"
+        },
+        {
+            "name": "Accounts API",
+            "description": "Get accounts"
+        },
+        {
+            "name": "Customers API",
+            "description": "Get, Post Customers"
+        },
+        {
+            "name": "Reset-Password API",
+            "description": "Yeah! what you think"
+        },
+        {
+            "name": "Contacts API",
+            "description": "POST contacts"
+        }
+    ],
+    "paths": {
+        "/send-registration": {
+            "post": {
+                "tags": [
+                    "Registration API"
+                ],
+                "description": "Send the registration email",
+                "operationId": "sendRegistrationLink",
+                "requestBody": {
+                    "description": "Registration Object",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EmailResetRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/save-account": {
+            "post": {
+                "tags": [
+                    "Registration API"
+                ],
+                "description": "Save account information",
+                "operationId": "saveAccountDetails",
+                "requestBody": {
+                    "description": "Account Details Request DTO",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AccountDetailsRequestDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/reset-password": {
+            "post": {
+                "tags": [
+                    "Reset-Password API"
+                ],
+                "description": "Saves the new password",
+                "operationId": "resetPassword",
+                "requestBody": {
+                    "description": "Password reset request DTO",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ResetRequestDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/register": {
+            "post": {
+                "tags": [
+                    "Registration API"
+                ],
+                "description": "Save the new user",
+                "operationId": "registerUser",
+                "requestBody": {
+                    "description": "Customer information Object",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Customer"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/password-forgot": {
+            "post": {
+                "tags": [
+                    "Reset-Password API"
+                ],
+                "description": "Send reset password email",
+                "operationId": "sendResetPasswordMail",
+                "requestBody": {
+                    "description": "Email Reset Request Object",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EmailResetRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/contact": {
+            "post": {
+                "tags": [
+                    "Contacts API"
+                ],
+                "description": "Create a new contact message",
+                "operationId": "saveMessage",
+                "requestBody": {
+                    "description": "contact message object",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Contact"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Contact"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Customers API"
+                ],
+                "description": "Authenticates the user",
+                "operationId": "loginApi",
+                "requestBody": {
+                    "description": "Login Request Data Transfer Object",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginRequestDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoginResponseDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user": {
+            "get": {
+                "tags": [
+                    "Customers API"
+                ],
+                "description": "Check if user already exists in the database",
+                "operationId": "getUserDetails",
+                "requestBody": {
+                    "description": "Authentication Object",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Customer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/notices": {
+            "get": {
+                "tags": [
+                    "Notices API"
+                ],
+                "description": "fetch all the notices",
+                "operationId": "getNotices",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/NoticeDetails"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/myLoans": {
+            "get": {
+                "tags": [
+                    "Loans API"
+                ],
+                "description": "fetch the loan detail using Id",
+                "operationId": "getLoanDetails",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Customer Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Loan"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/myCards": {
+            "get": {
+                "tags": [
+                    "Cards API"
+                ],
+                "description": "fetch card details using id",
+                "operationId": "getCardDetails",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Customer Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Card"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/myBalance": {
+            "get": {
+                "tags": [
+                    "Balance API"
+                ],
+                "description": "fetch balance details using Customer Id",
+                "operationId": "getBalanceDetails",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Customer Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/AccountTransactions"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/myAccount": {
+            "get": {
+                "tags": [
+                    "Accounts API"
+                ],
+                "description": "fetch account detail using Id",
+                "operationId": "getAccountDetails",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Customer Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Accounts"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "EmailResetRequest": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    }
+                }
+            },
+            "AccountDetailsRequestDTO": {
+                "type": "object",
+                "properties": {
+                    "initialDeposit": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "branchAddress": {
+                        "type": "string"
+                    },
+                    "accountType": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ResetRequestDTO": {
+                "type": "object",
+                "properties": {
+                    "password": {
+                        "type": "string"
+                    },
+                    "confirmPassword": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Customer": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "maxLength": 100,
+                        "minLength": 5,
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "mobileNumber": {
+                        "type": "string"
+                    },
+                    "houseAffiliation": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string",
+                        "enum": [
+                            "ADMIN",
+                            "CUSTOMER",
+                            "EMPLOYEE"
+                        ]
+                    },
+                    "createDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "password": {
+                        "type": "string",
+                        "writeOnly": true
+                    },
+                    "confirmPassword": {
+                        "type": "string",
+                        "writeOnly": true
+                    }
+                }
+            },
+            "Contact": {
+                "type": "object",
+                "properties": {
+                    "contactId": {
+                        "type": "string"
+                    },
+                    "contactName": {
+                        "type": "string"
+                    },
+                    "contactEmail": {
+                        "type": "string"
+                    },
+                    "house": {
+                        "type": "string"
+                    },
+                    "subject": {
+                        "maxLength": 100,
+                        "minLength": 5,
+                        "type": "string"
+                    },
+                    "message": {
+                        "maxLength": 200,
+                        "minLength": 5,
+                        "type": "string"
+                    }
+                }
+            },
+            "LoginRequestDTO": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "LoginResponseDTO": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "jwt": {
+                        "type": "string"
+                    }
+                }
+            },
+            "NoticeDetails": {
+                "type": "object",
+                "properties": {
+                    "noticeId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "noticeSummary": {
+                        "type": "string"
+                    },
+                    "noticeDetails": {
+                        "type": "string"
+                    },
+                    "issuedDate": {
+                        "type": "string"
+                    },
+                    "houseAffiliation": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Loan": {
+                "type": "object",
+                "properties": {
+                    "loanType": {
+                        "type": "string",
+                        "enum": [
+                            "IRON_BANK_LOAN",
+                            "WILDFIRE_PRODUCTION",
+                            "DRAGON_EGG_ACQUISITION",
+                            "WINTERFELL_RECONSTRUCTION",
+                            "RAVEN_MESSAGE_SERVICE",
+                            "VALYRIAN_STEEL_SMITHING",
+                            "THE_WALL_DEFENSE_FUND",
+                            "WHITE_WALKER_RESEARCH",
+                            "HOUSE_BANNERS_PRODUCTION",
+                            "KNIGHTHOOD_UPGRADE",
+                            "MAESTER_TRAINING_FUND",
+                            "TOURNEY_SPONSORSHIP",
+                            "DOTHRAKI_HORSE_TRADE",
+                            "ESSOS_TRADING_EXPEDITION",
+                            "KINGSLANDING_REDEVELOPMENT"
+                        ]
+                    },
+                    "totalLoan": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "amountPaid": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "outstandingAmount": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "startDt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "Card": {
+                "type": "object",
+                "properties": {
+                    "cardNumber": {
+                        "type": "string"
+                    },
+                    "cardType": {
+                        "type": "string",
+                        "enum": [
+                            "Crown Jewels Card – Exclusive access for royalty and nobles.",
+                            "Dragon's Hoard – High-value premium card with unmatched benefits.",
+                            "Direwolf Protector – A card with strong security features.",
+                            "Raven Express – A swift and efficient card for quick transactions.",
+                            "Winter’s Reserve – Special card with seasonal bonuses.",
+                            "Warden’s Vault – Card offering superior safety and protection.",
+                            "Hand of the King – Prestige card for high-ranking clients.",
+                            "Knight’s Oath – Loyalty rewards card with perks for frequent users.",
+                            "Maester’s Wisdom – A financial advisory card with educational resources.",
+                            "Hearthfire Card – A community-based card with benefits for family needs."
+                        ]
+                    },
+                    "totalLimit": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "amountUsed": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "AccountTransactions": {
+                "type": "object",
+                "properties": {
+                    "transactionSummary": {
+                        "type": "string"
+                    },
+                    "transactionType": {
+                        "type": "string",
+                        "enum": [
+                            "Deposit",
+                            "Withdrawal",
+                            "Transfer"
+                        ]
+                    },
+                    "closingBalance": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "createDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "transactionDt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "transactionAmount": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "Accounts": {
+                "type": "object",
+                "properties": {
+                    "accountNumber": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "customerId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "branchAddress": {
+                        "type": "string"
+                    },
+                    "accountType": {
+                        "type": "string",
+                        "enum": [
+                            "Investment",
+                            "Checking",
+                            "Savings"
+                        ]
+                    },
+                    "createDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            }
+        }
+    }
+}

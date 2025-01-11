@@ -2,6 +2,10 @@ package com.winterfell.controller;
 
 import com.winterfell.model.Contact;
 import com.winterfell.repository.ContactRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.type.descriptor.DateTimeUtils;
@@ -19,10 +23,12 @@ import java.time.LocalDateTime;
 
 @RestController
 @RequiredArgsConstructor
+@Tag(name =  "Contacts API", description = "POST contacts")
 public class ContactController {
     private final ContactRepository contactRepository;
 
     @RequestMapping(path = "/contact", method = RequestMethod.POST)
+    @Operation(method = "POST", description = "Create a new contact message", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "contact message object", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Contact.class)), required = true))
     private ResponseEntity<Contact> saveMessage(@RequestBody @Valid Contact contact) {
         contact.setCreateDate(Date.valueOf(LocalDate.now()));
 

@@ -7,6 +7,10 @@ import com.winterfell.model.ResetRequestDTO;
 import com.winterfell.repository.CustomerRepository;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
@@ -27,6 +31,7 @@ import java.util.Date;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
+@Tag(name = "Reset-Password API", description = "Yeah! what you think")
 public class PasswordResetController {
     private final CustomerRepository customerRepository;
     private final Environment environment;
@@ -40,7 +45,8 @@ public class PasswordResetController {
         return jwt;
     }
 
-    @RequestMapping(path = "/password-forgot")
+    @RequestMapping(path = "/password-forgot", method = RequestMethod.POST)
+    @Operation(method = "POST", description = "Send reset password email", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Email Reset Request Object", content = @Content(mediaType = "application/json", schema = @Schema(implementation = EmailResetRequest.class)), required = true))
     public ResponseEntity<String> sendResetPasswordMail(@RequestBody() EmailResetRequest resetRequest) {
         String emailToVerify = resetRequest.email().trim().toLowerCase().strip();
             if(customerRepository.existsByEmail(emailToVerify)) {
@@ -57,6 +63,7 @@ public class PasswordResetController {
 
 
     @RequestMapping(path = "/reset-password", method = RequestMethod.POST)
+    @Operation(method = "POST", description = "Saves the new password", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Password reset request DTO", required = true, content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResetRequestDTO.class))))
     public ResponseEntity<String>  resetPassword(@RequestBody @Validated ResetRequestDTO requestObject, Authentication authentication) {
         try {
             String encryptedPassword = passwordEncoder.encode(requestObject.password());
