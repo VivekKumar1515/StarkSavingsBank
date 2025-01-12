@@ -130,6 +130,8 @@ Watch the demo video to see Stark Savings Bank in action:
 
 [![Watch the video](https://img.youtube.com/vi/_ZrUkfBwl-Y/maxresdefault.jpg)](https://youtu.be/_ZrUkfBwl-Y)
 
+### [Watch this video on YouTube](https://youtu.be/_ZrUkfBwl-Y)
+
 ## Author
 
 📧 Feel free to reach out to us through [Email](mailto:vivekvasu1515@gmail.com) for any inquiries, feedback, or collaboration opportunities related to **Stark Savings Bank** or other Game of Thrones-themed projects. Your thoughts and ideas are as valuable as the Iron Bank's gold! 🐺💰  
